@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 18:22:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/05 18:35:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,21 +112,21 @@ int	get_color(t_scene *scene, char *line)
 	return (0);
 }
 
-// int	get_element(t_scene *scene, char *line, int i)
-// {
-// 	if (line[i])
-// 	{
-// 		if (line[i] == 'F' || line[i] == 'C')
-// 		{
-// 			if (get_color(scene, &line[i]))
-// 				return (-42);
-// 		}
-// 		else if (get_texture(scene, &line[i]))
-// 			return (-42);
-// 		return (1);
-// 	}
-// 	return (0);
-// }
+int	get_element(t_scene *scene, char *line, int i)
+{
+	if (line[i])
+	{
+		if (line[i] == 'F' || line[i] == 'C')
+		{
+			if (get_color(scene, &line[i]))
+				return (-42);
+		}
+		else if (get_texture(scene, &line[i]))
+			return (-42);
+		return (1);
+	}
+	return (0);
+}
 
 BOOL	get_elements(t_scene *scene, int fd)
 {
@@ -145,20 +145,20 @@ BOOL	get_elements(t_scene *scene, int fd)
 		i = 0;
 		while (ft_isspace(line[i]))
 			i++;
-		if (line[i])
-		{
-			if (line[i] == 'F' || line[i] == 'C')
-			{
-				if (get_color(scene, &line[i]))
-					i = -1;
-			}
-			else if (get_texture(scene, &line[i]))
-				i = -1;
-			count++;
-		}
-		// count += get_element(scene, line, i);
+		count += get_element(scene, line, i);
+		// if (line[i])
+		// {
+		// 	if (line[i] == 'F' || line[i] == 'C')
+		// 	{
+		// 		if (get_color(scene, &line[i]))
+		// 			i = -1;
+		// 	}
+		// 	else if (get_texture(scene, &line[i]))
+		// 		i = -1;
+		// 	count++;
+		// }
 		free(line);
-		if (i < 0)
+		if (count < 0)
 			return (FALSE);
 	}
 	if (!scene->north_texture_path)
@@ -327,9 +327,9 @@ void	flood_fill(char **map, int y, int x)
 		map[y][x] += 2;
 	else
 		return ;
-	if (y != 0)
+	if (y != 0 && ft_strlen(map[y - 1]) >= (size_t)x)
 		flood_fill(map, y - 1, x);
-	if (map[y + 1])
+	if (map[y + 1] && ft_strlen(map[y + 1]) >= (size_t)x)
 		flood_fill(map, y + 1, x);
 	if (x != 0)
 		flood_fill(map, y, x - 1);
@@ -400,8 +400,9 @@ void	validate_error(t_scene *scene)
 	if (scene->east_texture_path)
 		free(scene->east_texture_path);
 	i = 0;
-	while (scene->map[i])
-		free(scene->map[i++]);
+	if (scene->map)
+		while (scene->map[i])
+			free(scene->map[i++]);
 	free(scene->map);
 }
 
@@ -430,9 +431,9 @@ int	validate(t_scene *scene, char *file)
 	if (fd < 0)
 		return (-1);
 	scene->is_valid = get_elements(scene, fd);
-	// print_elem(scene);
+	print_elem(scene);
 	scene->is_valid = validate_map(scene, fd);
-	// print_elem(scene);
+	print_elem(scene);
 	close(fd);
 	if (!scene->is_valid)
 	{
