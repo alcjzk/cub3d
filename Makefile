@@ -1,11 +1,11 @@
 # Targets
-NAME		= cub3d
+NAME		= cub3D
 LIBFT 		= libft/libft.a
 
 # Directories
 OBJ_DIR				= obj/
 SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
-INC_DIR				= libft/inc/
+INC_DIR				= $(SRC_DIR) libft/inc/
 LIB_DIR				= libft
 
 # Flags setup
@@ -13,7 +13,7 @@ CC		= cc
 OPT		= 3
 LIB		= ft mlx
 WARN	= all extra error
-EXTRA	= -MP -MMD
+EXTRA	= -MP -MMD -g
 
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
@@ -22,6 +22,12 @@ override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%)
 
 # Sources
 SRCS =				\
+vector.c			\
+vector_extend.c		\
+vector_position.c	\
+vector_remove.c		\
+vector_reserve.c	\
+validate.c			\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
@@ -32,7 +38,7 @@ DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 all: $(NAME)
 
 $(LIBFT):
-	make -C libft OBJ_DIR="../obj/" CFLAGS=$(CFLAGS)
+	make -C libft OBJ_DIR="../obj/"
 
 $(NAME): $(OBJS) | $(LIBFT)
 	@echo ""
@@ -57,7 +63,7 @@ fclean: clean
 	rm -rf $(LIBFT)
 
 debug: fclean
-	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address" OPT=$(OPT:%=-O%)
+	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address"
 	make $(NAME) CFLAGS="-g -fsanitize=address"
 
 vpath %.c $(SRC_DIR)
