@@ -10,7 +10,7 @@ LIB_DIR				= libft
 
 # Flags setup
 CC		= cc
-OPT		= 3
+OPT		= 0
 LIB		= ft mlx
 WARN	= all extra error
 EXTRA	= -MP -MMD -g

@@ -6,11 +6,11 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 16:32:18 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/05 18:22:23 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "main.h"
+#include "main.h"
 
 int	name_check(char *file)
 {
@@ -112,6 +112,22 @@ int	get_color(t_scene *scene, char *line)
 	return (0);
 }
 
+// int	get_element(t_scene *scene, char *line, int i)
+// {
+// 	if (line[i])
+// 	{
+// 		if (line[i] == 'F' || line[i] == 'C')
+// 		{
+// 			if (get_color(scene, &line[i]))
+// 				return (-42);
+// 		}
+// 		else if (get_texture(scene, &line[i]))
+// 			return (-42);
+// 		return (1);
+// 	}
+// 	return (0);
+// }
+
 BOOL	get_elements(t_scene *scene, int fd)
 {
 	char	*line;
@@ -140,6 +156,7 @@ BOOL	get_elements(t_scene *scene, int fd)
 				i = -1;
 			count++;
 		}
+		// count += get_element(scene, line, i);
 		free(line);
 		if (i < 0)
 			return (FALSE);
@@ -175,7 +192,7 @@ char	**get_map(int fd, char *line)
 	t_vector	*tmpmap;
 	char		**map;
 	size_t		i;
-	
+
 	tmpmap = vector_with_capacity(1, sizeof(char *));
 	while (line)
 	{
@@ -328,7 +345,6 @@ BOOL check_connected(t_scene *scene, char **map)
 
 	if (!scene->is_valid)
 		return (FALSE);
-	map[scene->player_y][scene->player_x] = '2';
 	flood_fill(map, scene->player_y, scene->player_x);
 	y = 0;
 	while (map[y])
@@ -368,10 +384,25 @@ BOOL	validate_map(t_scene *scene, int fd)
 	scene->is_valid = check_symbols(scene, scene->map);
 	scene->is_valid = check_walls(scene, scene->map);
 	scene->is_valid = check_connected(scene, scene->map);
-	if (!scene->is_valid)
-	{
-	}
 	return (scene->is_valid);
+}
+
+void	validate_error(t_scene *scene)
+{
+	int	i;
+
+	if (scene->north_texture_path)
+		free(scene->north_texture_path);
+	if (scene->south_texture_path)
+		free(scene->south_texture_path);
+	if (scene->west_texture_path)
+		free(scene->west_texture_path);
+	if (scene->east_texture_path)
+		free(scene->east_texture_path);
+	i = 0;
+	while (scene->map[i])
+		free(scene->map[i++]);
+	free(scene->map);
 }
 
 void	print_elem(t_scene *scene)
@@ -399,13 +430,13 @@ int	validate(t_scene *scene, char *file)
 	if (fd < 0)
 		return (-1);
 	scene->is_valid = get_elements(scene, fd);
-	print_elem(scene);
+	// print_elem(scene);
 	scene->is_valid = validate_map(scene, fd);
-	print_elem(scene);
+	// print_elem(scene);
 	close(fd);
 	if (!scene->is_valid)
 	{
-		//free all
+		validate_error(scene);
 		return (-1);
 	}
 	return (0);
