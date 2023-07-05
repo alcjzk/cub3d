@@ -26,6 +26,7 @@ window.c			\
 state.c				\
 hook.c				\
 image.c				\
+view.c				\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
