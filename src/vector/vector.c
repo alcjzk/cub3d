@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:49:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/09 13:28:03 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:53:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ BOOL	vector_push(t_vector *self, void *elem_ptr)
 	return (TRUE);
 }
 
-void	vector_free(t_vector *vector)
+void	vector_free(t_vector *self)
 {
-	if (vector)
+	if (self)
 	{
-		if (vector->buffer)
-			free(vector->buffer);
-		free(vector);
+		if (self->buffer)
+			free(self->buffer);
+		free(self);
 	}
 }
 

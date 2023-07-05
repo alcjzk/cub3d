@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:49:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/25 13:55:29 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:52:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_vector
 
 t_vector	*vector_with_capacity(size_t capacity, size_t elem_size);
 t_vector	*vector_grow(t_vector *self);
-void		vector_free(t_vector *vector);
+void		vector_free(t_vector *self);
 BOOL		vector_push(t_vector *self, void *elem_ptr);
 void		*vector_get(const t_vector *self, size_t index);
 
