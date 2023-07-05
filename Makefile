@@ -28,6 +28,11 @@ vector_position.c	\
 vector_remove.c		\
 vector_reserve.c	\
 validate.c			\
+get_color.c			\
+get_elements.c		\
+get_map.c			\
+check_walls.c		\
+validate_map.c		\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)

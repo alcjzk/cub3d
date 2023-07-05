@@ -6,12 +6,12 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/04 13:57:21 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/05 20:26:54 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "main.h"
+#include "scene.h"
 
 int	main(int argc, char **argv)
 {
