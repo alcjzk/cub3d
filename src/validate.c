@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 18:35:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/05 20:06:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,17 +146,6 @@ BOOL	get_elements(t_scene *scene, int fd)
 		while (ft_isspace(line[i]))
 			i++;
 		count += get_element(scene, line, i);
-		// if (line[i])
-		// {
-		// 	if (line[i] == 'F' || line[i] == 'C')
-		// 	{
-		// 		if (get_color(scene, &line[i]))
-		// 			i = -1;
-		// 	}
-		// 	else if (get_texture(scene, &line[i]))
-		// 		i = -1;
-		// 	count++;
-		// }
 		free(line);
 		if (count < 0)
 			return (FALSE);
@@ -187,10 +176,34 @@ char	*skip_empty(int fd)
 	return (line);
 }
 
+void	map_free(t_vector *tmpmap)
+{
+	int	i;
+
+	i = 0;
+	while (i < tmpmap->length)
+		free(((char **)tmpmap->buffer)[i++]);
+	vector_free(tmpmap);
+}
+
+char	**map_from_vec(t_vector *tmpmap)
+{
+	char		**map;
+
+	map = NULL;
+	if (!vector_push(tmpmap, &map))
+	{
+		map_free(tmpmap);
+		return (NULL);
+	}
+	map = (char **)tmpmap->buffer;
+	free(tmpmap);
+	return (map);
+}
+
 char	**get_map(int fd, char *line)
 {
 	t_vector	*tmpmap;
-	char		**map;
 	size_t		i;
 
 	tmpmap = vector_with_capacity(1, sizeof(char *));
@@ -201,28 +214,19 @@ char	**get_map(int fd, char *line)
 			i++;
 		if (!line[i])
 		{
-			vector_free(tmpmap);
+			map_free(tmpmap);
 			free(line);
 			return (NULL);
 		}
 		line[ft_strlen(line) - 1] = '\0';
 		if (!vector_push(tmpmap, &line))
 		{
-			vector_free(tmpmap);
+			map_free(tmpmap);
 			return (NULL);
 		}
 		line = get_next_line(fd);
 	}
-	i = 0;
-	map = ft_calloc(tmpmap->length + 1, sizeof(char *));
-	while (map && i < tmpmap->length)
-	{
-		map[i] = *(char **)vector_get(tmpmap, i);
-		i++;
-	}
-	map[i] = NULL;
-	vector_free(tmpmap);
-	return (map);
+	return (map_from_vec(tmpmap));
 }
 
 BOOL	check_symbols(t_scene *scene, char **map)
@@ -304,7 +308,7 @@ void	change_chars(char **map)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (map[y])
 	{
@@ -337,8 +341,7 @@ void	flood_fill(char **map, int y, int x)
 		flood_fill(map, y, x + 1);
 }
 
-
-BOOL check_connected(t_scene *scene, char **map)
+BOOL	check_connected(t_scene *scene, char **map)
 {
 	int	x;
 	int	y;
@@ -360,15 +363,6 @@ BOOL check_connected(t_scene *scene, char **map)
 	}
 	change_chars(map);
 	return (TRUE);
-}
-
-void	print_map(t_scene *scene)
-{
-	printf("\n");
-	if (!scene->map)
-		return ;
-	for(int i = 0; scene->map[i]; i++)
-		printf("%s\n", scene->map[i]);
 }
 
 BOOL	validate_map(t_scene *scene, int fd)
@@ -406,21 +400,6 @@ void	validate_error(t_scene *scene)
 	free(scene->map);
 }
 
-void	print_elem(t_scene *scene)
-{
-	printf("N: %s\n", scene->north_texture_path);
-	printf("S: %s\n", scene->south_texture_path);
-	printf("E: %s\n", scene->east_texture_path);
-	printf("W: %s\n", scene->west_texture_path);
-	printf("floor; a: %d, r: %d, g: %d, b: %d\n", scene->floor_color.channels.a, scene->floor_color.channels.r, scene->floor_color.channels.g, scene->floor_color.channels.b);
-	printf("ceiling; a: %d, r: %d, g: %d, b: %d\n", scene->ceiling_color.channels.a, scene->ceiling_color.channels.r, scene->ceiling_color.channels.g, scene->ceiling_color.channels.b);
-	printf("start x: %d\n", scene->player_x);
-	printf("start y: %d\n", scene->player_y);
-	printf("start char: %c\n", scene->start);
-	printf("valid: %s\n", scene->is_valid ? "TRUE" : "FALSE");
-	print_map(scene);
-}
-
 int	validate(t_scene *scene, char *file)
 {
 	int	fd;
@@ -431,9 +410,7 @@ int	validate(t_scene *scene, char *file)
 	if (fd < 0)
 		return (-1);
 	scene->is_valid = get_elements(scene, fd);
-	print_elem(scene);
 	scene->is_valid = validate_map(scene, fd);
-	print_elem(scene);
 	close(fd);
 	if (!scene->is_valid)
 	{
