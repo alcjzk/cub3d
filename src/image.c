@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 07:15:30 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/05 13:03:31 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:08:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	image_put_pixel(t_image *image, int x, int y, t_color color)
 	addr[y * image->width + x] = color.value;
 }
 
-t_status	image_create(t_image *image, void *mlx, size_t width, size_t height)
+BOOL	image_create(t_image *image, void *mlx, int width, int height)
 {
 	int	endian;
 	int	bpp;
@@ -32,13 +32,13 @@ t_status	image_create(t_image *image, void *mlx, size_t width, size_t height)
 	image->mlx = mlx;
 	image->img = mlx_new_image(mlx, width, height);
 	if (!image->img)
-		return (err_mlx);
+		return (FALSE);
 	image->addr = mlx_get_data_addr(image->img, &bpp, &bpl, &endian);
 	if (!image->addr)
-		return (err_mlx);
+		return (FALSE);
 	image->width = width;
 	image->height = height;
-	return (ok);
+	return (TRUE);
 }
 
 void	image_clear(t_image *image)
@@ -50,4 +50,5 @@ void	image_destroy(t_image *image)
 {
 	if (image && image->img)
 		mlx_destroy_image(image->mlx, image->img);
+	*image = (t_image){0};
 }
