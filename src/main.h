@@ -6,26 +6,21 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:09 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/04 13:28:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/05 14:11:24 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_H
 # define MAIN_H
 
-typedef struct s_color_channels
-{
-	unsigned char	a;
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-}	t_color_channels;
-
-typedef union u_color
-{
-	int					value;
-	t_color_channels	channels;
-}	t_color;
+# include "bool.h"
+# include "vector.h"
+# include "libft.h"
+# include "get_next_line.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include "color.h"
 
 typedef struct s_scene
 {
@@ -39,7 +34,7 @@ typedef struct s_scene
 	int		player_x;
 	int		player_y;
 	char	start;
-	int		is_valid;
+	BOOL	is_valid;
 }	t_scene;
 
 int	validate(t_scene *scene, char *file);
