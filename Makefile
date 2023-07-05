@@ -18,10 +18,13 @@ EXTRA	= -MP -MMD
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 # Linker flags
-override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%)
+override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL
 
 # Sources
 SRCS =				\
+window.c			\
+state.c				\
+hook.c				\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
@@ -32,7 +35,7 @@ DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 all: $(NAME)
 
 $(LIBFT):
-	make -C libft OBJ_DIR="../obj/" CFLAGS=$(CFLAGS)
+	make -C libft OBJ_DIR="../obj/"
 
 $(NAME): $(OBJS) | $(LIBFT)
 	@echo ""
@@ -57,7 +60,7 @@ fclean: clean
 	rm -rf $(LIBFT)
 
 debug: fclean
-	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address" OPT=$(OPT:%=-O%)
+	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address"
 	make $(NAME) CFLAGS="-g -fsanitize=address"
 
 vpath %.c $(SRC_DIR)
