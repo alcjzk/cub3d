@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:14:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/10 13:14:47 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/10 13:38:16 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	set_texture(t_scene *scene, char *line, char *copy)
 {
 	if (!ft_strncmp(line, "NO ", 3) && !scene->north_texture_path)
 		scene->north_texture_path = copy;
-	else if (!ft_strncmp(line, "SO ", 3) && !scene->north_texture_path)
+	else if (!ft_strncmp(line, "SO ", 3) && !scene->south_texture_path)
 		scene->south_texture_path = copy;
-	else if (!ft_strncmp(line, "WE ", 3) && !scene->north_texture_path)
+	else if (!ft_strncmp(line, "WE ", 3) && !scene->west_texture_path)
 		scene->west_texture_path = copy;
-	else if (!ft_strncmp(line, "EA ", 3) && !scene->north_texture_path)
+	else if (!ft_strncmp(line, "EA ", 3) && !scene->east_texture_path)
 		scene->east_texture_path = copy;
 	else
 		return (-1);
