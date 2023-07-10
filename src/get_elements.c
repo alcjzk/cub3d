@@ -6,11 +6,26 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:14:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 20:37:04 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/10 13:14:47 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+
+int	set_texture(t_scene *scene, char *line, char *copy)
+{
+	if (!ft_strncmp(line, "NO ", 3) && !scene->north_texture_path)
+		scene->north_texture_path = copy;
+	else if (!ft_strncmp(line, "SO ", 3) && !scene->north_texture_path)
+		scene->south_texture_path = copy;
+	else if (!ft_strncmp(line, "WE ", 3) && !scene->north_texture_path)
+		scene->west_texture_path = copy;
+	else if (!ft_strncmp(line, "EA ", 3) && !scene->north_texture_path)
+		scene->east_texture_path = copy;
+	else
+		return (-1);
+	return (0);
+}
 
 int	get_texture(t_scene *scene, char *line)
 {
@@ -26,16 +41,11 @@ int	get_texture(t_scene *scene, char *line)
 	copy = ft_strdup(&line[i]);
 	if (!copy)
 		return (-1);
-	if (!ft_strncmp(line, "NO ", 3))
-		scene->north_texture_path = copy;
-	else if (!ft_strncmp(line, "SO ", 3))
-		scene->south_texture_path = copy;
-	else if (!ft_strncmp(line, "WE ", 3))
-		scene->west_texture_path = copy;
-	else if (!ft_strncmp(line, "EA ", 3))
-		scene->east_texture_path = copy;
-	else
+	if (set_texture(scene, line, copy))
+	{
+		free(copy);
 		return (-1);
+	}
 	return (0);
 }
 
@@ -61,14 +71,10 @@ BOOL	get_elements(t_scene *scene, int fd)
 	int		i;
 	int		count;
 
-	line = NULL;
-	i = -1;
+	line = get_next_line(fd);
 	count = 0;
-	while ((line && count < 6) || i < 0)
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
 		i = 0;
 		while (ft_isspace(line[i]))
 			i++;
@@ -76,6 +82,9 @@ BOOL	get_elements(t_scene *scene, int fd)
 		free(line);
 		if (count < 0)
 			return (FALSE);
+		if (count == 6)
+			break ;
+		line = get_next_line(fd);
 	}
 	if (!scene->north_texture_path)
 		return (FALSE);
