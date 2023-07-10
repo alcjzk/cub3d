@@ -6,29 +6,28 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:04:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 21:04:52 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/10 13:39:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include <stdio.h>
 
 char	*skip_empty(int fd)
 {
 	char	*line;
 	int		i;
 
-	line = NULL;
-	i = -1;
-	while (line || i < 0)
+	line = get_next_line(fd);
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			return (NULL);
 		i = 0;
 		while (ft_isspace(line[i]))
 			i++;
 		if (line[i])
 			break ;
+		free(line);
+		line = get_next_line(fd);
 	}
 	return (line);
 }
@@ -68,6 +67,7 @@ BOOL	validate_map(t_scene *scene, int fd)
 
 	if (!scene->is_valid)
 		return (FALSE);
+	printf("test\n");
 	line = skip_empty(fd);
 	scene->map = get_map(fd, line);
 	if (!scene->map)
