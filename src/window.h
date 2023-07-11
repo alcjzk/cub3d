@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:56:18 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/04 15:59:59 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:07:28 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define WINDOW_HEIGHT	600
 # define WINDOW_TITLE	"Cub3D"
 
-typedef struct s_windows
+typedef struct s_window
 {
 	void	*mlx;
 	void	*window;
