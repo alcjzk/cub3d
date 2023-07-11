@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 16:44:27 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:24:06 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ int	main(int argc, char **argv)
 	mlx = mlx_init();
 	if (!mlx)
 		return (EXIT_FAILURE);
-	if (!state_create(&state, mlx))
+	if (!state_create(&state, mlx, &scene))
 	{
 		state_destroy(&state);
 		return (EXIT_FAILURE);
 	}
 	mlx_hook(state.window.window, EVENT_DESTROY, 0, on_destroy, &state);
 	mlx_hook(state.window.window, EVENT_KEYUP, 0, on_keyup, &state);
+	mlx_loop_hook(state.mlx, state_update, &state);
 	mlx_loop(state.mlx);
 	return (EXIT_SUCCESS);
 }
