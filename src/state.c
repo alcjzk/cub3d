@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/11 18:05:14 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:16:22 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ BOOL	state_create(t_state *self, void *mlx, t_scene *scene)
 	*self = (t_state){0};
 	if (!window_create(&self->window, mlx))
 		return (FALSE);
-	if (!view_create(self, &self->window))
+	if (!view_create(&self->view, &self->window))
 		return (FALSE);
 	self->mlx = mlx;
 	self->scene = scene;
