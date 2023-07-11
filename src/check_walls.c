@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 20:57:40 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/11 19:37:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ BOOL	check_connected(t_scene *scene, char **map)
 
 	if (!scene->is_valid)
 		return (FALSE);
-	flood_fill(map, scene->player_y, scene->player_x);
+	flood_fill(map, scene->player.position.y, scene->player.position.x);
 	y = 0;
 	while (map[y])
 	{

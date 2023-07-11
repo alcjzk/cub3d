@@ -6,12 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:04:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 18:48:06 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:37:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
-#include <stdio.h>
 
 char	*skip_empty(int fd)
 {
@@ -50,8 +49,8 @@ BOOL	check_symbols(t_scene *scene, char **map)
 				if (scene->start)
 					return (FALSE);
 				scene->start = map[y][x];
-				scene->player_x = x;
-				scene->player_y = y;
+				scene->player.position.x = x;
+				scene->player.position.y = y;
 				map[y][x] = '0';
 			}
 			x++;
