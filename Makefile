@@ -28,6 +28,7 @@ hook.c				\
 image.c				\
 view.c				\
 view_draw.c			\
+vec2f.c				\
 vector.c			\
 vector_extend.c		\
 vector_position.c	\
