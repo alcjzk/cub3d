@@ -1,19 +1,19 @@
 # Targets
-NAME		= cub3d
+NAME		= cub3D
 LIBFT 		= libft/libft.a
 
 # Directories
 OBJ_DIR				= obj/
 SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
-INC_DIR				= libft/inc/
+INC_DIR				= $(SRC_DIR) libft/inc/
 LIB_DIR				= libft
 
 # Flags setup
 CC		= cc
-OPT		= 3
+OPT		= 0
 LIB		= ft mlx
 WARN	= all extra error
-EXTRA	= -MP -MMD
+EXTRA	= -MP -MMD -g
 
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
@@ -27,6 +27,17 @@ state.c				\
 hook.c				\
 image.c				\
 view.c				\
+vector.c			\
+vector_extend.c		\
+vector_position.c	\
+vector_remove.c		\
+vector_reserve.c	\
+validate.c			\
+get_color.c			\
+get_elements.c		\
+get_map.c			\
+check_walls.c		\
+validate_map.c		\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)

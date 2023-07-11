@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 12:13:12 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/04 12:19:47 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/04 12:57:09 by emajuri           #+#    #+#             */
+/*   Updated: 2023/07/11 16:44:30 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_H
 # define MAIN_H
-
-
 
 #endif
