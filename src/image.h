@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 07:14:56 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/05 14:05:17 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:52:29 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_image
 	char				*addr;
 	int					width;
 	int					height;
+	BOOL				is_valid;
 }	t_image;
 
 BOOL		image_create(t_image *image, void *mlx, int width, int height);
