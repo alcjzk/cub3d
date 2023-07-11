@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   hook.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 13:53:37 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 17:18:31 by emajuri          ###   ########.fr       */
+/*   Created: 2023/07/04 16:17:32 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/07/04 17:53:39 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef HOOK_H
+# define HOOK_H
 
-typedef struct s_color_rgba
-{
-	unsigned char	b;
-	unsigned char	g;
-	unsigned char	r;
-	unsigned char	a;
-}	t_color_rgba;
+# include "state.h"
 
-typedef union u_color
-{
-	unsigned int	u_value;
-	int				value;
-	t_color_rgba	channels;
-}	t_color;
+int	on_destroy(t_state *state);
+int	on_keyup(int keycode, t_state *state);
 
 #endif

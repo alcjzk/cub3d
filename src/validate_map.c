@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:04:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/10 13:39:43 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/11 18:48:06 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ BOOL	validate_map(t_scene *scene, int fd)
 
 	if (!scene->is_valid)
 		return (FALSE);
-	printf("test\n");
 	line = skip_empty(fd);
 	scene->map = get_map(fd, line);
 	if (!scene->map)

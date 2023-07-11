@@ -18,10 +18,16 @@ EXTRA	= -MP -MMD -g
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 # Linker flags
-override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%)
+override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL
 
 # Sources
 SRCS =				\
+window.c			\
+state.c				\
+hook.c				\
+image.c				\
+view.c				\
+view_draw.c			\
 vector.c			\
 vector_extend.c		\
 vector_position.c	\
