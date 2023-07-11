@@ -27,6 +27,7 @@ state.c				\
 hook.c				\
 image.c				\
 view.c				\
+view_draw.c			\
 vector.c			\
 vector_extend.c		\
 vector_position.c	\
