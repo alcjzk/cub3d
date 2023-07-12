@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/11 21:29:44 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:48:24 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef	struct s_player
 {
 	t_vec2f	position;
 	t_vec2f	direction;
+	BOOL	is_valid;
 }	t_player;
 
 #endif

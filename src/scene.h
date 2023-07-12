@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 19:38:03 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:12:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_scene
 	t_color		ceiling_color;
 	char		**map;
 	t_player	player;
-	char		start; // TODO: Redundant value (use player struct)
 	BOOL		is_valid;
 }	t_scene;
 
