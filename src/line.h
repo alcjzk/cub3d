@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 14:00:52 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/13 14:03:45 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/13 15:29:04 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 typedef struct s_line
 {
-	int		line_height;
+	int		height;
 	int		start;
 	int		end;
 	t_color	color;

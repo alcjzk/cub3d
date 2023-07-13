@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/13 14:10:44 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/13 15:50:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,24 +99,35 @@ void	dda(t_scene *scene, t_ray *ray)
 	}
 }
 
-draw_color_line(t_ray *ray)
+void	calc_line(t_ray *ray, t_line *line)
 {
-	t_line	line;
-
-	line = (t_line){.line_height = (WINDOW_HEIGHT / ray->perp_wall_dist)};
-	line.start = -line.line_height / 2 + WINDOW_HEIGHT / 2;
-	if (line.start < 0)
-		line.start = 0;
-	line.end = line.line_height / 2 + WINDOW_HEIGHT / 2;
-	if (line.end >= WINDOW_HEIGHT)
-		line.end = WINDOW_HEIGHT - 1;
+	line->height = (WINDOW_HEIGHT / ray->perp_wall_dist);
+	line->start = -line->height / 2 + WINDOW_HEIGHT / 2;
+	if (line->start < 0)
+		line->start = 0;
+	line->end = line->height / 2 + WINDOW_HEIGHT / 2;
+	if (line->end >= WINDOW_HEIGHT)
+		line->end = WINDOW_HEIGHT - 1;
+	
 }
 
-draw_line(t_view *self, t_scene *scene)
+void	draw_color_line(t_view *self, t_line *line, int x)
+{
+	int	y;
+
+	y = line->start;
+	while (y <= line->end)
+		image_put_pixel(self->back, x, y++, line->color);
+}
+
+#include <stdio.h>
+
+void	draw_line(t_view *self, t_scene *scene, int x)
 {
 	t_ray	ray;
+	t_line	line;
 
-	ray = (t_ray){0};
+	ray = (t_ray){};
 	calc_deltadistance(&scene->player, &ray);
 	calc_steps(&scene->player, &ray);
 	dda(scene, &ray);
@@ -124,7 +135,19 @@ draw_line(t_view *self, t_scene *scene)
 		ray.perp_wall_dist = (ray.side_dist.x - ray.delta_dist.x);
 	else
 		ray.perp_wall_dist = (ray.side_dist.y - ray.delta_dist.y);
-	draw_color_line(&ray);
+	line = (t_line){};
+	// printf("side: %i\n", ray.side);
+	// printf("xside: %f, xdelta: %f\n", ray.side_dist.x, ray.delta_dist.x);
+	// printf("yside: %f, ydelta: %f\n", ray.side_dist.y, ray.delta_dist.y);
+	// printf("perpwall: %f\n", ray.perp_wall_dist);
+	calc_line(&ray, &line);
+	// printf("height: %d, start: %d, end: %d\n", line.height, line.start, line.end);
+	exit(0);
+	if (ray.side == 1)
+		line.color = (t_color)0x00FF0000;
+	else
+		line.color = (t_color)0x0000FF00;
+	draw_color_line(self, &line, x);
 }
 
 void	draw_frame(t_view *self, t_scene *scene)
@@ -140,7 +163,7 @@ void	draw_frame(t_view *self, t_scene *scene)
 		player->camera.x = 2 * x / (float)WINDOW_WIDTH - 1;
 		player->raydir = vec2f_add(player->direction, 
 							vec2f_mul(player->plane, player->camera));
-		draw_line(self, scene);
+		draw_line(self, scene, x);
 		x++;
 	}
 }
@@ -149,6 +172,7 @@ void	view_draw(t_view *self, t_scene *scene)
 {
 	draw_background(self->back, scene);
 	// Draw world
+	draw_frame(self, scene);
 	view_swap_buffers(self);
 	mlx_put_image_to_window(
 		self->window->mlx,
