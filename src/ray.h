@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/13 13:22:37 by emajuri          ###   ########.fr       */
+/*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
+/*   Updated: 2023/07/13 14:00:30 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef RAY_H
+# define RAY_H
 
 # include "vec2f.h"
 
-typedef struct s_player
+typedef enum e_side
 {
-	t_vec2f	position;
-	t_vec2f	direction;
-	t_vec2f	camera;
-	t_vec2f	raydir;
-	t_vec2f	plane;
-	BOOL	is_valid;
-}	t_player;
+	horizontal,
+	vertical
+} t_side;
+
+typedef struct s_ray
+{
+	t_vec2f		delta_dist;
+	t_vec2f		side_dist;
+	t_vec2f		map_pos;
+	t_vec2f		step;
+	float		perp_wall_dist;
+	t_side		hit;
+	int			side;
+}	t_ray;
 
 #endif
