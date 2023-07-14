@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:04:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/12 13:08:46 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/14 16:07:14 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,25 @@ void	init_player(t_scene *scene, char dir, int y, int x)
 	scene->player.position.x = x;
 	scene->player.position.y = y;
 	if (dir == 'N')
-		scene->player.direction.y = 1;
-	else if (dir == 'S')
+	{
+		scene->player.plane.x = 0.66f;
 		scene->player.direction.y = -1;
+	}
+	else if (dir == 'S')
+	{
+		scene->player.plane.x = 0.66f;
+		scene->player.direction.y = 1;
+	}
 	else if (dir == 'W')
+	{
+		scene->player.plane.y = 0.66f;
 		scene->player.direction.x = -1;
+	}
 	else if (dir == 'E')
+	{
+		scene->player.plane.y = 0.66f;
 		scene->player.direction.x = 1;
+	}
 }
 
 BOOL	check_symbols(t_scene *scene, char **map)
