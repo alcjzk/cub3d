@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/14 16:05:04 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/17 16:40:27 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,15 @@ void	calc_deltadistance(t_player *player, t_ray *ray)
 	if (player->raydir.x == 0)
 		ray->delta_dist.x = 1e30;
 	else
-		ray->delta_dist.x = ft_abs(1 / player->raydir.x);
+		ray->delta_dist.x = 1 / player->raydir.x;
 	if (player->raydir.y == 0)
 		ray->delta_dist.y = 1e30;
 	else
-		ray->delta_dist.y = ft_abs(1 / player->raydir.y);
+		ray->delta_dist.y = 1 / player->raydir.y;
+	if (ray->delta_dist.x < 0)
+		ray->delta_dist.x *= -1.0f;
+	if (ray->delta_dist.y < 0)
+		ray->delta_dist.y *= -1.0f;
 }
 
 void	calc_steps(t_player *player, t_ray *ray)
@@ -143,8 +147,8 @@ void	draw_line(t_view *self, t_scene *scene, int x)
 		ray.perp_wall_dist = (ray.side_dist.y - ray.delta_dist.y);
 	line = (t_line){};
 	printf("side: %i\n", ray.side);
-	// printf("xside: %f, xdelta: %f\n", ray.side_dist.x, ray.delta_dist.x);
-	// printf("yside: %f, ydelta: %f\n", ray.side_dist.y, ray.delta_dist.y);
+	printf("xside: %f, xdelta: %f\n", ray.side_dist.x, ray.delta_dist.x);
+	printf("yside: %f, ydelta: %f\n", ray.side_dist.y, ray.delta_dist.y);
 	printf("perpwall: %f\n", ray.perp_wall_dist);
 	calc_line(&ray, &line);
 	printf("height: %d, start: %d, end: %d\n", line.height, line.start, line.end);
@@ -163,7 +167,6 @@ void	draw_frame(t_view *self, t_scene *scene)
 
 	x = 0;
 	player = &scene->player;
-	player->plane.y = 0.66f;
 	while (x < WINDOW_WIDTH)
 	{
 		player->camera.x = 2 * x / (float)WINDOW_WIDTH - 1;
