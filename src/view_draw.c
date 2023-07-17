@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/17 16:40:27 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/17 17:05:16 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,14 @@ void	calc_line(t_ray *ray, t_line *line)
 		line->end = WINDOW_HEIGHT - 1;
 }
 
-void	draw_color_line(t_view *self, t_line *line, int x)
+void	draw_color_line(t_view *self, t_line *line, int x, t_ray *ray)
 {
 	int	y;
 
+	if (ray->side == 1)
+		line->color = (t_color)0x00FF0000;
+	else
+		line->color = (t_color)0x000000FF;
 	y = line->start;
 	while (y <= line->end)
 		image_put_pixel(self->back, x, y++, line->color);
@@ -153,11 +157,7 @@ void	draw_line(t_view *self, t_scene *scene, int x)
 	calc_line(&ray, &line);
 	printf("height: %d, start: %d, end: %d\n", line.height, line.start, line.end);
 	// exit(0);
-	if (ray.side == 1)
-		line.color = (t_color)0x00FF0000;
-	else
-		line.color = (t_color)0x0000FF00;
-	draw_color_line(self, &line, x);
+	draw_color_line(self, &line, x, &ray);
 }
 
 void	draw_frame(t_view *self, t_scene *scene)
