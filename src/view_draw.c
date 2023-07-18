@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/17 17:05:16 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/18 16:24:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,19 @@ void	dda(t_scene *scene, t_ray *ray)
 			ray->side_dist.x += ray->delta_dist.x;
 			ray->map_pos.x += ray->step.x;
 			ray->side = horizontal;
-			printf("horizontal%f\n", ray->step.x);
+			// printf("horizontal%f\n", ray->step.x);
 		}
 		else
 		{
 			ray->side_dist.y += ray->delta_dist.y;
 			ray->map_pos.y += ray->step.y;
 			ray->side = vertical;
-			printf("vertical%f\n", ray->step.y);
+			// printf("vertical%f\n", ray->step.y);
 		}
 		if (scene->map[(int)ray->map_pos.y][(int)ray->map_pos.x] > '0')
 			ray->hit = 1;
 	}
-	printf("hit: y:%d, x:%d\n", (int)ray->map_pos.y, (int)ray->map_pos.x);
+	// printf("hit: y:%d, x:%d\n", (int)ray->map_pos.y, (int)ray->map_pos.x);
 }
 
 void	calc_line(t_ray *ray, t_line *line)
@@ -140,8 +140,9 @@ void	draw_line(t_view *self, t_scene *scene, int x)
 	t_line	line;
 
 	ray = (t_ray){};
-	ray.map_pos.x = scene->player.position.x;
-	ray.map_pos.y = scene->player.position.y;
+	ray.map_pos.x = (int)scene->player.position.x;
+	ray.map_pos.y = (int)scene->player.position.y;
+	printf("%f, %f \n", ray.map_pos.x, ray.map_pos.y);
 	calc_deltadistance(&scene->player, &ray);
 	calc_steps(&scene->player, &ray);
 	dda(scene, &ray);
@@ -150,12 +151,12 @@ void	draw_line(t_view *self, t_scene *scene, int x)
 	else
 		ray.perp_wall_dist = (ray.side_dist.y - ray.delta_dist.y);
 	line = (t_line){};
-	printf("side: %i\n", ray.side);
-	printf("xside: %f, xdelta: %f\n", ray.side_dist.x, ray.delta_dist.x);
-	printf("yside: %f, ydelta: %f\n", ray.side_dist.y, ray.delta_dist.y);
-	printf("perpwall: %f\n", ray.perp_wall_dist);
+	// printf("side: %i\n", ray.side);
+	// printf("xside: %f, xdelta: %f\n", ray.side_dist.x, ray.delta_dist.x);
+	// printf("yside: %f, ydelta: %f\n", ray.side_dist.y, ray.delta_dist.y);
+	// printf("perpwall: %f\n", ray.perp_wall_dist);
 	calc_line(&ray, &line);
-	printf("height: %d, start: %d, end: %d\n", line.height, line.start, line.end);
+	// printf("height: %d, start: %d, end: %d\n", line.height, line.start, line.end);
 	// exit(0);
 	draw_color_line(self, &line, x, &ray);
 }

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:04:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/17 17:28:40 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:57:32 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*skip_empty(int fd)
 void	init_player(t_scene *scene, char dir, int y, int x)
 {
 	scene->player.is_valid = TRUE;
-	scene->player.position.x = x;
-	scene->player.position.y = y;
+	scene->player.position.x = x + 0.5f;
+	scene->player.position.y = y + 0.5f;
 	if (dir == 'N')
 	{
 		scene->player.plane.x = 0.66f;
