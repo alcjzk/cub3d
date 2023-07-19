@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:54:48 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 10:31:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:12:04 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_key
 	KEY_RIGHT = 124,
 	KEY_UP = 126,
 	KEY_DOWN = 125,
-	KEY_ESC = 54
+	KEY_ESC = 53
 }	t_key;
 
 typedef enum e_key_state
