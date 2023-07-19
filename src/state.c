@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/11 18:16:22 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 10:24:50 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ BOOL	state_create(t_state *self, void *mlx, t_scene *scene)
 		return (FALSE);
 	self->mlx = mlx;
 	self->scene = scene;
+	self->keymap = (t_keymap){{0}};
 	self->is_valid = TRUE;
 	return (TRUE);
 }
