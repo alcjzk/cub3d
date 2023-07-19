@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 14:17:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 15:22:01 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ typedef struct s_player
 }	t_player;
 
 void	player_init(t_player *self, char dir, int y, int x);
+void	player_raydir_calc(t_player *self, int x);
 
 #endif

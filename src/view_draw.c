@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 15:05:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 15:23:07 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,7 @@ static void	draw_frame(t_view *self, t_scene *scene)
 	player = &scene->player;
 	while (x < WINDOW_WIDTH)
 	{
-		player->camera.x = 2 * x / (float)WINDOW_WIDTH - 1;
-		player->raydir.x = player->direction.x;
-		player->raydir.x += player->plane.x * player->camera.x;
-		player->raydir.y = player->direction.y;
-		player->raydir.y += player->plane.y * player->camera.x;
+		player_raydir_calc(player, x);
 		ray = (t_ray){};
 		ray_init(&ray, scene);
 		ray_cast(&ray, scene);
