@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:14:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/04 17:54:12 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/19 15:35:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	on_destroy(t_state *state)
 {
 	state_destroy(state);
-	exit(EXIT_SUCCESS);	
+	exit(EXIT_SUCCESS);
 }
 
 int	on_keyup(int keycode, t_state *state)

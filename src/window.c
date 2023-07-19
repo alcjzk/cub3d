@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:51:33 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/11 16:51:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/19 15:35:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ t_window	*window_create(
 {
 	*self = (t_window){0};
 	self->window = mlx_new_window(
-		mlx,
-		WINDOW_WIDTH,
-		WINDOW_HEIGHT,
-		WINDOW_TITLE);
+			mlx,
+			WINDOW_WIDTH,
+			WINDOW_HEIGHT,
+			WINDOW_TITLE);
 	if (!self->window)
 		return (NULL);
 	self->mlx = mlx;
