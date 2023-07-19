@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/18 16:55:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:24:57 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ray.h"
 #include "line.h"
 
-void	draw_background(t_image *image, t_scene *scene)
+static void	draw_background(t_image *image, t_scene *scene)
 {
 	int	y;
 	int	x;
@@ -38,7 +38,7 @@ void	draw_background(t_image *image, t_scene *scene)
 	}
 }
 
-void	draw_frame(t_view *self, t_scene *scene)
+static void	draw_frame(t_view *self, t_scene *scene)
 {
 	int			x;
 	t_player	*player;
