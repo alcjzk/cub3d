@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/18 16:58:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:40:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct s_ray
 	int			side;
 }	t_ray;
 
-void	calc_deltadistance(t_player *player, t_ray *ray);
-void	calc_steps(t_player *player, t_ray *ray);
-void	dda(t_scene *scene, t_ray *ray);
+void	ray_init(t_ray *self, t_scene *scene);
+void	ray_cast(t_ray *self, t_scene *scene);
 
 #endif

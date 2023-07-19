@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:39:38 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/18 16:50:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:34:34 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,14 @@ void	draw_color_line(t_view *self, t_line *line, int x, t_ray *ray)
 		image_put_pixel(self->back, x, y++, line->color);
 }
 
-void	draw_line(t_view *self, t_scene *scene, int x)
+void	line_draw(t_view *self, t_scene *scene, int x)
 {
 	t_ray	ray;
 	t_line	line;
 
 	ray = (t_ray){};
-	ray.map_pos.x = (int)scene->player.position.x;
-	ray.map_pos.y = (int)scene->player.position.y;
-	calc_deltadistance(&scene->player, &ray);
-	calc_steps(&scene->player, &ray);
-	dda(scene, &ray);
+	ray_init(&ray, scene);
+	ray_cast(&ray, scene);
 	line = (t_line){};
 	calc_line(&ray, &line);
 	draw_color_line(self, &line, x, &ray);

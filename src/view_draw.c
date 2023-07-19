@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 14:24:57 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:28:46 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	draw_frame(t_view *self, t_scene *scene)
 		player->raydir.x += player->plane.x * player->camera.x;
 		player->raydir.y = player->direction.y;
 		player->raydir.y += player->plane.y * player->camera.x;
-		draw_line(self, scene, x);
+		line_draw(self, scene, x);
 		x++;
 	}
 }

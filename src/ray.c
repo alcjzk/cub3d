@@ -1,82 +1,95 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   self.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:49:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/18 16:49:46 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:35:04 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-void	calc_deltadistance(t_player *player, t_ray *ray)
+static void	calc_deltadistance(t_ray *self, t_player *player)
 {
 	if (player->raydir.x == 0)
-		ray->delta_dist.x = 1e30;
+		self->delta_dist.x = 1e30;
 	else
-		ray->delta_dist.x = 1 / player->raydir.x;
+		self->delta_dist.x = 1 / player->raydir.x;
 	if (player->raydir.y == 0)
-		ray->delta_dist.y = 1e30;
+		self->delta_dist.y = 1e30;
 	else
-		ray->delta_dist.y = 1 / player->raydir.y;
-	if (ray->delta_dist.x < 0)
-		ray->delta_dist.x *= -1.0f;
-	if (ray->delta_dist.y < 0)
-		ray->delta_dist.y *= -1.0f;
+		self->delta_dist.y = 1 / player->raydir.y;
+	if (self->delta_dist.x < 0)
+		self->delta_dist.x *= -1.0f;
+	if (self->delta_dist.y < 0)
+		self->delta_dist.y *= -1.0f;
 }
 
-void	calc_steps(t_player *player, t_ray *ray)
+static void	calc_steps(t_ray *self, t_player *player)
 {
 	if (player->raydir.x >= 0)
 	{
-		ray->step.x = 1;
-		ray->side_dist.x = ray->map_pos.x + 1.0f - player->position.x;
-		ray->side_dist.x *= ray->delta_dist.x;
+		self->step.x = 1;
+		self->side_dist.x = self->map_pos.x + 1.0f - player->position.x;
+		self->side_dist.x *= self->delta_dist.x;
 	}
 	else
 	{
-		ray->step.x = -1;
-		ray->side_dist.x = player->position.x - ray->map_pos.x;
-		ray->side_dist.x *= ray->delta_dist.x;
+		self->step.x = -1;
+		self->side_dist.x = player->position.x - self->map_pos.x;
+		self->side_dist.x *= self->delta_dist.x;
 	}
 	if (player->raydir.y >= 0)
 	{
-		ray->step.y = 1;
-		ray->side_dist.y = ray->map_pos.y + 1.0f - player->position.y;
-		ray->side_dist.y *= ray->delta_dist.y;
+		self->step.y = 1;
+		self->side_dist.y = self->map_pos.y + 1.0f - player->position.y;
+		self->side_dist.y *= self->delta_dist.y;
 	}
 	else
 	{
-		ray->step.y = -1;
-		ray->side_dist.y = player->position.y - ray->map_pos.y;
-		ray->side_dist.y *= ray->delta_dist.y;
+		self->step.y = -1;
+		self->side_dist.y = player->position.y - self->map_pos.y;
+		self->side_dist.y *= self->delta_dist.y;
 	}
 }
 
-void	dda(t_scene *scene, t_ray *ray)
+static void	calc_perp_wall_dist(t_ray *self)
 {
-	while (!ray->hit)
+	if (self->side == horizontal)
+		self->perp_wall_dist = (self->side_dist.x - self->delta_dist.x);
+	else
+		self->perp_wall_dist = (self->side_dist.y - self->delta_dist.y);
+}
+
+void	ray_cast(t_ray *self, t_scene *scene)
+{
+	while (!self->hit)
 	{
-		if (ray->side_dist.x < ray->side_dist.y)
+		if (self->side_dist.x < self->side_dist.y)
 		{
-			ray->side_dist.x += ray->delta_dist.x;
-			ray->map_pos.x += ray->step.x;
-			ray->side = horizontal;
+			self->side_dist.x += self->delta_dist.x;
+			self->map_pos.x += self->step.x;
+			self->side = horizontal;
 		}
 		else
 		{
-			ray->side_dist.y += ray->delta_dist.y;
-			ray->map_pos.y += ray->step.y;
-			ray->side = vertical;
+			self->side_dist.y += self->delta_dist.y;
+			self->map_pos.y += self->step.y;
+			self->side = vertical;
 		}
-		if (scene->map[(int)ray->map_pos.y][(int)ray->map_pos.x] > '0')
-			ray->hit = 1;
+		if (scene->map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
+			self->hit = 1;
 	}
-	if (ray->side == horizontal)
-		ray->perp_wall_dist = (ray->side_dist.x - ray->delta_dist.x);
-	else
-		ray->perp_wall_dist = (ray->side_dist.y - ray->delta_dist.y);
+	calc_perp_wall_dist(self);
+}
+
+void	ray_init(t_ray *self, t_scene *scene)
+{
+	self->map_pos.x = (int)scene->player.position.x;
+	self->map_pos.y = (int)scene->player.position.y;
+	calc_deltadistance(self, &scene->player);
+	calc_steps(self, &scene->player);
 }
