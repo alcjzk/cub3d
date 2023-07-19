@@ -6,11 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:14:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/04 17:54:12 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/19 10:02:05 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "keymap.h"
 #include "hook.h"
 
 int	on_destroy(t_state *state)
@@ -21,7 +22,7 @@ int	on_destroy(t_state *state)
 
 int	on_keyup(int keycode, t_state *state)
 {
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 		return (on_destroy(state));
 	return (0);
 }
