@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/19 14:40:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/21 14:56:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef enum e_side
 {
-	horizontal,
-	vertical
+	EW,
+	NS
 }	t_side;
 
 typedef struct s_ray

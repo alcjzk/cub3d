@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:49:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/19 15:34:57 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/21 14:56:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	calc_steps(t_ray *self, t_player *player)
 
 static void	calc_perp_wall_dist(t_ray *self)
 {
-	if (self->side == horizontal)
+	if (self->side == EW)
 		self->perp_wall_dist = (self->side_dist.x - self->delta_dist.x);
 	else
 		self->perp_wall_dist = (self->side_dist.y - self->delta_dist.y);
@@ -72,13 +72,13 @@ void	ray_cast(t_ray *self, t_scene *scene)
 		{
 			self->side_dist.x += self->delta_dist.x;
 			self->map_pos.x += self->step.x;
-			self->side = horizontal;
+			self->side = EW;
 		}
 		else
 		{
 			self->side_dist.y += self->delta_dist.y;
 			self->map_pos.y += self->step.y;
-			self->side = vertical;
+			self->side = NS;
 		}
 		if (scene->map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
 			self->hit = 1;
