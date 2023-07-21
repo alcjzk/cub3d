@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 15:23:07 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/21 15:00:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	draw_frame(t_view *self, t_scene *scene)
 		ray_cast(&ray, scene);
 		line = (t_line){};
 		line_init(&line, &ray);
-		line_draw_color(self, &line, x, &ray);
+		line_draw_color(&line, self, x, &ray);
 		x++;
 	}
 }
