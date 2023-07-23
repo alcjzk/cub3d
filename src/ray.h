@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/21 14:59:11 by emajuri          ###   ########.fr       */
+/*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
+/*   Updated: 2023/07/21 14:56:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef RAY_H
+# define RAY_H
 
 # include "vec2f.h"
-# include "bool.h"
+# include "view.h"
 
-typedef struct s_player
+typedef enum e_side
 {
-	t_vec2f	position;
-	t_vec2f	direction;
-	t_vec2f	raydir;
-	t_vec2f	plane;
-	BOOL	is_valid;
-}	t_player;
+	EW,
+	NS
+}	t_side;
 
-void	player_init(t_player *self, char dir, int y, int x);
-void	player_raydir_calc(t_player *self, int x);
+typedef struct s_ray
+{
+	t_vec2f		delta_dist;
+	t_vec2f		side_dist;
+	t_vec2f		map_pos;
+	t_vec2f		step;
+	float		perp_wall_dist;
+	t_side		hit;
+	int			side;
+}	t_ray;
+
+void	ray_init(t_ray *self, t_scene *scene);
+void	ray_cast(t_ray *self, t_scene *scene);
 
 #endif

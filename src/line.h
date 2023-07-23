@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   line.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/21 14:59:11 by emajuri          ###   ########.fr       */
+/*   Created: 2023/07/13 14:00:52 by emajuri           #+#    #+#             */
+/*   Updated: 2023/07/21 15:00:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef LINE_H
+# define LINE_H
 
-# include "vec2f.h"
-# include "bool.h"
+# include "color.h"
+# include "view.h"
+# include "ray.h"
 
-typedef struct s_player
+typedef struct s_line
 {
-	t_vec2f	position;
-	t_vec2f	direction;
-	t_vec2f	raydir;
-	t_vec2f	plane;
-	BOOL	is_valid;
-}	t_player;
+	int		height;
+	int		start;
+	int		end;
+	t_color	color;
+}	t_line;
 
-void	player_init(t_player *self, char dir, int y, int x);
-void	player_raydir_calc(t_player *self, int x);
+void	line_init(t_line *self, t_ray *ray);
+void	line_draw_color(t_line *self, t_view *view, int x, t_ray *ray);
 
 #endif
