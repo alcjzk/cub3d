@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   line.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 16:14:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 15:35:58 by emajuri          ###   ########.fr       */
+/*   Created: 2023/07/13 14:00:52 by emajuri           #+#    #+#             */
+/*   Updated: 2023/07/21 15:00:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "hook.h"
+#ifndef LINE_H
+# define LINE_H
 
-int	on_destroy(t_state *state)
-{
-	state_destroy(state);
-	exit(EXIT_SUCCESS);
-}
+# include "color.h"
+# include "view.h"
+# include "ray.h"
 
-int	on_keyup(int keycode, t_state *state)
+typedef struct s_line
 {
-	if (keycode == 53)
-		return (on_destroy(state));
-	return (0);
-}
+	int		height;
+	int		start;
+	int		end;
+	t_color	color;
+}	t_line;
+
+void	line_init(t_line *self, t_ray *ray);
+void	line_draw_color(t_line *self, t_view *view, int x, t_ray *ray);
+
+#endif

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 21:04:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 18:48:06 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:21:19 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
-#include <stdio.h>
 
 char	*skip_empty(int fd)
 {
@@ -47,17 +46,17 @@ BOOL	check_symbols(t_scene *scene, char **map)
 				return (FALSE);
 			if (ft_strchr("NSWE", map[y][x]))
 			{
-				if (scene->start)
+				if (scene->player.is_valid)
 					return (FALSE);
-				scene->start = map[y][x];
-				scene->player_x = x;
-				scene->player_y = y;
+				player_init(&scene->player, map[y][x], y, x);
 				map[y][x] = '0';
 			}
 			x++;
 		}
 		y++;
 	}
+	if (!scene->player.is_valid)
+		return (FALSE);
 	return (TRUE);
 }
 

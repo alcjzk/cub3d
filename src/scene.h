@@ -6,34 +6,33 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 21:05:37 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/12 13:12:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
-# include "get_next_line.h"
+# include <fcntl.h>
 # include <unistd.h>
+# include "get_next_line.h"
 # include "bool.h"
 # include "vector.h"
 # include "libft.h"
 # include "color.h"
-# include <fcntl.h>
+# include "player.h"
 
 typedef struct s_scene
 {
-	char	*north_texture_path;
-	char	*south_texture_path;
-	char	*west_texture_path;
-	char	*east_texture_path;
-	t_color	floor_color;
-	t_color	ceiling_color;
-	char	**map;
-	int		player_x;
-	int		player_y;
-	char	start;
-	BOOL	is_valid;
+	char		*north_texture_path;
+	char		*south_texture_path;
+	char		*west_texture_path;
+	char		*east_texture_path;
+	t_color		floor_color;
+	t_color		ceiling_color;
+	char		**map;
+	t_player	player;
+	BOOL		is_valid;
 }	t_scene;
 
 int		validate(t_scene *scene, char *file);

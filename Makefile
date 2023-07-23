@@ -40,6 +40,9 @@ get_elements.c		\
 get_map.c			\
 check_walls.c		\
 validate_map.c		\
+line.c				\
+ray.c				\
+player.c			\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
