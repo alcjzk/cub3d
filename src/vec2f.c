@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:07:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/23 15:30:18 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:41:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vec2f	vec2f_normalize(t_vec2f self)
 	length = vec2f_length(self);
 	if (length == 0)
 		return (self);
-	return (vec2f_div_by(self, length));
+	return (vec2f_div(self, length));
 }
 
 t_vec2f	vec2f_rotate(t_vec2f self, double angle)
