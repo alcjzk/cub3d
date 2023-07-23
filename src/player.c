@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/23 16:04:24 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:07:14 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ void	player_update_yaw(t_player *self, t_keymap *keymap)
 void	player_update(t_player *self, t_keymap *keymap)
 {
 	t_vec2f	velocity;
-	
+
 	player_update_yaw(self, keymap);
 	velocity = player_velocity(self, keymap);
-	self->direction = vec2f_rotate((t_vec2f){.x = 0.0, .y = -1.0}, self->yaw);
-	self->plane = vec2f_rotate((t_vec2f){.x = 0.66, .y = 0.0}, self->yaw);
+	self->direction = vec2f_rotate((t_vec2f){0.0, -1.0}, self->yaw);
+	self->plane = vec2f_rotate((t_vec2f){0.66, 0.0}, self->yaw);
 	self->position = vec2f_add(self->position, velocity);
 }
