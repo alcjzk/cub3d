@@ -6,12 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 10:24:50 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:48:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "window.h"
+#include "player.h"
 #include "view.h"
 #include "state.h"
 
@@ -37,6 +38,7 @@ void	state_destroy(t_state *self)
 
 int	state_update(t_state *self)
 {
+	player_update(&self->scene->player, &self->keymap);
 	view_draw(&self->view, self->scene);
 	return (0);
 }
