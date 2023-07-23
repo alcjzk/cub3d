@@ -5,30 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 15:07:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/23 15:15:24 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/11 19:05:36 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/07/23 15:05:57 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "vec2f.h"
 
-float	vec2f_dot(t_vec2f lhs, t_vec2f rhs)
+t_vec2f	vec2f_add(t_vec2f lhs, t_vec2f rhs)
 {
-	return (lhs.x * rhs.x + lhs.y * rhs.y);
+	lhs.x += rhs.x;
+	lhs.y += rhs.y;
+	return (lhs);
 }
 
-double	vec2f_length(t_vec2f self)
+t_vec2f	vec2f_sub(t_vec2f lhs, t_vec2f rhs)
 {
-	return (sqrt(vec2f_dot(self, self)));
+	lhs.x -= rhs.x;
+	lhs.y -= rhs.y;
+	return (lhs);
 }
 
-t_vec2f	vec2f_normalize(t_vec2f self)
+t_vec2f	vec2f_mul(t_vec2f lhs, t_vec2f rhs)
 {
-	double	length;
+	lhs.x *= rhs.x;
+	lhs.y *= rhs.y;
+	return (lhs);
+}
 
-	length = vec2f_length(self);
-	if (length == 0)
-		return (self);
-	return (vec2f_div_by(self, length));
+t_vec2f	vec2f_div(t_vec2f lhs, t_vec2f rhs)
+{
+	lhs.x /= rhs.x;
+	lhs.y /= rhs.y;
+	return (lhs);
+}
+
+t_vec2f	vec2f_div_by(t_vec2f lhs, float rhs)
+{
+	lhs.x /= rhs;
+	lhs.y /= rhs;
+	return (lhs);
 }

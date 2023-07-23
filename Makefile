@@ -29,6 +29,7 @@ image.c				\
 view.c				\
 view_draw.c			\
 vec2f.c				\
+vec2f_ops.c			\
 vector.c			\
 vector_extend.c		\
 vector_position.c	\
