@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/23 16:07:14 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:04:22 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 void	player_init(t_player *self, char dir, int y, int x)
 {
-	*self = (t_player){0};
-	self->is_valid = TRUE;
+	*self = (t_player){{0}, {0}, {0}, {0}, 0.0, TRUE};
 	self->position.x = x + 0.5f;
 	self->position.y = y + 0.5f;
 	if (dir == 'S')
