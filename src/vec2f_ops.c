@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.h                                             :+:      :+:    :+:   */
+/*   vec2f_ops.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 16:17:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/19 10:37:15 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/11 19:05:36 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/07/23 15:41:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOK_H
-# define HOOK_H
+#include "vec2f.h"
 
-# include "state.h"
+t_vec2f	vec2f_add(t_vec2f lhs, t_vec2f rhs)
+{
+	lhs.x += rhs.x;
+	lhs.y += rhs.y;
+	return (lhs);
+}
 
-int	on_destroy(t_state *state);
-int	on_keyup(t_key key, t_state *state);
-int	on_keydown(t_key key, t_state *state);
+t_vec2f	vec2f_sub(t_vec2f lhs, t_vec2f rhs)
+{
+	lhs.x -= rhs.x;
+	lhs.y -= rhs.y;
+	return (lhs);
+}
 
-#endif
+t_vec2f	vec2f_mul(t_vec2f lhs, float rhs)
+{
+	lhs.x *= rhs;
+	lhs.y *= rhs;
+	return (lhs);
+}
+
+t_vec2f	vec2f_div(t_vec2f lhs, float rhs)
+{
+	lhs.x /= rhs;
+	lhs.y /= rhs;
+	return (lhs);
+}

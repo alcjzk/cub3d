@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   keymap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 16:14:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/23 15:20:03 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/19 09:55:07 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/07/19 12:11:54 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "bool.h"
 #include "keymap.h"
-#include "hook.h"
 
-int	on_destroy(t_state *state)
+static BOOL	is_valid_key(t_key key)
 {
-	state_destroy(state);
-	exit(EXIT_SUCCESS);
+	if (key < KEY_MIN || key > KEY_MAX)
+		return (FALSE);
+	return (TRUE);
 }
 
-int	on_keyup(t_key key, t_state *state)
+t_key_state	keymap_key_state(t_keymap *self, t_key key)
 {
-	if (key == KEY_ESC)
-		return (on_destroy(state));
-	keymap_set_key_state(&state->keymap, key, KEY_STATE_UP);
-	return (0);
+	if (!is_valid_key(key))
+		return (KEY_STATE_UP);
+	return (self->states[key]);
 }
 
-int	on_keydown(t_key key, t_state *state)
+void	keymap_set_key_state(t_keymap *self, t_key key, t_key_state state)
 {
-	keymap_set_key_state(&state->keymap, key, KEY_STATE_DOWN);
-	return (0);
+	if (is_valid_key(key))
+		self->states[key] = state;
 }

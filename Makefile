@@ -29,6 +29,7 @@ image.c				\
 view.c				\
 view_draw.c			\
 vec2f.c				\
+vec2f_ops.c			\
 vector.c			\
 vector_extend.c		\
 vector_position.c	\
@@ -40,6 +41,7 @@ get_elements.c		\
 get_map.c			\
 check_walls.c		\
 validate_map.c		\
+keymap.c			\
 line.c				\
 ray.c				\
 player.c			\

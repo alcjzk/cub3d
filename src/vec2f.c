@@ -5,37 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 19:05:36 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/11 21:10:58 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/23 15:07:27 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/07/23 15:41:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "vec2f.h"
 
-t_vec2f	vec2f_add(t_vec2f lhs, t_vec2f rhs)
+float	vec2f_dot(t_vec2f lhs, t_vec2f rhs)
 {
-	lhs.x += rhs.x;
-	lhs.y += rhs.y;
-	return (lhs);
+	return (lhs.x * rhs.x + lhs.y * rhs.y);
 }
 
-t_vec2f	vec2f_sub(t_vec2f lhs, t_vec2f rhs)
+double	vec2f_length(t_vec2f self)
 {
-	lhs.x -= rhs.x;
-	lhs.y -= rhs.y;
-	return (lhs);
+	return (sqrt(vec2f_dot(self, self)));
 }
 
-t_vec2f	vec2f_mul(t_vec2f lhs, t_vec2f rhs)
+t_vec2f	vec2f_normalize(t_vec2f self)
 {
-	lhs.x *= rhs.x;
-	lhs.y *= rhs.y;
-	return (lhs);
+	double	length;
+
+	length = vec2f_length(self);
+	if (length == 0)
+		return (self);
+	return (vec2f_div(self, length));
 }
 
-t_vec2f	vec2f_div(t_vec2f lhs, t_vec2f rhs)
+t_vec2f	vec2f_rotate(t_vec2f self, double angle)
 {
-	lhs.x /= rhs.x;
-	lhs.y /= rhs.y;
-	return (lhs);
+	t_vec2f	rotated;
+
+	rotated.x = self.x * cos(angle) - self.y * sin(angle);
+	rotated.y = self.x * sin(angle) + self.y * cos(angle);
+	return (rotated);
 }
