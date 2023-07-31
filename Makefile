@@ -6,12 +6,12 @@ LIBFT 		= libft/libft.a
 OBJ_DIR				= obj/
 SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
 INC_DIR				= $(SRC_DIR) libft/inc/
-LIB_DIR				= libft
+LIB_DIR				= libft /Users/$(USER)/.brew/opt/glfw/lib/ MLX42/build/
 
 # Flags setup
 CC		= cc
 OPT		= 0
-LIB		= ft mlx
+LIB		= ft mlx glfw mlx42
 WARN	= all extra error
 EXTRA	= -MP -MMD -g
 
