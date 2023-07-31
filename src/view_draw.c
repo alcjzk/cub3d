@@ -6,11 +6,11 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/21 15:00:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/31 18:32:30 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "state.h"
 #include "view.h"
 #include "ray.h"
 #include "line.h"
@@ -65,9 +65,8 @@ void	view_draw(t_view *self, t_scene *scene)
 	draw_background(self->back, scene);
 	draw_frame(self, scene);
 	view_swap_buffers(self);
-	mlx_put_image_to_window(
-		self->window->mlx,
-		self->window->window,
+	mlx_image_to_window(
+		self->mlx,
 		self->front->img,
 		0, 0);
 }

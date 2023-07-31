@@ -6,10 +6,11 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:39:38 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/21 15:00:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/31 18:33:29 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "state.h"
 #include "line.h"
 
 void	line_init(t_line *self, t_ray *ray)

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:53:37 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 17:18:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/31 19:13:33 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 typedef struct s_color_rgba
 {
-	unsigned char	b;
-	unsigned char	g;
 	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 	unsigned char	a;
 }	t_color_rgba;
 

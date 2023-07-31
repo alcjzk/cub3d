@@ -5,13 +5,13 @@ LIBFT 		= libft/libft.a
 # Directories
 OBJ_DIR				= obj/
 SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
-INC_DIR				= $(SRC_DIR) libft/inc/
+INC_DIR				= $(SRC_DIR) libft/inc/ MLX42/include/MLX42/
 LIB_DIR				= libft /Users/$(USER)/.brew/opt/glfw/lib/ MLX42/build/
 
 # Flags setup
 CC		= cc
 OPT		= 0
-LIB		= ft mlx glfw mlx42
+LIB		= ft glfw mlx42
 WARN	= all extra error
 EXTRA	= -MP -MMD -g
 
@@ -22,7 +22,6 @@ override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework O
 
 # Sources
 SRCS =				\
-window.c			\
 state.c				\
 hook.c				\
 image.c				\
