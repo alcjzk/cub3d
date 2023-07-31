@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/31 19:09:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/07/31 19:49:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 		printf("Error\n");
 		return (EXIT_FAILURE);
 	}
+	printf("floor, r: %d, g: %d, b: %d, a: %d\n", scene.floor_color.channels.r, scene.floor_color.channels.g, scene.floor_color.channels.b, scene.floor_color.channels.a);
+	printf("ceiling, r: %d, g: %d, b: %d, a: %d\n", scene.ceiling_color.channels.r, scene.ceiling_color.channels.g, scene.ceiling_color.channels.b, scene.ceiling_color.channels.a);
 	if (!state_create(&state, &scene))
 	{
 		state_destroy(&state);
@@ -38,7 +40,11 @@ int	main(int argc, char **argv)
 	}
 	mlx_close_hook(state.mlx, on_destroy, &state);
 	mlx_key_hook(state.mlx, key_hook, &state);
-	mlx_loop_hook(state.mlx, state_update, &state);
+	if (!mlx_loop_hook(state.mlx, state_update, &state))
+	{
+		mlx_terminate(state.mlx);
+		return (EXIT_FAILURE);
+	}
 	mlx_loop(state.mlx);
 	mlx_terminate(state.mlx);
 	return (EXIT_SUCCESS);
