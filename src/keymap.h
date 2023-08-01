@@ -6,14 +6,14 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:54:48 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 18:57:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/01 19:15:27 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYMAP_H
 # define KEYMAP_H
 
-# define KEY_MAX 126
+# define KEY_MAX 348
 # define KEY_MIN 0
 
 # include "MLX42.h"
