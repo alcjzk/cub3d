@@ -18,7 +18,7 @@ EXTRA	= -MP -MMD -g
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 # Linker flags
-override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL
+override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL -framework Cocoa -framework IOKit
 
 # Sources
 SRCS =				\
