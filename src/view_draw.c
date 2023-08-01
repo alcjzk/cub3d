@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 18:32:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/01 18:51:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ static void	draw_frame(t_view *self, t_scene *scene)
 
 void	view_draw(t_view *self, t_scene *scene)
 {
-	draw_background(self->back, scene);
+	draw_background(self->frame, scene);
 	draw_frame(self, scene);
-	view_swap_buffers(self);
-	mlx_image_to_window(
+	// view_swap_buffers(self);
+	if (mlx_image_to_window(
 		self->mlx,
-		self->front->img,
-		0, 0);
+		self->frame->img,
+		0, 0) == -1)
+		mlx_terminate(self->mlx);
 }

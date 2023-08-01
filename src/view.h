@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 18:30:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/01 18:09:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 
 typedef struct s_view
 {
-	mlx_t		*mlx;
-	t_image		frames[2];
-	t_image		*front;
-	t_image		*back;
+	mlx_t	*mlx;
+	t_image	frame[1];
+	// t_image		frames[2];
+	// t_image		*front;
+	// t_image		*back;
 }	t_view;
 
 BOOL	view_create(t_view *self, mlx_t *mlx);
