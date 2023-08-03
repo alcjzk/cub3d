@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 19:34:19 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:35:29 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ BOOL	state_create(t_state *self, t_scene *scene)
 			WINDOW_WIDTH,
 			WINDOW_HEIGHT,
 			WINDOW_TITLE,
-			TRUE);
+			FALSE);
 	if (!self->mlx)
 		return (FALSE);
 	if (!view_create(&self->view, self->mlx))
