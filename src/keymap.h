@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keymap.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:54:48 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/01 19:15:27 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:28:47 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include "MLX42.h"
 
-typedef enum keys t_key;
+typedef keys_t t_key;
 
 typedef enum e_key_state
 {
