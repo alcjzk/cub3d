@@ -3,26 +3,26 @@ NAME		= cub3D
 LIBFT 		= libft/libft.a
 
 # Directories
+BREW_PATH			= $(shell brew --prefix)
 OBJ_DIR				= obj/
 SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
-INC_DIR				= $(SRC_DIR) libft/inc/
-LIB_DIR				= libft
+INC_DIR				= $(SRC_DIR) libft/inc/ MLX42/include/MLX42/
+LIB_DIR				= libft $(BREW_PATH)/opt/glfw/lib/ MLX42/build/
 
 # Flags setup
 CC		= cc
 OPT		= 0
-LIB		= ft mlx
+LIB		= ft glfw mlx42
 WARN	= all extra error
 EXTRA	= -MP -MMD -g
 
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 # Linker flags
-override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL
+override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL -framework Cocoa -framework IOKit
 
 # Sources
 SRCS =				\
-window.c			\
 state.c				\
 hook.c				\
 image.c				\

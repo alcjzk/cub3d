@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/23 16:04:18 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/03 13:59:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# define PLAYER_YAW_SPEED 0.02
-# define PLAYER_MOVE_SPEED 0.02
+# define PLAYER_YAW_SPEED 0.03
+# define PLAYER_MOVE_SPEED 0.03
 
 # include "vec2f.h"
 # include "keymap.h"

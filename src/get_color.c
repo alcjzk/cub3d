@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:12:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 20:37:28 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/01 17:33:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	convert_nums(char *line, t_color *color)
 	i += numlen(&line[i]);
 	if (line[i] != '\n')
 		return (-1);
-	color->channels.a = 0;
+	color->channels.a = 255;
 	return (0);
 }
 

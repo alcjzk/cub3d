@@ -6,10 +6,11 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:39:38 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/21 15:00:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 14:26:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "state.h"
 #include "line.h"
 
 void	line_init(t_line *self, t_ray *ray)
@@ -35,5 +36,5 @@ void	line_draw_color(t_line *self, t_view *view, int x, t_ray *ray)
 		self->color = (t_color)0x000000FF;
 	y = self->start;
 	while (y <= self->end)
-		image_put_pixel(view->back, x, y++, self->color);
+		image_put_pixel(&view->frame, x, y++, self->color);
 }

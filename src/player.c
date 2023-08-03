@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/25 13:04:22 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:59:42 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "player.h"
-#include "window.h"
+#include "state.h"
 
 void	player_init(t_player *self, char dir, int y, int x)
 {
@@ -44,13 +44,13 @@ t_vec2f	player_velocity(t_player *self, t_keymap *keymap)
 	t_vec2f	direction;
 
 	direction = (t_vec2f){0};
-	if (keymap_key_state(keymap, KEY_W) == KEY_STATE_DOWN)
+	if (keymap_key_state(keymap, MLX_KEY_W) == KEY_STATE_DOWN)
 		direction.y -= 1;
-	if (keymap_key_state(keymap, KEY_S) == KEY_STATE_DOWN)
+	if (keymap_key_state(keymap, MLX_KEY_S) == KEY_STATE_DOWN)
 		direction.y += 1;
-	if (keymap_key_state(keymap, KEY_A) == KEY_STATE_DOWN)
+	if (keymap_key_state(keymap, MLX_KEY_A) == KEY_STATE_DOWN)
 		direction.x -= 1;
-	if (keymap_key_state(keymap, KEY_D) == KEY_STATE_DOWN)
+	if (keymap_key_state(keymap, MLX_KEY_D) == KEY_STATE_DOWN)
 		direction.x += 1;
 	direction = vec2f_normalize(direction);
 	velocity = vec2f_mul(direction, PLAYER_MOVE_SPEED);
@@ -60,13 +60,13 @@ t_vec2f	player_velocity(t_player *self, t_keymap *keymap)
 
 void	player_update_yaw(t_player *self, t_keymap *keymap)
 {
-	if (keymap_key_state(keymap, KEY_LEFT) == KEY_STATE_DOWN)
+	if (keymap_key_state(keymap, MLX_KEY_LEFT) == KEY_STATE_DOWN)
 	{
 		self->yaw -= PLAYER_YAW_SPEED;
 		if (self->yaw < -M_PI)
 			self->yaw += M_PI * 2;
 	}
-	if (keymap_key_state(keymap, KEY_RIGHT) == KEY_STATE_DOWN)
+	if (keymap_key_state(keymap, MLX_KEY_RIGHT) == KEY_STATE_DOWN)
 	{
 		self->yaw += PLAYER_YAW_SPEED;
 		if (self->yaw > M_PI)

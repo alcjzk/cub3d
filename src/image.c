@@ -3,52 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 07:15:30 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/05 21:05:51 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:23:18 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "MLX42.h"
 #include "libft.h"
 #include "image.h"
 
-void	image_put_pixel(t_image *image, int x, int y, t_color color)
+void	image_put_pixel(t_image *self, int x, int y, t_color color)
 {
-	unsigned int	*addr;
-
-	addr = (unsigned int *)image->addr;
-	addr[y * image->width + x] = color.value;
+	mlx_put_pixel(self->img, x, y, color.value);
 }
 
-BOOL	image_create(t_image *image, void *mlx, int width, int height)
+BOOL	image_create(t_image *self, mlx_t *mlx, int width, int height)
 {
-	int	endian;
-	int	bpp;
-	int	bpl;
-
-	ft_bzero(image, sizeof(t_image));
-	image->mlx = mlx;
-	image->img = mlx_new_image(mlx, width, height);
-	if (!image->img)
+	*self = (t_image){0};
+	self->mlx = mlx;
+	self->img = mlx_new_image(mlx, width, height);
+	if (!self->img)
 		return (FALSE);
-	image->addr = mlx_get_data_addr(image->img, &bpp, &bpl, &endian);
-	if (!image->addr)
-		return (FALSE);
-	image->width = width;
-	image->height = height;
+	self->width = width;
+	self->height = height;
 	return (TRUE);
 }
 
-void	image_clear(t_image *image)
+void	image_destroy(t_image *self)
 {
-	ft_bzero(image->addr, image->width * image->height * 4);
-}
-
-void	image_destroy(t_image *image)
-{
-	if (image && image->img)
-		mlx_destroy_image(image->mlx, image->img);
-	*image = (t_image){0};
+	if (self && self->img)
+		mlx_delete_image(self->mlx, self->img);
+	*self = (t_image){0};
 }

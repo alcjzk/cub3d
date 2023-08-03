@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/05 21:04:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:08:22 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	name_check(char *file)
 	return (0);
 }
 
-void	validate_error(t_scene *scene)
+void	scene_destroy(t_scene *scene)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ int	validate(t_scene *scene, char *file)
 	close(fd);
 	if (!scene->is_valid)
 	{
-		validate_error(scene);
+		scene_destroy(scene);
 		return (-1);
 	}
 	return (0);
