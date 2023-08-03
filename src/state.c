@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 16:08:57 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:34:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,8 @@ void	state_destroy(t_state *self)
 	mlx_terminate(self->mlx);
 }
 
-void	state_update(void *param)
+void	state_update(t_state *self)
 {
-	t_state *self;
-
-	self = (t_state *)param;
 	player_update(&self->scene->player, &self->keymap);
 	view_draw(&self->view, self->scene);
 }

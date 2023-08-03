@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 19:08:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:34:15 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ typedef struct s_state
 
 BOOL	state_create(t_state *self, t_scene *scene);
 void	state_destroy(t_state *self);
-void	state_update(void *param);
+void	state_update(t_state *self);
 
 #endif
