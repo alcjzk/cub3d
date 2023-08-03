@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:14:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 19:26:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:30:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@ void	key_hook(mlx_key_data_t keydata, t_state *state)
 		on_keydown(keydata.key, state);
 }
 
-int	on_keyup(t_key key, t_state *state)
+void	on_keyup(t_key key, t_state *state)
 {
 	if (key == MLX_KEY_ESCAPE)
 		on_destroy(state);
 	keymap_set_key_state(&state->keymap, key, KEY_STATE_UP);
-	return (0);
 }
 
-int	on_keydown(t_key key, t_state *state)
+void	on_keydown(t_key key, t_state *state)
 {
 	keymap_set_key_state(&state->keymap, key, KEY_STATE_DOWN);
-	return (0);
 }
