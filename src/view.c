@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:16:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/01 18:03:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 14:26:16 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ BOOL	view_create(t_view *self, mlx_t *mlx)
 	self->mlx = mlx;
 	// self->front = &self->frames[0];
 	// self->back = &self->frames[1];
-	if (!image_create(self->frame, self->mlx, WINDOW_WIDTH, WINDOW_HEIGHT))
+	if (!image_create(&self->frame, self->mlx, WINDOW_WIDTH, WINDOW_HEIGHT))
 		return (FALSE);
 	// if (!image_create(self->front, self->mlx, WINDOW_WIDTH, WINDOW_HEIGHT))
 	// 	return (FALSE);
@@ -32,7 +32,7 @@ void	view_destroy(t_view *self)
 {
 	if (!self)
 		return ;
-	image_destroy(self->frame);
+	image_destroy(&self->frame);
 	// image_destroy(self->front);
 	// image_destroy(self->back);
 }

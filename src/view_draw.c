@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/01 18:51:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 14:27:47 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ray.h"
 #include "line.h"
 
-static void	draw_background(t_image *image, t_scene *scene)
+void	draw_background(t_image *image, t_scene *scene)
 {
 	int	y;
 	int	x;
@@ -38,7 +38,7 @@ static void	draw_background(t_image *image, t_scene *scene)
 	}
 }
 
-static void	draw_frame(t_view *self, t_scene *scene)
+void	draw_frame(t_view *self, t_scene *scene)
 {
 	int			x;
 	t_player	*player;
@@ -62,12 +62,6 @@ static void	draw_frame(t_view *self, t_scene *scene)
 
 void	view_draw(t_view *self, t_scene *scene)
 {
-	draw_background(self->frame, scene);
+	draw_background(&self->frame, scene);
 	draw_frame(self, scene);
-	// view_swap_buffers(self);
-	if (mlx_image_to_window(
-		self->mlx,
-		self->frame->img,
-		0, 0) == -1)
-		mlx_terminate(self->mlx);
 }
