@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 19:09:05 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:08:57 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ BOOL	state_create(t_state *self, t_scene *scene)
 
 void	state_destroy(t_state *self)
 {
+	scene_destroy(self->scene);
 	mlx_terminate(self->mlx);
 }
 

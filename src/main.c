@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 14:28:17 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:03:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ int	main(int argc, char **argv)
 	if (mlx_image_to_window(
 		state.mlx,
 		state.view.frame.img,
-		0, 0) == -1)
-		mlx_terminate(state.mlx);
+		0, 0)
+		== -1)
+		{
+			mlx_terminate(state.mlx);
+			return (EXIT_FAILURE);
+		}
 	mlx_close_hook(state.mlx, on_destroy, &state);
 	mlx_key_hook(state.mlx, key_hook, &state);
 	if (!mlx_loop_hook(state.mlx, state_update, &state))
