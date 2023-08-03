@@ -3,10 +3,11 @@ NAME		= cub3D
 LIBFT 		= libft/libft.a
 
 # Directories
+BREW_PATH			= $(shell brew --prefix)
 OBJ_DIR				= obj/
 SRC_DIR				= $(sort $(dir $(wildcard src/*/))) src/
 INC_DIR				= $(SRC_DIR) libft/inc/ MLX42/include/MLX42/
-LIB_DIR				= libft /Users/$(USER)/.brew/opt/glfw/lib/ MLX42/build/
+LIB_DIR				= libft $(BREW_PATH)/opt/glfw/lib/ MLX42/build/
 
 # Flags setup
 CC		= cc
