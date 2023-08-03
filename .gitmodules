@@ -2,3 +2,6 @@
 	path = libft
 	url = https://github.com/alcjzk/libft
 	branch = next
+[submodule "MLX42"]
+	path = MLX42
+	url = https://github.com/codam-coding-college/MLX42
