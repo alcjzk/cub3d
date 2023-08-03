@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 14:27:35 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:31:38 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,5 @@ BOOL	view_create(t_view *self, mlx_t *mlx);
 void	view_destroy(t_view *self);
 void	view_swap_buffers(t_view *self);
 void	view_draw(t_view *self, t_scene *scene);
-void	draw_background(t_image *image, t_scene *scene);
-void	draw_frame(t_view *self, t_scene *scene);
 
 #endif

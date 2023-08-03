@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 19:27:33 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:31:46 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	main(int argc, char **argv)
 		state_destroy(&state);
 		return (EXIT_FAILURE);
 	}
-	draw_background(&state.view.frame, &scene);
-	draw_frame(&state.view, &scene);
 	if (mlx_image_to_window(
 		state.mlx,
 		state.view.frame.img,

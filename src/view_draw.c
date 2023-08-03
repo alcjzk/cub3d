@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_draw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 14:27:47 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:31:36 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ray.h"
 #include "line.h"
 
-void	draw_background(t_image *image, t_scene *scene)
+static void	draw_background(t_image *image, t_scene *scene)
 {
 	int	y;
 	int	x;
@@ -38,7 +38,7 @@ void	draw_background(t_image *image, t_scene *scene)
 	}
 }
 
-void	draw_frame(t_view *self, t_scene *scene)
+static void	draw_frame(t_view *self, t_scene *scene)
 {
 	int			x;
 	t_player	*player;
