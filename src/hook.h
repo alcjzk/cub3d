@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:17:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 19:01:45 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:26:45 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "state.h"
 
-void	on_destroy(void *state);
-void	key_hook(mlx_key_data_t keydata, void *state);
+void	on_destroy(t_state *state);
+void	key_hook(mlx_key_data_t keydata, t_state *state);
 int		on_keyup(t_key key, t_state *state);
 int		on_keydown(t_key key, t_state *state);
 

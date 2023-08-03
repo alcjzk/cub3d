@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:14:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/31 19:01:06 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:26:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "keymap.h"
 #include "hook.h"
 
-void	on_destroy(void *state)
+void	on_destroy(t_state *state)
 {
 	state_destroy(state);
 	exit(EXIT_SUCCESS);
 }
 
-void	key_hook(mlx_key_data_t keydata, void *state)
+void	key_hook(mlx_key_data_t keydata, t_state *state)
 {
 	if (keydata.action == MLX_RELEASE)
 		on_keyup(keydata.key, state);

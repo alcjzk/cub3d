@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 16:03:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:27:33 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	main(int argc, char **argv)
 			mlx_terminate(state.mlx);
 			return (EXIT_FAILURE);
 		}
-	mlx_close_hook(state.mlx, on_destroy, &state);
-	mlx_key_hook(state.mlx, key_hook, &state);
+	mlx_close_hook(state.mlx, (mlx_closefunc)on_destroy, &state);
+	mlx_key_hook(state.mlx, (mlx_keyfunc)key_hook, &state);
 	if (!mlx_loop_hook(state.mlx, state_update, &state))
 	{
 		mlx_terminate(state.mlx);
