@@ -37,12 +37,12 @@ vector_extend.c		\
 vector_position.c	\
 vector_remove.c		\
 vector_reserve.c	\
-validate.c			\
+scene.c				\
 get_color.c			\
 get_elements.c		\
-get_map.c			\
-check_walls.c		\
-validate_map.c		\
+map.c				\
+map_read.c			\
+map_validate.c		\
 keymap.c			\
 line.c				\
 ray.c				\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 19:34:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/04 14:02:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ int	main(int argc, char **argv)
 	t_state		state;
 	t_scene		scene;
 
-	scene = (t_scene){0};
-	scene.is_valid = TRUE;
-	if (argc != 2 || validate(&scene, argv[1]))
+	if (argc != 2 || scene_create(&scene, argv[1]))
 	{
 		printf("Error\n");
 		return (EXIT_FAILURE);
 	}
-	printf("floor, r: %d, g: %d, b: %d, a: %d\n", scene.floor_color.channels.r, scene.floor_color.channels.g, scene.floor_color.channels.b, scene.floor_color.channels.a);
-	printf("ceiling, r: %d, g: %d, b: %d, a: %d\n", scene.ceiling_color.channels.r, scene.ceiling_color.channels.g, scene.ceiling_color.channels.b, scene.ceiling_color.channels.a);
 	if (!state_create(&state, &scene))
 	{
 		state_destroy(&state);

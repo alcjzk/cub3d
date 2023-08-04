@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 16:08:22 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:31:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "unistd.h"
+#include "fcntl.h"
+#include "libft.h"
 
-int	name_check(char *file)
+static int	validate_name(char *file)
 {
 	int	i;
 
@@ -29,8 +32,6 @@ int	name_check(char *file)
 
 void	scene_destroy(t_scene *scene)
 {
-	int	i;
-
 	if (scene->north_texture_path)
 		free(scene->north_texture_path);
 	if (scene->south_texture_path)
@@ -39,24 +40,22 @@ void	scene_destroy(t_scene *scene)
 		free(scene->west_texture_path);
 	if (scene->east_texture_path)
 		free(scene->east_texture_path);
-	i = 0;
-	if (scene->map)
-		while (scene->map[i])
-			free(scene->map[i++]);
-	free(scene->map);
+	map_destroy(&scene->map);
 }
 
-int	validate(t_scene *scene, char *file)
+int	scene_create(t_scene *scene, char *file)
 {
 	int	fd;
 
-	if (name_check(file))
+	scene = (t_scene *){0};
+	scene->is_valid = TRUE;
+	if (validate_name(file))
 		return (-1);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
 	scene->is_valid = get_elements(scene, fd);
-	scene->is_valid = validate_map(scene, fd);
+	scene->is_valid = map_create(&scene->map, fd, scene);
 	close(fd);
 	if (!scene->is_valid)
 	{

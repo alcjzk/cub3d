@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_walls.c                                      :+:      :+:    :+:   */
+/*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/11 19:37:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:14:25 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "map.h"
 #include "scene.h"
 
-BOOL	check_wall_is_zero(int y, int x, char **map)
+static BOOL	check_wall_is_zero(int y, int x, char **map)
 {
 	if (map[y][x] == '0')
 	{
@@ -30,26 +32,26 @@ BOOL	check_wall_is_zero(int y, int x, char **map)
 	return (FALSE);
 }
 
-BOOL	check_walls(t_scene *scene, char **map)
+BOOL	map_validate_walls(t_map *self)
 {
 	int	x;
 	int	y;
 
-	if (!scene->is_valid)
+	if (!self->is_valid)
 		return (FALSE);
 	y = 0;
-	while (map[y])
+	while (self->map[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (self->map[y][x])
 		{
-			if (check_wall_is_zero(y, x, map))
+			if (check_wall_is_zero(y, x, self->map))
 				return (FALSE);
-			if (map[y][x] == '0' &&
-				(!ft_strchr("01", map[y - 1][x]) ||
-				!ft_strchr("01", map[y + 1][x]) ||
-				!ft_strchr("01", map[y][x - 1]) ||
-				!ft_strchr("01", map[y][x + 1])))
+			if (self->map[y][x] == '0' &&
+				(!ft_strchr("01", self->map[y - 1][x]) ||
+				!ft_strchr("01", self->map[y + 1][x]) ||
+				!ft_strchr("01", self->map[y][x - 1]) ||
+				!ft_strchr("01", self->map[y][x + 1])))
 				return (FALSE);
 			x++;
 		}
@@ -58,7 +60,7 @@ BOOL	check_walls(t_scene *scene, char **map)
 	return (TRUE);
 }
 
-void	change_chars(char **map)
+static void	change_chars(char **map)
 {
 	int	x;
 	int	y;
@@ -95,26 +97,26 @@ void	flood_fill(char **map, int y, int x)
 		flood_fill(map, y, x + 1);
 }
 
-BOOL	check_connected(t_scene *scene, char **map)
+BOOL	map_validate_islands(t_map *self, t_scene *scene)
 {
 	int	x;
 	int	y;
 
-	if (!scene->is_valid)
+	if (!self->is_valid)
 		return (FALSE);
-	flood_fill(map, scene->player.position.y, scene->player.position.x);
+	flood_fill(self->map, scene->player.position.y, scene->player.position.x);
 	y = 0;
-	while (map[y])
+	while (self->map[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (self->map[y][x])
 		{
-			if (map[y][x] == '0' || map[y][x] == '1')
+			if (self->map[y][x] == '0' || self->map[y][x] == '1')
 				return (FALSE);
 			x++;
 		}
 		y++;
 	}
-	change_chars(map);
+	change_chars(self->map);
 	return (TRUE);
 }

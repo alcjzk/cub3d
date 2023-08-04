@@ -6,11 +6,14 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:14:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/10 13:38:16 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 17:06:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "get_next_line.h"
+#include <stdlib.h>
+#include "libft.h"
 
 int	set_texture(t_scene *scene, char *line, char *copy)
 {

@@ -6,11 +6,12 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:12:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/01 17:33:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 17:05:25 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "libft.h"
 
 int	numlen(char *line)
 {
