@@ -89,6 +89,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(LIBFT)
+	rm -rf MLX42/build
 
 norm:
 	norminette src | grep -v OK
