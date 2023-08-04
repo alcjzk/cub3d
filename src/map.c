@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 18:26:01 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 18:34:03 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,27 @@ static char	*skip_empty_lines(int fd)
 	return (line);
 }
 
-static BOOL	validate_symbols(char **map, t_scene *scene)
+static BOOL	validate_symbols(t_map *self, t_scene *scene)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (map[y])
+	if (!self->is_valid)
+		return (FALSE);
+	while (self->map[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (self->map[y][x])
 		{
-			if (!ft_strchr(" 01NSWE", map[y][x]))
+			if (!ft_strchr(" 01NSWE", self->map[y][x]))
 				return (FALSE);
-			if (ft_strchr("NSWE", map[y][x]))
+			if (ft_strchr("NSWE", self->map[y][x]))
 			{
 				if (scene->player.is_valid)
 					return (FALSE);
-				player_init(&scene->player, map[y][x], y, x);
-				map[y][x] = '0';
+				player_init(&scene->player, self->map[y][x], y, x);
+				self->map[y][x] = '0';
 			}
 			x++;
 		}
@@ -72,7 +74,7 @@ BOOL	map_create(t_map *self, int fd, t_scene *scene)
 	self->is_valid = TRUE;
 	line = skip_empty_lines(fd);
 	self->is_valid = map_read(self, fd, line);
-	self->is_valid = validate_symbols(self->map, scene);
+	self->is_valid = validate_symbols(self, scene);
 	self->is_valid = map_validate_walls(self);
 	self->is_valid = map_validate_islands(self, scene);
 	return (self->is_valid);
