@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 14:31:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 17:22:57 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	scene_create(t_scene *scene, char *file)
 {
 	int	fd;
 
-	scene = (t_scene *){0};
+	*scene = (t_scene){0};
 	scene->is_valid = TRUE;
 	if (validate_name(file))
 		return (-1);

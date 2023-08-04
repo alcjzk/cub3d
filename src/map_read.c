@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 17:08:10 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 18:25:29 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	map_from_vec(t_map *self, t_vector *tmpmap)
 	size_t	i;
 	size_t	j;
 
-	if (!vector_push(tmpmap, self->map))
+	if (!vector_push(tmpmap, &self->map))
 	{
 		tmpmap_free(tmpmap);
 		return (FALSE);

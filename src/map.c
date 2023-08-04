@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 17:12:41 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 18:26:01 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ BOOL	map_create(t_map *self, int fd, t_scene *scene)
 
 	if (!scene->is_valid)
 		return (FALSE);
-	self = (t_map *){0};
+	*self = (t_map){0};
+	self->is_valid = TRUE;
 	line = skip_empty_lines(fd);
 	self->is_valid = map_read(self, fd, line);
 	self->is_valid = validate_symbols(self->map, scene);
