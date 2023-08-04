@@ -1,6 +1,7 @@
 # Targets
 NAME		= cub3D
 LIBFT 		= libft/libft.a
+MLX42		= MLX42/build/libmlx42.a
 
 # Directories
 BREW_PATH			= $(shell brew --prefix)
@@ -15,11 +16,12 @@ OPT		= 0
 LIB		= ft glfw mlx42
 WARN	= all extra error
 EXTRA	= -MP -MMD -g
+FWK		= OpenGL Cocoa IOKit
 
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 # Linker flags
-override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL -framework Cocoa -framework IOKit
+override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) $(FWK:%=-framework %)
 
 # Sources
 SRCS =				\
@@ -50,18 +52,27 @@ main.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 
-.PHONY: all clean fclean re obj_dir $(LIBFT)
+.PHONY: all clean fclean re obj_dir $(LIBFT) norm init
 
 all: $(NAME)
 
+$(MLX42):
+	@-test -f MLX42/README.md || make init
+	cd MLX42 && cmake -B build && cmake --build build -j4
+
 $(LIBFT):
+	@-test -f libft/README.md || make init
 	make -C libft OBJ_DIR="../obj/"
+
+init:
+	git submodule update --init
+	cd MLX42 && git checkout a2f6f23
 
 $(NAME): $(OBJS) | $(LIBFT)
 	@echo ""
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(OBJ_DIR)%.o: %.c | obj_dir
+$(OBJ_DIR)%.o: %.c | obj_dir $(MLX42)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 run: all
@@ -78,6 +89,10 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(LIBFT)
+	rm -rf MLX42/build
+
+norm:
+	norminette src | grep -v OK
 
 debug: fclean
 	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address"
