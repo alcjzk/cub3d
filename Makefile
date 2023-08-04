@@ -51,7 +51,7 @@ main.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 
-.PHONY: all clean fclean re obj_dir $(LIBFT)
+.PHONY: all clean fclean re obj_dir $(LIBFT) norm
 
 all: $(NAME)
 
@@ -79,6 +79,9 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(LIBFT)
+
+norm:
+	norminette src | grep -v OK
 
 debug: fclean
 	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address"
