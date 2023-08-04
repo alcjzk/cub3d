@@ -15,11 +15,12 @@ OPT		= 0
 LIB		= ft glfw mlx42
 WARN	= all extra error
 EXTRA	= -MP -MMD -g
+FWK		= OpenGL Cocoa IOKit
 
 # Compiler flags
 override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 # Linker flags
-override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) -framework AppKit -framework OpenGL -framework Cocoa -framework IOKit
+override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) $(FWK:%=-framework %)
 
 # Sources
 SRCS =				\
