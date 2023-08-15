@@ -47,6 +47,7 @@ keymap.c			\
 line.c				\
 ray.c				\
 player.c			\
+texture.c			\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
