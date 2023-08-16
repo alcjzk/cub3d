@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/16 04:22:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:19:11 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ BOOL	texture_pack_load(
 		texture_pack_unload(self);
 		return (FALSE);
 	}
+	self->is_valid = TRUE;
 	return (TRUE);
 }
 
