@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 19:34:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/16 04:43:37 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,26 @@
 #include "state.h"
 #include "event.h"
 #include "hook.h"
+#include "texture.h"
 #include "main.h"
 
 int	main(int argc, char **argv)
 {
-	t_state		state;
-	t_scene		scene;
+	t_state				state;
+	t_scene				scene;
 
 	scene = (t_scene){0};
 	scene.is_valid = TRUE;
 	if (argc != 2 || validate(&scene, argv[1]))
 	{
+		printf("Error\n");
+		return (EXIT_FAILURE);
+	}
+	texture_options_validate(&scene.texture_options);
+	texture_pack_load(&scene.textures, &scene.texture_options);
+	if (!scene.textures.is_valid)
+	{
+		scene_destroy(&scene);
 		printf("Error\n");
 		return (EXIT_FAILURE);
 	}
@@ -43,18 +52,21 @@ int	main(int argc, char **argv)
 		state.view.frame.img,
 		0, 0)
 		== -1)
-		{
-			mlx_terminate(state.mlx);
-			return (EXIT_FAILURE);
-		}
+	{
+		state_destroy(&state);
+		mlx_terminate(state.mlx);
+		return (EXIT_FAILURE);
+	}
 	mlx_close_hook(state.mlx, (mlx_closefunc)on_destroy, &state);
 	mlx_key_hook(state.mlx, (mlx_keyfunc)key_hook, &state);
 	if (!mlx_loop_hook(state.mlx, (void (*)(void *))state_update, &state))
 	{
+		state_destroy(&state);
 		mlx_terminate(state.mlx);
 		return (EXIT_FAILURE);
 	}
 	mlx_loop(state.mlx);
+	state_destroy(&state);
 	mlx_terminate(state.mlx);
 	return (EXIT_SUCCESS);
 }

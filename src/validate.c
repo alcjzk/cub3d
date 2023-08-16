@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 16:08:22 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/16 04:20:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,8 @@ void	scene_destroy(t_scene *scene)
 {
 	int	i;
 
-	if (scene->north_texture_path)
-		free(scene->north_texture_path);
-	if (scene->south_texture_path)
-		free(scene->south_texture_path);
-	if (scene->west_texture_path)
-		free(scene->west_texture_path);
-	if (scene->east_texture_path)
-		free(scene->east_texture_path);
+	texture_options_free(&scene->texture_options);
+	texture_pack_unload(&scene->textures);
 	i = 0;
 	if (scene->map)
 		while (scene->map[i])

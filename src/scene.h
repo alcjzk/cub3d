@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/03 16:08:41 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/16 04:10:32 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,17 @@
 # include "libft.h"
 # include "color.h"
 # include "player.h"
+# include "texture.h"
 
 typedef struct s_scene
 {
-	char		*north_texture_path;
-	char		*south_texture_path;
-	char		*west_texture_path;
-	char		*east_texture_path;
-	t_color		floor_color;
-	t_color		ceiling_color;
-	char		**map;
-	t_player	player;
-	BOOL		is_valid;
+	t_color				floor_color;
+	t_color				ceiling_color;
+	char				**map;
+	t_player			player;
+	t_texture_options	texture_options;
+	t_texture_pack		textures;
+	BOOL				is_valid;
 }	t_scene;
 
 int		validate(t_scene *scene, char *file);
