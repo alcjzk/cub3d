@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 16:58:47 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/18 15:24:14 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ typedef struct s_scene
 	BOOL		is_valid;
 }	t_scene;
 
-int		scene_create(t_scene *scene, char *file);
+int		scene_create(t_scene *self, char *file);
 int		get_color(t_scene *scene, char *line);
 BOOL	get_elements(t_scene *scene, int fd);
-void	scene_destroy(t_scene *scene);
+void	scene_destroy(t_scene *self);
+void	scene_print_error(t_scene *self);
 
 #endif

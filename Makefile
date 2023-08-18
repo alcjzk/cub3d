@@ -47,6 +47,7 @@ keymap.c			\
 line.c				\
 ray.c				\
 player.c			\
+scene_print_error.c	\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)

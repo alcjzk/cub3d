@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:12:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 17:05:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 18:42:18 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,14 @@ int	get_color(t_scene *scene, char *line)
 	if (convert_nums(&line[i], &color))
 		return (-1);
 	if (line[0] == 'F')
+	{
 		scene->floor_color = color;
+		scene->set_floor_color = TRUE;
+	}
 	else
+	{
 		scene->ceiling_color = color;
+		scene->set_ceiling_color = TRUE;
+	}
 	return (0);
 }
