@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/23 16:10:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/23 16:13:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	minimap_background_draw(t_image *minimap, size_t width, size_t height)
 
 void	minimap_block_draw(t_image *minimap, size_t j, size_t i, t_color wall)
 {
-	size_t y;
-	size_t x;
+	size_t	y;
+	size_t	x;
 
 	y = 1;
 	while (y <= BLOCK_SIZE)
@@ -57,7 +57,10 @@ void	minimap_block_draw(t_image *minimap, size_t j, size_t i, t_color wall)
 		x = 1;
 		while (x <= BLOCK_SIZE)
 		{
-			image_put_pixel(minimap, j * BLOCK_SIZE + x, i * BLOCK_SIZE + y, wall);
+			image_put_pixel(minimap,
+				j * BLOCK_SIZE + x,
+				i * BLOCK_SIZE + y,
+				wall);
 			x++;
 		}
 		y++;
@@ -96,9 +99,9 @@ BOOL	minimap_create(t_scene *scene, mlx_t *mlx)
 	if (!image_create(&scene->minimap, mlx, width, height))
 		return (FALSE);
 	if (mlx_image_to_window(
-		mlx,
-		scene->minimap.img,
-		0, 0)
+			mlx,
+			scene->minimap.img,
+			0, 0)
 		== -1)
 	{
 		return (FALSE);
