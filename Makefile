@@ -48,6 +48,7 @@ line.c				\
 ray.c				\
 player.c			\
 scene_print_error.c	\
+minimap_bonus.c		\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
