@@ -6,20 +6,93 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/23 15:20:15 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/23 16:10:30 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "minimap_bonus.h"
+
+static void	init_color(t_color *color, size_t red, size_t green, size_t blue)
+{
+	color->channels.a = 255;
+	color->channels.r = red;
+	color->channels.g = green;
+	color->channels.b = blue;
+}
+
+void	minimap_background_draw(t_image *minimap, size_t width, size_t height)
+{
+	t_color	border;
+	t_color	background;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	init_color(&border, 255, 0, 0);
+	init_color(&background, 0, 0, 255);
+	while (i <= height)
+	{
+		j = 0;
+		while (j <= width)
+		{
+			if (!i || !j || i == height - 1 || j == width - 1)
+				image_put_pixel(minimap, j, i, border);
+			else
+				image_put_pixel(minimap, j, i, background);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	minimap_block_draw(t_image *minimap, size_t j, size_t i, t_color wall)
+{
+	size_t y;
+	size_t x;
+
+	y = 1;
+	while (y <= BLOCK_SIZE)
+	{
+		x = 1;
+		while (x <= BLOCK_SIZE)
+		{
+			image_put_pixel(minimap, j * BLOCK_SIZE + x, i * BLOCK_SIZE + y, wall);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	minimap_wall_draw(t_scene *scene, size_t width, size_t height)
+{
+	t_color	wall;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	init_color(&wall, 0, 0, 0);
+	while (i < height / BLOCK_SIZE)
+	{
+		j = 0;
+		while (j < width / BLOCK_SIZE)
+		{
+			if (scene->map.map[i][j] == '1')
+				minimap_block_draw(&scene->minimap, j, i, wall);
+			j++;
+		}
+		i++;
+	}
+}
 
 BOOL	minimap_create(t_scene *scene, mlx_t *mlx)
 {
-	size_t width;
-	size_t height;
+	size_t		width;
+	size_t		height;
+	int const	border_offset = 2;
 
-	width = scene->map.width * 8 + 2;
-	height = scene->map.height * 8 + 2;
-
+	width = scene->map.width * BLOCK_SIZE + border_offset;
+	height = scene->map.height * BLOCK_SIZE + border_offset;
 	if (!image_create(&scene->minimap, mlx, width, height))
 		return (FALSE);
 	if (mlx_image_to_window(
@@ -30,48 +103,7 @@ BOOL	minimap_create(t_scene *scene, mlx_t *mlx)
 	{
 		return (FALSE);
 	}
-	t_color red;
-	red.channels.a = 255;
-	red.channels.r = 255;
-	red.channels.g = 0;
-	red.channels.b = 0;
-
-	t_color blue;
-	blue.channels.a = 255;
-	blue.channels.r = 0;
-	blue.channels.g = 0;
-	blue.channels.b = 255;
-
-	for (size_t i = 0; i < height; i++)
-	{
-		for (size_t j = 0; j < width; j++)
-		{
-			if (!i || !j || i == height - 1 || j == width - 1)
-				image_put_pixel(&scene->minimap, j, i, red);
-			else
-				image_put_pixel(&scene->minimap, j, i, blue);
-		}
-	}
-
-	t_color black;
-	black.channels.a = 255;
-	black.channels.r = 0;
-	black.channels.g = 0;
-	black.channels.b = 0;
-
-	for (size_t i = 0; i < height / 8; i++)
-	{
-		for (size_t j = 0; j < width / 8; j++)
-		{
-			if (scene->map.map[i][j] == '1')
-			{
-				for (size_t y = 1; y <= 8; y++)
-				{
-					for (size_t x = 1; x <= 8; x++)
-						image_put_pixel(&scene->minimap, j * 8 + x, i * 8 + y, black);
-				}
-			}
-		}
-	}
+	minimap_background_draw(&scene->minimap, width, height);
+	minimap_wall_draw(scene, width, height);
 	return (TRUE);
 }
