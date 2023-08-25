@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 18:25:29 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 14:58:47 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,28 @@ static void	tmpmap_free(t_vector *tmpmap)
 
 static char	map_from_vec(t_map *self, t_vector *tmpmap)
 {
-	size_t	i;
-	size_t	j;
+	size_t	height_max;
+	size_t	width_max;
+	void	*nullptr;
 
-	if (!vector_push(tmpmap, &self->map))
+	nullptr = NULL;
+	if (!vector_push(tmpmap, &nullptr))
 	{
 		tmpmap_free(tmpmap);
 		return (FALSE);
 	}
 	self->map = (char **)tmpmap->buffer;
-	i = 0;
-	while (self->map[i])
+	height_max = 0;
+	while (self->map[height_max])
 	{
-		j = 0;
-		while (self->map[i][j])
-			j++;
-		if (j > self->width)
-			self->width = j;
-		i++;
+		width_max = 0;
+		while (self->map[height_max][width_max])
+			width_max++;
+		if (width_max > self->width)
+			self->width = width_max;
+		height_max++;
 	}
-	self->height = i;
+	self->height = height_max;
 	free(tmpmap);
 	return (TRUE);
 }
