@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 18:34:03 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 14:50:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ BOOL	map_create(t_map *self, int fd, t_scene *scene)
 	self->is_valid = map_read(self, fd, line);
 	self->is_valid = validate_symbols(self, scene);
 	self->is_valid = map_validate_walls(self);
-	self->is_valid = map_validate_islands(self, scene);
+	self->is_valid = map_validate_islands(self, &scene->player);
 	return (self->is_valid);
 }
 
