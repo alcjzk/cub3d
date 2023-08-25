@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 19:34:15 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:24:50 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "view.h"
 # include "scene.h"
 # include "keymap.h"
+# include "minimap_bonus.h"
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
@@ -29,6 +30,7 @@ typedef struct s_state
 	t_view		view;
 	t_scene		*scene;
 	t_keymap	keymap;
+	t_minimap	minimap;
 	BOOL		is_valid;
 }	t_state;
 

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/23 14:27:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 16:19:46 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_scene
 	t_map		map;
 	t_player	player;
 	BOOL		is_valid;
-	t_image		minimap;
 }	t_scene;
 
 int		scene_create(t_scene *self, char *file);

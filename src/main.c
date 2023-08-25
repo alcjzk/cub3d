@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/23 14:40:44 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 16:27:52 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "event.h"
 #include "hook.h"
 #include "main.h"
-#include "minimap_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -37,11 +36,6 @@ int	main(int argc, char **argv)
 		state.view.frame.img,
 		0, 0)
 		== -1)
-	{
-		mlx_terminate(state.mlx);
-		return (EXIT_FAILURE);
-	}
-	if (!minimap_create(&scene, state.mlx))
 	{
 		mlx_terminate(state.mlx);
 		return (EXIT_FAILURE);
