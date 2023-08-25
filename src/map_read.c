@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:58:47 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 15:16:24 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ BOOL	map_read(t_map *self, int fd, char *line)
 	size_t		i;
 
 	tmpmap = vector_with_capacity(1, sizeof(char *));
+	if (!tmpmap)
+		return (FALSE);
 	while (line)
 	{
 		i = 0;
