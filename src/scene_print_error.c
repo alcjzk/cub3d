@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:21:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/18 15:59:37 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 14:41:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	scene_print_error(t_scene *self)
 		ft_putstr_fd("West_texture_path is misconfigured\n", 2);
 	else if (!self->east_texture_path)
 		ft_putstr_fd("East_texture_path is misconfigured\n", 2);
-	else if (!self->set_floor_color)
+	else if (!self->is_floor_color_set)
 		ft_putstr_fd("Floor_color is misconfigured\n", 2);
-	else if (!self->set_ceiling_color)
+	else if (!self->is_ceiling_color_set)
 		ft_putstr_fd("Ceiling_color is misconfigured\n", 2);
 	else if (!self->map.is_valid)
 		ft_putstr_fd("Map is misconfigured\n", 2);

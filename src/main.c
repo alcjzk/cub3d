@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/18 15:31:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 14:43:46 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,19 @@
 #include "event.h"
 #include "hook.h"
 #include "main.h"
+#include "libft.h"
 
 int	main(int argc, char **argv)
 {
 	t_state		state;
 	t_scene		scene;
 
-	if (argc != 2 || scene_create(&scene, argv[1]))
+	if (argc != 2)
+	{
+		ft_putstr_fd("Incorrect amount of arguments\n", 2);
+		return (EXIT_FAILURE);
+	}
+	if (scene_create(&scene, argv[1]))
 		return (EXIT_FAILURE);
 	if (!state_create(&state, &scene))
 	{

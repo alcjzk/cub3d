@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/18 15:24:14 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 14:39:30 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ typedef struct s_scene
 	char		*west_texture_path;
 	char		*east_texture_path;
 	t_color		floor_color;
-	BOOL		set_floor_color;
 	t_color		ceiling_color;
-	BOOL		set_ceiling_color;
 	t_map		map;
 	t_player	player;
+	BOOL		is_floor_color_set;
+	BOOL		is_ceiling_color_set;
 	BOOL		is_valid;
 }	t_scene;
 
