@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:49:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/21 14:56:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/04 17:17:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ray_cast(t_ray *self, t_scene *scene)
 			self->map_pos.y += self->step.y;
 			self->side = NS;
 		}
-		if (scene->map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
+		if (scene->map.map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
 			self->hit = 1;
 	}
 	calc_perp_wall_dist(self);
