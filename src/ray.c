@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:49:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/16 23:55:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/28 05:30:15 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ray_cast(t_ray *self, t_scene *scene)
 			else
 				self->side = SIDE_SOUTH;
 		}
-		if (scene->map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
+		if (scene->map.map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
 			self->hit = 1;
 	}
 	calc_perp_wall_dist(self);
