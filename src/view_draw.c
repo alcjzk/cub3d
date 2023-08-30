@@ -6,14 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 19:31:36 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:09:46 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "state.h"
 #include "view.h"
 #include "ray.h"
-#include "line.h"
+#include "line_textured.h"
 
 static void	draw_background(t_image *image, t_scene *scene)
 {
@@ -40,10 +40,10 @@ static void	draw_background(t_image *image, t_scene *scene)
 
 static void	draw_frame(t_view *self, t_scene *scene)
 {
-	int			x;
-	t_player	*player;
-	t_ray		ray;
-	t_line		line;
+	int					x;
+	t_player			*player;
+	t_ray				ray;
+	t_line_textured		line;
 
 	x = 0;
 	player = &scene->player;
@@ -53,9 +53,9 @@ static void	draw_frame(t_view *self, t_scene *scene)
 		ray = (t_ray){};
 		ray_init(&ray, scene);
 		ray_cast(&ray, scene);
-		line = (t_line){};
-		line_init(&line, &ray);
-		line_draw_color(&line, self, x, &ray);
+		line = (t_line_textured){};
+		line_textured_init(&line, &scene->textures, &scene->player, &ray);
+		line_textured_draw(&line, self, x);
 		x++;
 	}
 }
