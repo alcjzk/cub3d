@@ -45,6 +45,7 @@ map_read.c			\
 map_validate.c		\
 keymap.c			\
 line.c				\
+line_textured.c		\
 ray.c				\
 player.c			\
 texture.c			\
