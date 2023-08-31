@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/31 18:59:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 14:49:54 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ void	player_raydir_calc(t_player *self, int x)
 	self->raydir.y += self->plane.y * camera;
 }
 
-t_vec2f	player_velocity(t_player *self, t_keymap *keymap)
+t_vec2f	player_velocity(t_player *self, mlx_t *mlx)
 {
 	t_vec2f	velocity;
 	t_vec2f	direction;
 
 	direction = (t_vec2f){0};
-	if (keymap_key_state(keymap, MLX_KEY_W) == KEY_STATE_DOWN)
+	if (mlx_is_key_down(mlx, MLX_KEY_W))
 		direction.y -= 1;
-	if (keymap_key_state(keymap, MLX_KEY_S) == KEY_STATE_DOWN)
+	if (mlx_is_key_down(mlx, MLX_KEY_S))
 		direction.y += 1;
-	if (keymap_key_state(keymap, MLX_KEY_A) == KEY_STATE_DOWN)
+	if (mlx_is_key_down(mlx, MLX_KEY_A))
 		direction.x -= 1;
-	if (keymap_key_state(keymap, MLX_KEY_D) == KEY_STATE_DOWN)
+	if (mlx_is_key_down(mlx, MLX_KEY_D))
 		direction.x += 1;
 	direction = vec2f_normalize(direction);
 	velocity = vec2f_mul(direction, PLAYER_MOVE_SPEED);
@@ -58,15 +58,15 @@ t_vec2f	player_velocity(t_player *self, t_keymap *keymap)
 	return (velocity);
 }
 
-void	player_update_yaw(t_player *self, t_keymap *keymap)
+void	player_update_yaw(t_player *self, mlx_t *mlx)
 {
-	if (keymap_key_state(keymap, MLX_KEY_LEFT) == KEY_STATE_DOWN)
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
 	{
 		self->yaw -= PLAYER_YAW_SPEED;
 		if (self->yaw < -M_PI)
 			self->yaw += M_PI * 2;
 	}
-	if (keymap_key_state(keymap, MLX_KEY_RIGHT) == KEY_STATE_DOWN)
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 	{
 		self->yaw += PLAYER_YAW_SPEED;
 		if (self->yaw > M_PI)
@@ -74,12 +74,12 @@ void	player_update_yaw(t_player *self, t_keymap *keymap)
 	}
 }
 
-void	player_update(t_player *self, t_keymap *keymap)
+void	player_update(t_player *self, mlx_t *mlx)
 {
 	t_vec2f	velocity;
 
-	player_update_yaw(self, keymap);
-	velocity = player_velocity(self, keymap);
+	player_update_yaw(self, mlx);
+	velocity = player_velocity(self, mlx);
 	self->direction = vec2f_rotate((t_vec2f){0.0, -1.0}, self->yaw);
 	self->plane = vec2f_rotate((t_vec2f){0.66, 0.0}, self->yaw);
 	self->position = vec2f_add(self->position, velocity);
