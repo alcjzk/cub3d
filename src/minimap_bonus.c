@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 16:44:32 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 17:40:21 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,36 @@ BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
 
 void	minimap_player_draw(t_minimap *self, t_player *player)
 {
-	minimap_block_draw(&self->img, player->position.x, player->position.y, (t_color)PLAYER);
+	int len = 1;
+	int	start = 0;
+	for (int i = -4; i < 0; i++)
+	{
+		int j = 0;
+		while (j < len)
+		{
+			image_put_pixel(&self->img,
+				player->position.x * BLOCK_SIZE + j - start,
+				player->position.y * BLOCK_SIZE + i,
+				(t_color)PLAYER);
+			j++;
+		}
+		start--;
+		len += 2;
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		int j = 0;
+		while (j < len)
+		{
+			image_put_pixel(&self->img,
+				player->position.x * BLOCK_SIZE + j - start,
+				player->position.y * BLOCK_SIZE + i,
+				(t_color)PLAYER);
+			j++;
+		}
+		start++;
+		len -= 2;
+	}
 }
 
 void	minimap_update(t_minimap *self, t_scene *scene, t_player *player)
