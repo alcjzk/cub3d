@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:14:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/28 05:37:55 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:13:20 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,5 @@ BOOL	get_elements(t_scene *scene, int fd)
 			break ;
 		line = get_next_line(fd);
 	}
-	if (!scene->texture_options.north) // TODO: What is this for?
-		return (FALSE);
 	return (TRUE);
 }
