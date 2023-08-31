@@ -6,15 +6,15 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/31 14:49:03 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:47:37 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# define PLAYER_YAW_SPEED 0.03
-# define PLAYER_MOVE_SPEED 0.03
+# define PLAYER_YAW_SPEED 2.3
+# define PLAYER_MOVE_SPEED 3.0
 
 # include "MLX42.h"
 # include "vec2f.h"

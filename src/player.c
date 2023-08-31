@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 14:49:54 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:45:48 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_vec2f	player_velocity(t_player *self, mlx_t *mlx)
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 		direction.x += 1;
 	direction = vec2f_normalize(direction);
-	velocity = vec2f_mul(direction, PLAYER_MOVE_SPEED);
+	velocity = vec2f_mul(direction, PLAYER_MOVE_SPEED * mlx->delta_time);
 	velocity = vec2f_rotate(velocity, self->yaw);
 	return (velocity);
 }
@@ -62,13 +62,13 @@ void	player_update_yaw(t_player *self, mlx_t *mlx)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
 	{
-		self->yaw -= PLAYER_YAW_SPEED;
+		self->yaw -= PLAYER_YAW_SPEED * mlx->delta_time;
 		if (self->yaw < -M_PI)
 			self->yaw += M_PI * 2;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 	{
-		self->yaw += PLAYER_YAW_SPEED;
+		self->yaw += PLAYER_YAW_SPEED * mlx->delta_time;
 		if (self->yaw > M_PI)
 			self->yaw -= M_PI * 2;
 	}
