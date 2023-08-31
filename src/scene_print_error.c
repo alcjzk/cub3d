@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_print_error.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:21:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:41:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/28 05:40:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	scene_print_error(t_scene *self)
 {
 	ft_putstr_fd("Error\n", 2);
-	if (!self->north_texture_path)
+	if (!self->texture_options.north)
 		ft_putstr_fd("North_texture_path is misconfigured\n", 2);
-	else if (!self->south_texture_path)
+	else if (!self->texture_options.south)
 		ft_putstr_fd("South_texture_path is misconfigured\n", 2);
-	else if (!self->west_texture_path)
+	else if (!self->texture_options.west)
 		ft_putstr_fd("West_texture_path is misconfigured\n", 2);
-	else if (!self->east_texture_path)
+	else if (!self->texture_options.east)
 		ft_putstr_fd("East_texture_path is misconfigured\n", 2);
 	else if (!self->is_floor_color_set)
 		ft_putstr_fd("Floor_color is misconfigured\n", 2);

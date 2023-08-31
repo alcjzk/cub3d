@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/21 14:56:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/16 23:55:48 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 
 typedef enum e_side
 {
-	EW,
-	NS
+	SIDE_NORTH,
+	SIDE_WEST,
+	SIDE_SOUTH,
+	SIDE_EAST
 }	t_side;
 
 typedef struct s_ray

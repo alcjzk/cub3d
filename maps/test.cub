@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/StoneWall_GRAYSCALE.png
+SO ./textures/StoneWall_NORMAL.png
+WE ./textures/StoneWall000.png
+EA ./textures/StoneWall001.png
 
 F 150,150,150
 C 0,0,255

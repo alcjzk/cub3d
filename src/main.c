@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:43:46 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/28 05:36:46 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 #include "state.h"
 #include "event.h"
 #include "hook.h"
+#include "texture.h"
 #include "main.h"
 #include "libft.h"
 
 int	main(int argc, char **argv)
 {
-	t_state		state;
-	t_scene		scene;
+	t_state				state;
+	t_scene				scene;
 
 	if (argc != 2)
 	{
@@ -42,18 +43,21 @@ int	main(int argc, char **argv)
 		state.view.frame.img,
 		0, 0)
 		== -1)
-		{
-			mlx_terminate(state.mlx);
-			return (EXIT_FAILURE);
-		}
+	{
+		state_destroy(&state);
+		mlx_terminate(state.mlx);
+		return (EXIT_FAILURE);
+	}
 	mlx_close_hook(state.mlx, (mlx_closefunc)on_destroy, &state);
 	mlx_key_hook(state.mlx, (mlx_keyfunc)key_hook, &state);
 	if (!mlx_loop_hook(state.mlx, (void (*)(void *))state_update, &state))
 	{
+		state_destroy(&state);
 		mlx_terminate(state.mlx);
 		return (EXIT_FAILURE);
 	}
 	mlx_loop(state.mlx);
+	state_destroy(&state);
 	mlx_terminate(state.mlx);
 	return (EXIT_SUCCESS);
 }

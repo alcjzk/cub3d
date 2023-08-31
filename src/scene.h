@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:39:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/28 05:36:49 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,19 @@
 # include "bool.h"
 # include "color.h"
 # include "player.h"
+# include "texture.h"
 # include "map.h"
-
 typedef struct s_scene
 {
-	char		*north_texture_path;
-	char		*south_texture_path;
-	char		*west_texture_path;
-	char		*east_texture_path;
-	t_color		floor_color;
-	t_color		ceiling_color;
-	t_map		map;
-	t_player	player;
-	BOOL		is_floor_color_set;
-	BOOL		is_ceiling_color_set;
-	BOOL		is_valid;
+	t_texture_options	texture_options;
+	t_texture_pack		textures;
+	t_color				floor_color;
+	t_color				ceiling_color;
+	t_map				map;
+	t_player			player;
+	BOOL				is_floor_color_set;
+	BOOL				is_ceiling_color_set;
+	BOOL				is_valid;
 }	t_scene;
 
 int		scene_create(t_scene *self, char *file);
