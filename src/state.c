@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/31 15:34:51 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:41:09 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ BOOL	state_create(t_state *self, t_scene *scene)
 	if (!view_create(&self->view, self->mlx))
 		return (FALSE);
 	self->scene = scene;
-	self->keymap = (t_keymap){{0}};
 	self->is_valid = TRUE;
 	return (TRUE);
 }

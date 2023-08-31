@@ -18,7 +18,6 @@
 
 # include "MLX42.h"
 # include "vec2f.h"
-# include "keymap.h"
 # include "bool.h"
 
 typedef struct s_player
