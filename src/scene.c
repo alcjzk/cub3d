@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 11:57:13 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 14:19:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	scene_create(t_scene *self, char *file)
 	self->is_valid = get_elements(self, fd);
 	self->is_valid = map_create(&self->map, fd, self);
 	close(fd);
-	texture_options_validate(&self->texture_options);
+	if (self->is_valid)
+		texture_options_validate(&self->texture_options);
 	self->is_valid = texture_pack_load(&self->textures, &self->texture_options);
 	if (!self->is_valid)
 	{
