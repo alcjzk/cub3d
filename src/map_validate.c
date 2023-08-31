@@ -6,13 +6,12 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/04 17:14:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/25 14:50:11 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "map.h"
-#include "scene.h"
 
 static BOOL	check_wall_is_zero(int y, int x, char **map)
 {
@@ -97,14 +96,14 @@ void	flood_fill(char **map, int y, int x)
 		flood_fill(map, y, x + 1);
 }
 
-BOOL	map_validate_islands(t_map *self, t_scene *scene)
+BOOL	map_validate_islands(t_map *self, t_player *player)
 {
 	int	x;
 	int	y;
 
 	if (!self->is_valid)
 		return (FALSE);
-	flood_fill(self->map, scene->player.position.y, scene->player.position.x);
+	flood_fill(self->map, player->position.y, player->position.x);
 	y = 0;
 	while (self->map[y])
 	{

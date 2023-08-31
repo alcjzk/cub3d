@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/18 15:24:01 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 14:19:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "unistd.h"
 #include "fcntl.h"
 #include "libft.h"
+#include "texture.h"
 
 static int	validate_name(char *file)
 {
@@ -32,14 +33,8 @@ static int	validate_name(char *file)
 
 void	scene_destroy(t_scene *self)
 {
-	if (self->north_texture_path)
-		free(self->north_texture_path);
-	if (self->south_texture_path)
-		free(self->south_texture_path);
-	if (self->west_texture_path)
-		free(self->west_texture_path);
-	if (self->east_texture_path)
-		free(self->east_texture_path);
+	texture_options_free(&self->texture_options);
+	texture_pack_unload(&self->textures);
 	map_destroy(&self->map);
 }
 
@@ -47,7 +42,7 @@ int	scene_create(t_scene *self, char *file)
 {
 	int	fd;
 
-	*self = (t_scene){0};
+	*self = (t_scene){};
 	self->is_valid = TRUE;
 	if (validate_name(file))
 		return (-1);
@@ -57,6 +52,9 @@ int	scene_create(t_scene *self, char *file)
 	self->is_valid = get_elements(self, fd);
 	self->is_valid = map_create(&self->map, fd, self);
 	close(fd);
+	if (self->is_valid)
+		texture_options_validate(&self->texture_options);
+	self->is_valid = texture_pack_load(&self->textures, &self->texture_options);
 	if (!self->is_valid)
 	{
 		scene_print_error(self);

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 16:19:46 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 15:57:24 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,19 @@
 # include "bool.h"
 # include "color.h"
 # include "player.h"
+# include "texture.h"
 # include "map.h"
-# include "image.h"
-
 typedef struct s_scene
 {
-	char		*north_texture_path;
-	char		*south_texture_path;
-	char		*west_texture_path;
-	char		*east_texture_path;
-	t_color		floor_color;
-	BOOL		set_floor_color;
-	t_color		ceiling_color;
-	BOOL		set_ceiling_color;
-	t_map		map;
-	t_player	player;
-	BOOL		is_valid;
+	t_texture_options	texture_options;
+	t_texture_pack		textures;
+	t_color				floor_color;
+	t_color				ceiling_color;
+	t_map				map;
+	t_player			player;
+	BOOL				is_floor_color_set;
+	BOOL				is_ceiling_color_set;
+	BOOL				is_valid;
 }	t_scene;
 
 int		scene_create(t_scene *self, char *file);

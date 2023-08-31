@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/25 16:31:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 16:26:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	state_update(t_state *self)
 {
 	player_update(&self->scene->player, &self->keymap);
 	view_draw(&self->view, self->scene);
-	// minimap_update(&self->scene->minimap, &self->scene->player);
+	minimap_update(&self->minimap, self->scene, &self->scene->player);
 }
