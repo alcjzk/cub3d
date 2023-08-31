@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/28 05:35:28 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:57:13 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	scene_create(t_scene *self, char *file)
 {
 	int	fd;
 
-	*self = (t_scene){0};
+	*self = (t_scene){};
 	self->is_valid = TRUE;
 	if (validate_name(file))
 		return (-1);
