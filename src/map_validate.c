@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:50:11 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 16:06:49 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "player.h"
 #include "map.h"
 
 static BOOL	check_wall_is_zero(int y, int x, char **map)

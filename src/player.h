@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/31 15:47:37 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:05:53 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "MLX42.h"
 # include "vec2f.h"
+# include "map.h"
 # include "bool.h"
 
 typedef struct s_player
@@ -32,7 +33,7 @@ typedef struct s_player
 
 void	player_init(t_player *self, char dir, int y, int x);
 void	player_raydir_calc(t_player *self, int x);
-void	player_update(t_player *self, mlx_t *mlx);
+void	player_update(t_player *self, mlx_t *mlx, t_map *map);
 void	player_update_yaw(t_player *self, mlx_t *mlx);
 t_vec2f	player_velocity(t_player *self, mlx_t *mlx);
 

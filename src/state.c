@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/31 15:41:09 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:05:56 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	state_update(t_state *self)
 {
 	if (mlx_is_key_down(self->mlx, MLX_KEY_ESCAPE))
 		return on_close(self->mlx);
-	player_update(&self->scene->player, self->mlx);
+	player_update(&self->scene->player, self->mlx, &self->scene->map);
 	view_draw(&self->view, self->scene);
 }

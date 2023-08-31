@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:50:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/08/31 16:06:36 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-#include "bool.h"
 #include <stdlib.h>
-#include "player.h"
+#include "bool.h"
 
 typedef struct s_scene	t_scene;
+typedef struct s_player	t_player;
 
 typedef struct s_map
 {

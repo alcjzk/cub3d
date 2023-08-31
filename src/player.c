@@ -6,12 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 15:45:48 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:25:55 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "player.h"
+#include "util.h"
 #include "state.h"
 
 void	player_init(t_player *self, char dir, int y, int x)
@@ -74,7 +75,7 @@ void	player_update_yaw(t_player *self, mlx_t *mlx)
 	}
 }
 
-void	player_update(t_player *self, mlx_t *mlx)
+void	player_update(t_player *self, mlx_t *mlx, t_map *map)
 {
 	t_vec2f	velocity;
 
@@ -83,4 +84,6 @@ void	player_update(t_player *self, mlx_t *mlx)
 	self->direction = vec2f_rotate((t_vec2f){0.0, -1.0}, self->yaw);
 	self->plane = vec2f_rotate((t_vec2f){0.66, 0.0}, self->yaw);
 	self->position = vec2f_add(self->position, velocity);
+	self->position.x = clampf(self->position.x, 0.5f, map->width - 0.5f);
+	self->position.y = clampf(self->position.y, 0.5f, map->height - 0.5f);
 }

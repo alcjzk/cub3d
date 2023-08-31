@@ -46,9 +46,11 @@ map_validate.c		\
 line.c				\
 line_textured.c		\
 ray.c				\
+ray_util.c			\
 player.c			\
 texture.c			\
 scene_print_error.c	\
+util.c				\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)

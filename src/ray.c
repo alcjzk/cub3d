@@ -6,20 +6,21 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:49:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/28 05:30:15 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:24:56 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "ray.h"
 
 static void	calc_deltadistance(t_ray *self, t_player *player)
 {
 	if (player->raydir.x == 0)
-		self->delta_dist.x = 1e30;
+		self->delta_dist.x = INFINITY;
 	else
 		self->delta_dist.x = 1 / player->raydir.x;
 	if (player->raydir.y == 0)
-		self->delta_dist.y = 1e30;
+		self->delta_dist.y = INFINITY;
 	else
 		self->delta_dist.y = 1 / player->raydir.y;
 	if (self->delta_dist.x < 0)
@@ -56,17 +57,9 @@ static void	calc_steps(t_ray *self, t_player *player)
 	}
 }
 
-static void	calc_perp_wall_dist(t_ray *self)
-{
-	if (self->side == SIDE_EAST || self->side == SIDE_WEST)
-		self->perp_wall_dist = (self->side_dist.x - self->delta_dist.x);
-	else
-		self->perp_wall_dist = (self->side_dist.y - self->delta_dist.y);
-}
-
 void	ray_cast(t_ray *self, t_scene *scene)
 {
-	while (!self->hit)
+	while (TRUE)
 	{
 		if (self->side_dist.x < self->side_dist.y)
 		{
@@ -86,10 +79,10 @@ void	ray_cast(t_ray *self, t_scene *scene)
 			else
 				self->side = SIDE_SOUTH;
 		}
-		if (scene->map.map[(int)self->map_pos.y][(int)self->map_pos.x] > '0')
-			self->hit = 1;
+		if (ray_at_end(self, &scene->map))
+			break ;
 	}
-	calc_perp_wall_dist(self);
+	self->perp_wall_dist = ray_perpendicular_wall_distance(self);
 }
 
 void	ray_init(t_ray *self, t_scene *scene)
