@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/03 19:34:15 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:40:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "bool.h"
 # include "view.h"
 # include "scene.h"
-# include "keymap.h"
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
@@ -28,7 +27,6 @@ typedef struct s_state
 	mlx_t		*mlx;
 	t_view		view;
 	t_scene		*scene;
-	t_keymap	keymap;
 	BOOL		is_valid;
 }	t_state;
 
