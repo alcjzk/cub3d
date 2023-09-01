@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/16 23:55:48 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:26:26 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ typedef struct s_ray
 	t_vec2f		map_pos;
 	t_vec2f		step;
 	float		perp_wall_dist;
-	t_side		hit;
-	int			side;
+	t_side		side;
 }	t_ray;
 
 void	ray_init(t_ray *self, t_scene *scene);
 void	ray_cast(t_ray *self, t_scene *scene);
+float	ray_perpendicular_wall_distance(t_ray *self);
+BOOL	ray_at_end(t_ray *self, t_map *map);
 
 #endif

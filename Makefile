@@ -43,13 +43,14 @@ get_elements.c		\
 map.c				\
 map_read.c			\
 map_validate.c		\
-keymap.c			\
 line.c				\
 line_textured.c		\
 ray.c				\
+ray_util.c			\
 player.c			\
 texture.c			\
 scene_print_error.c	\
+util.c				\
 minimap_bonus.c		\
 main.c
 

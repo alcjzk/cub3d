@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 15:57:01 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/01 13:57:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include "scene.h"
 #include "state.h"
-#include "event.h"
 #include "hook.h"
 #include "texture.h"
 #include "main.h"
@@ -45,19 +44,15 @@ int	main(int argc, char **argv)
 		== -1)
 	{
 		state_destroy(&state);
-		mlx_terminate(state.mlx);
 		return (EXIT_FAILURE);
 	}
-	mlx_close_hook(state.mlx, (mlx_closefunc)on_destroy, &state);
-	mlx_key_hook(state.mlx, (mlx_keyfunc)key_hook, &state);
+	mlx_close_hook(state.mlx, (mlx_closefunc)on_close, state.mlx);
 	if (!mlx_loop_hook(state.mlx, (void (*)(void *))state_update, &state))
 	{
 		state_destroy(&state);
-		mlx_terminate(state.mlx);
 		return (EXIT_FAILURE);
 	}
 	mlx_loop(state.mlx);
 	state_destroy(&state);
-	mlx_terminate(state.mlx);
 	return (EXIT_SUCCESS);
 }

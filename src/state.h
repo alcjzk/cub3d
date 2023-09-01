@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/25 16:24:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/01 13:59:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "bool.h"
 # include "view.h"
 # include "scene.h"
-# include "keymap.h"
 # include "minimap_bonus.h"
 
 # define WINDOW_WIDTH	800
@@ -29,7 +28,6 @@ typedef struct s_state
 	mlx_t		*mlx;
 	t_view		view;
 	t_scene		*scene;
-	t_keymap	keymap;
 	t_minimap	minimap;
 	BOOL		is_valid;
 }	t_state;
