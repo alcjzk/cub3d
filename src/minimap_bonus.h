@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:24:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 16:16:33 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/06 12:17:41 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "image.h"
 
 # define BLOCK_SIZE 8
-# define BORDER_OFFSET 2
+# define BORDER_OFFSET 1
 # define BORDER 0xFF0000FF
 # define BACKGROUND 0xFFFF0000
 # define WALL 0xFF000000
@@ -25,12 +25,13 @@
 
 typedef struct s_minimap
 {
+	t_scene	*scene;
 	size_t	width;
 	size_t	height;
 	t_image	img;
 } t_minimap;
 
 BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx);
-void	minimap_update(t_minimap *self, t_scene *scene, t_player *player);
+void	minimap_update(t_minimap *self);
 
 #endif
