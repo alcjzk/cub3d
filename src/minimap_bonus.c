@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/06 12:23:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/07 12:27:54 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,37 @@
 #include "minimap_bonus.h"
 #include "state.h"
 
-static t_color	get_color_of_pixel(t_minimap *self, size_t map_row, size_t map_col)
-{
-	if (map_row == self->height / 2 - BORDER_OFFSET * 2 && map_col == self->width / 2 - BORDER_OFFSET * 2)
-		return ((t_color)PLAYER);
-	return ((t_color)BACKGROUND);
-}
-
 void	minimap_background_draw(t_minimap *self)
 {
-	size_t	map_row;
-	size_t	map_col;
+	size_t	img_pixel_x;
+	size_t	img_pixel_y;
 
-	map_row = 0;
-	while (map_row < self->height)
+	img_pixel_y = 0;
+	while (img_pixel_y < self->height)
 	{
-		map_col = 0;
-		while (map_col < self->width)
+		img_pixel_x = 0;
+		while (img_pixel_x < self->width)
 		{
-			if (map_row - BORDER_OFFSET < 0 ||
-				map_row >= self->height - BORDER_OFFSET ||
-				map_col - BORDER_OFFSET < 0 ||
-				map_col >= self->width - BORDER_OFFSET)
+			if (img_pixel_x < BORDER_OFFSET ||
+				img_pixel_y >= self->height - BORDER_OFFSET ||
+				img_pixel_y < BORDER_OFFSET ||
+				img_pixel_x >= self->width - BORDER_OFFSET)
 				image_put_pixel(&self->img,
-						map_col,
-						map_row,
+						img_pixel_x,
+						img_pixel_y,
 						(t_color)BORDER);
 			else
 				image_put_pixel(&self->img,
-						map_col,
-						map_row,
-						get_color_of_pixel(self, map_row, map_col));
-			map_col++;
+						img_pixel_x,
+						img_pixel_y,
+						(t_color)BACKGROUND);
+			img_pixel_x++;
 		}
-		map_row++;
+		img_pixel_y++;
 	}
 }
 
+#include <stdio.h>
 void	minimap_wall_draw(t_minimap *self, float start_x, float start_y)
 {
 	size_t	img_y;
@@ -58,25 +52,28 @@ void	minimap_wall_draw(t_minimap *self, float start_x, float start_y)
 	float	map_x;
 	float	map_y;
 
-	img_y = 0;
-	map_y = start_y;
-	while (img_y < self->height- BORDER_OFFSET * 2)
+	img_y = BORDER_OFFSET;
+	map_y = start_y - 0.5f;
+	while (img_y < self->height - BORDER_OFFSET)
 	{
-		img_x = 0;
+		img_x = BORDER_OFFSET;
 		map_x = start_x;
-		while (img_x < self->width- BORDER_OFFSET * 2)
+		while (img_x < self->width - BORDER_OFFSET)
 		{
-			if ((size_t)map_y < self->scene->map.height && (size_t)map_x < self->scene->map.width)
-				if (self->scene->map.map[(size_t)map_y][(size_t)map_x] == '1')
-					image_put_pixel(&self->img,
-							img_x,
-							img_y,
-							(t_color)WALL);
+			if (map_y >= 0 && map_x >= 0)
+			{
+				if ((size_t)map_y < self->scene->map.height && (size_t)map_x < self->scene->map.width)
+					if (self->scene->map.map[(size_t)map_y][(size_t)map_x] == '1')
+						image_put_pixel(&self->img,
+								img_x,
+								img_y,
+								(t_color)WALL);
+			}
 			img_x++;
-			map_x += 0.125f;
+			map_x += 1.0f / BLOCK_SIZE;
 		}
 		img_y++;
-		map_y += 0.125f;
+		map_y += 1.0f / BLOCK_SIZE;
 	}
 }
 
@@ -88,6 +85,29 @@ float	get_x(size_t minimap_width, t_player *player)
 float	get_y(size_t minimap_height, t_player *player)
 {
 	return (player->position.y - minimap_height / BLOCK_SIZE / 2);
+}
+
+void	minimap_player_draw(t_minimap *self)
+{
+	size_t	middle_x;
+	size_t	middle_y;
+
+	middle_y = self->height / 2 - BORDER_OFFSET * 2;
+	middle_x = self->width / 2 - BORDER_OFFSET * 2;
+
+	image_put_pixel(&self->img, middle_x, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x - 1, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x + 1, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x - 2, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x + 2, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x - 3, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x + 3, middle_y, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x, middle_y - 1, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x, middle_y + 1, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x, middle_y - 2, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x, middle_y + 2, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x, middle_y - 3, (t_color)PLAYER);
+	image_put_pixel(&self->img, middle_x, middle_y + 3, (t_color)PLAYER);
 }
 
 BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
@@ -108,6 +128,7 @@ BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
 	mlx_set_instance_depth(self->img.img->instances, 1);
 	minimap_background_draw(self);
 	minimap_wall_draw(self, get_x(self->width, &self->scene->player), get_y(self->height, &self->scene->player));
+	minimap_player_draw(self);
 	return (TRUE);
 }
 
@@ -115,4 +136,5 @@ void	minimap_update(t_minimap *self)
 {
 	minimap_background_draw(self);
 	minimap_wall_draw(self, get_x(self->width, &self->scene->player), get_y(self->height, &self->scene->player));
+	minimap_player_draw(self);
 }
