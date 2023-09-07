@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 12:27:54 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/07 12:59:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,20 @@ void	minimap_player_draw(t_minimap *self)
 {
 	size_t	middle_x;
 	size_t	middle_y;
+	int		i;
 
 	middle_y = self->height / 2 - BORDER_OFFSET * 2;
 	middle_x = self->width / 2 - BORDER_OFFSET * 2;
 
-	image_put_pixel(&self->img, middle_x, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x - 1, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x + 1, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x - 2, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x + 2, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x - 3, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x + 3, middle_y, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x, middle_y - 1, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x, middle_y + 1, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x, middle_y - 2, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x, middle_y + 2, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x, middle_y - 3, (t_color)PLAYER);
-	image_put_pixel(&self->img, middle_x, middle_y + 3, (t_color)PLAYER);
+	i = 2;
+	while (++i <= 20)
+		image_put_pixel(&self->img, middle_x + self->scene->player.direction.x * i + 0.5f, middle_y + self->scene->player.direction.y * i + 0.5f, (t_color)BORDER);
+	i = -4;
+	while (++i <= 3)
+		image_put_pixel(&self->img, middle_x + i, middle_y, (t_color)PLAYER);
+	i = -4;
+	while (++i <= 3)
+		image_put_pixel(&self->img, middle_x, middle_y + i, (t_color)PLAYER);
 }
 
 BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)

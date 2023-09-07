@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:24:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 11:53:45 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/07 12:48:01 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 # define BLOCK_SIZE 16
 # define BORDER_OFFSET 1
-# define BORDER 0xFF0000FF
-# define BACKGROUND 0xFFFF0000
-# define WALL 0xFF000000
-# define PLAYER 0xFF0000FF
+# define BORDER 0xFF6A61BF
+# define BACKGROUND 0xFF6A564C
+# define WALL 0xFF40342E
+# define PLAYER 0xFF8CBEA3
 
 typedef struct s_minimap
 {
