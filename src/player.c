@@ -6,14 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 19:25:55 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:14:09 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "player.h"
-#include "util.h"
 #include "state.h"
+#include "util.h"
 
 void	player_init(t_player *self, char dir, int y, int x)
 {
@@ -59,28 +59,34 @@ t_vec2f	player_velocity(t_player *self, mlx_t *mlx)
 	return (velocity);
 }
 
-void	player_update_yaw(t_player *self, mlx_t *mlx)
+#ifndef BONUS_FEATURES
+
+void	player_update_yaw(t_player *self, t_state *state)
 {
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(state->mlx, MLX_KEY_LEFT))
 	{
-		self->yaw -= PLAYER_YAW_SPEED * mlx->delta_time;
+		self->yaw -= PLAYER_YAW_SPEED * state->mlx->delta_time;
 		if (self->yaw < -M_PI)
 			self->yaw += M_PI * 2;
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(state->mlx, MLX_KEY_RIGHT))
 	{
-		self->yaw += PLAYER_YAW_SPEED * mlx->delta_time;
+		self->yaw += PLAYER_YAW_SPEED * state->mlx->delta_time;
 		if (self->yaw > M_PI)
 			self->yaw -= M_PI * 2;
 	}
 }
 
-void	player_update(t_player *self, mlx_t *mlx, t_map *map)
+#endif
+
+void	player_update(t_player *self, t_state *state)
 {
 	t_vec2f	velocity;
+	t_map	*map;
 
-	player_update_yaw(self, mlx);
-	velocity = player_velocity(self, mlx);
+	map = &state->scene->map;
+	player_update_yaw(self, state);
+	velocity = player_velocity(self, state->mlx);
 	self->direction = vec2f_rotate((t_vec2f){0.0, -1.0}, self->yaw);
 	self->plane = vec2f_rotate((t_vec2f){0.66, 0.0}, self->yaw);
 	self->position = vec2f_add(self->position, velocity);

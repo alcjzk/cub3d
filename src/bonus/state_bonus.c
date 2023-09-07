@@ -1,52 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   state_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 17:48:02 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/09/07 18:50:26 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
-#include "view.h"
 #include "hook.h"
-#include "state.h"
-
-// TODO: Proper use of .is_valid
-BOOL	state_create(t_state *self, t_scene *scene)
-{
-	*self = (t_state){0};
-	self->mlx = mlx_init(
-			WINDOW_WIDTH,
-			WINDOW_HEIGHT,
-			WINDOW_TITLE,
-			FALSE);
-	if (!self->mlx)
-		return (FALSE);
-	if (!view_create(&self->view, self->mlx))
-		return (FALSE);
-	self->scene = scene;
-	self->is_valid = TRUE;
-	return (TRUE);
-}
-
-void	state_destroy(t_state *self)
-{
-	scene_destroy(self->scene);
-	mlx_terminate(self->mlx);
-}
-
-#ifndef BONUS_FEATURES
+#include "mouse_bonus.h" 
+#include "state_bonus.h"
 
 void	state_update(t_state *self)
 {
 	if (mlx_is_key_down(self->mlx, MLX_KEY_ESCAPE))
 		return (on_close(self->mlx));
+	if (mlx_is_mouse_down(self->mlx, MLX_MOUSE_BUTTON_LEFT))
+	{
+		if (!self->is_mouse_captured)
+			self->is_mouse_captured = mouse_try_capture(self->mlx);
+	}
+	else if (mlx_is_mouse_down(self->mlx, MLX_MOUSE_BUTTON_RIGHT))
+	{
+		if (self->is_mouse_captured)
+		{
+			mouse_release(self->mlx);
+			self->is_mouse_captured = FALSE;
+		}	
+	}
 	player_update(&self->scene->player, self);
 	view_draw(&self->view, self->scene);
 }
-
-#endif

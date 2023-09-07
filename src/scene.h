@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/28 05:36:49 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:49:00 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include "bool.h"
 # include "color.h"
-# include "player.h"
 # include "texture.h"
 # include "map.h"
+
+typedef struct s_player	t_player;
+
 typedef struct s_scene
 {
 	t_texture_options	texture_options;
