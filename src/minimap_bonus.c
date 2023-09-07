@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 12:59:43 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/07 15:08:10 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	minimap_wall_draw(t_minimap *self, float start_x, float start_y)
 	float	map_y;
 
 	img_y = BORDER_OFFSET;
-	map_y = start_y - 0.5f;
+	map_y = start_y;
 	while (img_y < self->height - BORDER_OFFSET)
 	{
 		img_x = BORDER_OFFSET;
@@ -93,8 +93,8 @@ void	minimap_player_draw(t_minimap *self)
 	size_t	middle_y;
 	int		i;
 
-	middle_y = self->height / 2 - BORDER_OFFSET * 2;
-	middle_x = self->width / 2 - BORDER_OFFSET * 2;
+	middle_y = self->height / 2 - 1;
+	middle_x = self->width / 2 - 1;
 
 	i = 2;
 	while (++i <= 20)
