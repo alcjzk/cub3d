@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 15:08:10 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/08 11:44:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ void	minimap_background_draw(t_minimap *self)
 	}
 }
 
-#include <stdio.h>
-void	minimap_wall_draw(t_minimap *self, float start_x, float start_y)
+void	minimap_wall_draw(t_minimap *self, t_scene *scene, float start_x, float start_y)
 {
 	size_t	img_y;
 	size_t	img_x;
@@ -62,8 +61,8 @@ void	minimap_wall_draw(t_minimap *self, float start_x, float start_y)
 		{
 			if (map_y >= 0 && map_x >= 0)
 			{
-				if ((size_t)map_y < self->scene->map.height && (size_t)map_x < self->scene->map.width)
-					if (self->scene->map.map[(size_t)map_y][(size_t)map_x] == '1')
+				if ((size_t)map_y < scene->map.height && (size_t)map_x < scene->map.width)
+					if (scene->map.map[(size_t)map_y][(size_t)map_x] == '1')
 						image_put_pixel(&self->img,
 								img_x,
 								img_y,
@@ -79,15 +78,15 @@ void	minimap_wall_draw(t_minimap *self, float start_x, float start_y)
 
 float	get_x(size_t minimap_width, t_player *player)
 {
-	return (player->position.x - minimap_width / BLOCK_SIZE / 2);
+	return (player->position.x - minimap_width / BLOCK_SIZE / 2 - 0.2f);
 }
 
 float	get_y(size_t minimap_height, t_player *player)
 {
-	return (player->position.y - minimap_height / BLOCK_SIZE / 2);
+	return (player->position.y - minimap_height / BLOCK_SIZE / 2 - 0.6f);
 }
 
-void	minimap_player_draw(t_minimap *self)
+void	minimap_player_draw(t_minimap *self, t_scene *scene)
 {
 	size_t	middle_x;
 	size_t	middle_y;
@@ -98,7 +97,7 @@ void	minimap_player_draw(t_minimap *self)
 
 	i = 2;
 	while (++i <= 20)
-		image_put_pixel(&self->img, middle_x + self->scene->player.direction.x * i + 0.5f, middle_y + self->scene->player.direction.y * i + 0.5f, (t_color)BORDER);
+		image_put_pixel(&self->img, middle_x + scene->player.direction.x * i + 0.5f, middle_y + scene->player.direction.y * i + 0.5f, (t_color)BORDER);
 	i = -4;
 	while (++i <= 3)
 		image_put_pixel(&self->img, middle_x + i, middle_y, (t_color)PLAYER);
@@ -109,7 +108,6 @@ void	minimap_player_draw(t_minimap *self)
 
 BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
 {
-	self->scene = scene;
 	self->width = WINDOW_WIDTH / 4 + BORDER_OFFSET * 2;
 	self->height =  WINDOW_HEIGHT / 4 + BORDER_OFFSET * 2;
 	if (!image_create(&self->img, mlx, self->width, self->height))
@@ -124,14 +122,14 @@ BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
 	}
 	mlx_set_instance_depth(self->img.img->instances, 1);
 	minimap_background_draw(self);
-	minimap_wall_draw(self, get_x(self->width, &self->scene->player), get_y(self->height, &self->scene->player));
-	minimap_player_draw(self);
+	minimap_wall_draw(self, scene, get_x(self->width, &scene->player), get_y(self->height, &scene->player));
+	minimap_player_draw(self, scene);
 	return (TRUE);
 }
 
-void	minimap_update(t_minimap *self)
+void	minimap_update(t_minimap *self, t_scene *scene)
 {
 	minimap_background_draw(self);
-	minimap_wall_draw(self, get_x(self->width, &self->scene->player), get_y(self->height, &self->scene->player));
-	minimap_player_draw(self);
+	minimap_wall_draw(self, scene, get_x(self->width, &scene->player), get_y(self->height, &scene->player));
+	minimap_player_draw(self, scene);
 }
