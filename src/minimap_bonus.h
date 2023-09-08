@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:24:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/08 11:40:37 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/08 13:33:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "image.h"
 
 # define BLOCK_SIZE 16
-# define BORDER_OFFSET 1
+# define BORDER_OFFSET 3
 # define BORDER 0xFF6A61BF
 # define BACKGROUND 0xFF6A564C
 # define WALL 0xFF40342E
