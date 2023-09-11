@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 17:32:43 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/12 01:58:51 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #  include "view.h"
 #  include "scene.h"
 
-#  define WINDOW_WIDTH	800
-#  define WINDOW_HEIGHT	600
+#  define WINDOW_WIDTH	1600
+#  define WINDOW_HEIGHT	1200
 #  define WINDOW_TITLE	"Cub3D"
 
 typedef struct s_state
