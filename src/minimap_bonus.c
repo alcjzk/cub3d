@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/08 13:30:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/12 12:34:14 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ void	minimap_wall_draw(t_minimap *self, t_scene *scene, float start_x, float sta
 
 float	get_x(size_t minimap_width, t_player *player)
 {
-	return (player->position.x - (minimap_width - BORDER_OFFSET * 2) / BLOCK_SIZE / 2);
+	return (player->position.x - ((float)minimap_width - BORDER_OFFSET * 2) / BLOCK_SIZE / 2);
 }
 
 float	get_y(size_t minimap_height, t_player *player)
 {
-	return (player->position.y - (minimap_height - BORDER_OFFSET * 2) / BLOCK_SIZE / 2);
+	return (player->position.y - ((float)minimap_height - BORDER_OFFSET * 2) / BLOCK_SIZE / 2);
 }
 
 void	minimap_player_draw(t_minimap *self, t_scene *scene)
