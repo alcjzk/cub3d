@@ -51,11 +51,11 @@ player.c			\
 texture.c			\
 scene_print_error.c	\
 util.c				\
-minimap_bonus.c		\
-minimap_wall_draw_bonus.c	\
 main.c
 
 SRCS_BONUS =		\
+minimap_bonus.c		\
+minimap_wall_draw_bonus.c	\
 mouse_bonus.c		\
 player_bonus.c		\
 state_bonus.c
