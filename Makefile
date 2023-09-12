@@ -52,6 +52,7 @@ texture.c			\
 scene_print_error.c	\
 util.c				\
 minimap_bonus.c		\
+minimap_wall_draw_bonus.c	\
 main.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:24:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/08 13:33:17 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/12 13:00:38 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ typedef struct s_minimap
 
 BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx);
 void	minimap_update(t_minimap *self, t_scene *scene);
+void	minimap_wall_draw(t_minimap *self, t_scene *scene);
 
 #endif
