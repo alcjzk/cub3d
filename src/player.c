@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 19:14:09 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/12 05:46:02 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void	player_update_yaw(t_player *self, t_state *state)
 	}
 }
 
-#endif
-
 void	player_update(t_player *self, t_state *state)
 {
 	t_vec2f	velocity;
@@ -93,3 +91,5 @@ void	player_update(t_player *self, t_state *state)
 	self->position.x = clampf(self->position.x, 0.5f, map->width - 0.5f);
 	self->position.y = clampf(self->position.y, 0.5f, map->height - 0.5f);
 }
+
+#endif
