@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 15:57:24 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/12 15:40:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include "bool.h"
 # include "color.h"
-# include "player.h"
 # include "texture.h"
 # include "map.h"
+
+typedef struct s_player	t_player;
+
 typedef struct s_scene
 {
 	t_texture_options	texture_options;

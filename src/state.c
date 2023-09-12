@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/08 11:43:10 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/12 15:40:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,15 @@ void	state_destroy(t_state *self)
 	mlx_terminate(self->mlx);
 }
 
+#ifndef BONUS_FEATURES
+
 void	state_update(t_state *self)
 {
 	if (mlx_is_key_down(self->mlx, MLX_KEY_ESCAPE))
-		return on_close(self->mlx);
-	player_update(&self->scene->player, self->mlx, &self->scene->map);
+		return (on_close(self->mlx));
+	player_update(&self->scene->player, self);
 	view_draw(&self->view, self->scene);
 	minimap_update(&self->minimap, self->scene);
 }
+
+#endif

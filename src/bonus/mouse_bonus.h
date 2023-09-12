@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   mouse_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 18:46:30 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/09/07 17:32:18 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/09/07 17:53:34 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef MOUSE_BONUS_H
+# define MOUSE_BONUS_H
 
-# include <stdlib.h>
+# include "MLX42.h"
 # include "bool.h"
 
-# include "player.h"
-
-typedef struct s_scene	t_scene;
-
-typedef struct s_map
-{
-	char	**map;
-	size_t	width;
-	size_t	height;
-	BOOL	is_valid;
-}	t_map;
-
-void	map_destroy(t_map *self);
-BOOL	map_create(t_map *self, int fd, t_scene *scene);
-BOOL	map_read(t_map *self, int fd, char *line);
-BOOL	map_validate_islands(t_map *self, t_player *player);
-BOOL	map_validate_walls(t_map *self);
+void	mouse_align_center(mlx_t *mlx);
+BOOL	mouse_is_inside_window(mlx_t *mlx);
+BOOL	mouse_try_capture(mlx_t *mlx);
+void	mouse_release(mlx_t *mlx);
 
 #endif

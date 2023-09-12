@@ -24,7 +24,7 @@ override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) $(FWK:%=-framework %)
 
 # Sources
-SRCS =				\
+SRCS_MANDATORY =	\
 state.c				\
 hook.c				\
 image.c				\
@@ -55,10 +55,22 @@ minimap_bonus.c		\
 minimap_wall_draw_bonus.c	\
 main.c
 
+SRCS_BONUS =		\
+mouse_bonus.c		\
+player_bonus.c		\
+state_bonus.c
+
+ifeq ($(BONUS_FEATURES), 1)
+	SRCS = $(SRCS_MANDATORY) $(SRCS_BONUS)
+	override CFLAGS += -D BONUS_FEATURES
+else
+	SRCS = $(SRCS_MANDATORY)
+endif
+
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 
-.PHONY: all clean fclean re obj_dir $(LIBFT) norm init
+.PHONY: all clean fclean re obj_dir $(LIBFT) norm init bonus
 
 all: $(NAME)
 
@@ -80,6 +92,9 @@ $(NAME): $(OBJS) | $(LIBFT)
 
 $(OBJ_DIR)%.o: %.c | obj_dir $(MLX42)
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+bonus:
+	make BONUS_FEATURES=1
 
 run: all
 	./$(NAME)
