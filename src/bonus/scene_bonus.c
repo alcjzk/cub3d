@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:34:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 15:27:11 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/13 17:58:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "texture.h"
 #include "vector.h"
 #include "get_next_line.h"
-#include <stdio.h>
 
 static void	buffer_free(t_vector *buffer)
 {
@@ -58,17 +57,56 @@ BOOL	scene_read(int fd, char ***buffer)
 	return (TRUE);
 }
 
+int	scene_identifier_check(char *line)
+{
+	const char	*identifier[] = {"NO", "SO", "WE", "EA", "DR", "F", "C", NULL};
+	int			i;
+
+	i = 0;
+	while (identifier[i])
+	{
+		if (!ft_strncmp(line, identifier[i], ft_strlen(identifier[i])))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+void	set_setters(func *identifier_functions)
+{
+	identifier_functions[0] = &scene_set_north;
+	identifier_functions[1] = &scene_set_south;
+	identifier_functions[2] = &scene_set_west;
+	identifier_functions[3] = &scene_set_east;
+	identifier_functions[4] = &scene_set_door;
+	identifier_functions[5] = &scene_set_floor_color;
+	identifier_functions[6] = &scene_set_ceiling_color;
+}
+
 BOOL	scene_set_textures(t_scene *self, char **buffer)
 {
 	size_t	i;
+	int		function_index;
+	func	identifier_functions[7];
+	char	*dup;
 
 	i = 0;
 	if (!self->is_valid)
 		return (FALSE);
+	set_setters(identifier_functions);
 	while (buffer[i])
 	{
 		buffer[i][ft_strlen(buffer[i]) - 1] = '\0';
-		printf("%s\n", buffer[i++]);
+		function_index = scene_identifier_check(buffer[i]);
+		if (function_index != -1)
+		{
+			dup = ft_strdup(buffer[i]);
+			if (!dup)
+				return (FALSE);
+			if (!identifier_functions[function_index](self, dup))
+				printf("dup\n");
+		}
+		i++;
 	}
 	return (TRUE);
 }
