@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:34:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 17:58:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/13 18:33:15 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ BOOL	scene_set_textures(t_scene *self, char **buffer)
 	size_t	i;
 	int		function_index;
 	func	identifier_functions[7];
-	char	*dup;
 
 	i = 0;
 	if (!self->is_valid)
@@ -100,10 +99,7 @@ BOOL	scene_set_textures(t_scene *self, char **buffer)
 		function_index = scene_identifier_check(buffer[i]);
 		if (function_index != -1)
 		{
-			dup = ft_strdup(buffer[i]);
-			if (!dup)
-				return (FALSE);
-			if (!identifier_functions[function_index](self, dup))
+			if (!identifier_functions[function_index](self, buffer[i]))
 				printf("dup\n");
 		}
 		i++;
