@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:03:49 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/12 02:37:37 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:43:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "bool.h"
 # include "view.h"
 # include "scene.h"
+# include "minimap_bonus.h"
 
 # define WINDOW_WIDTH	1600
 # define WINDOW_HEIGHT	1200
@@ -29,6 +30,7 @@ typedef struct s_state
 	t_view		view;
 	t_scene		*scene;
 	BOOL		is_mouse_captured;
+	t_minimap	minimap;
 	BOOL		is_valid;
 }	t_state;
 

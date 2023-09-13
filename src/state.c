@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 17:48:02 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:41:50 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include "view.h"
 #include "hook.h"
 #include "state.h"
+
+void	state_destroy(t_state *self)
+{
+	scene_destroy(self->scene);
+	mlx_terminate(self->mlx);
+}
+
+#ifndef BONUS_FEATURES
 
 // TODO: Proper use of .is_valid
 BOOL	state_create(t_state *self, t_scene *scene)
@@ -32,14 +40,6 @@ BOOL	state_create(t_state *self, t_scene *scene)
 	self->is_valid = TRUE;
 	return (TRUE);
 }
-
-void	state_destroy(t_state *self)
-{
-	scene_destroy(self->scene);
-	mlx_terminate(self->mlx);
-}
-
-#ifndef BONUS_FEATURES
 
 void	state_update(t_state *self)
 {
