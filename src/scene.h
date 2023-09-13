@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/07 18:49:00 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:02:53 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int		get_color(t_scene *scene, char *line);
 BOOL	get_elements(t_scene *scene, int fd);
 void	scene_destroy(t_scene *self);
 void	scene_print_error(t_scene *self);
+int		validate_name(char *file);
 
 #endif

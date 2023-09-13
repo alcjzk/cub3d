@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 14:19:19 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:02:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "texture.h"
 
-static int	validate_name(char *file)
+int	validate_name(char *file)
 {
 	int	i;
 
@@ -37,6 +37,8 @@ void	scene_destroy(t_scene *self)
 	texture_pack_unload(&self->textures);
 	map_destroy(&self->map);
 }
+
+#ifndef BONUS_FEATURES
 
 int	scene_create(t_scene *self, char *file)
 {
@@ -63,3 +65,5 @@ int	scene_create(t_scene *self, char *file)
 	}
 	return (0);
 }
+
+#endif

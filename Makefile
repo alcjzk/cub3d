@@ -54,6 +54,7 @@ util.c				\
 main.c
 
 SRCS_BONUS =		\
+scene_bonus.c		\
 mouse_bonus.c		\
 player_bonus.c		\
 state_bonus.c
