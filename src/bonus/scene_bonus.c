@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:34:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 14:22:06 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/13 15:27:11 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,49 +29,54 @@ static void	buffer_free(t_vector *buffer)
 	vector_free(buffer);
 }
 
-t_vector	*scene_read(int fd)
+BOOL	scene_read(int fd, char ***buffer)
 {
-	t_vector	*buffer;
+	t_vector	*vec;
 	char		*line;
 
+	vec = vector_with_capacity(1, sizeof(char *));
+	if (!vec)
+		return (FALSE);
 	line = get_next_line(fd);
-	printf("Got line:\n%s", line);
-	if (line)
-	{
-		buffer = vector_with_capacity(1, sizeof(char *));
-		if (!buffer)
-		{
-			free(line);
-			return (NULL);
-		}
-	}
 	while (line)
 	{
-		if (!vector_push(buffer, &line))
+		if (!vector_push(vec, &line))
 		{
-			buffer_free(buffer);
+			buffer_free(vec);
 			free(line);
-			return (NULL);
+			return (FALSE);
 		}
 		line = get_next_line(fd);
-		printf("Got line:\n%sbuf len: %zu\n", line, buffer->length);
 	}
-	return (buffer);
+	if (!vector_push(vec, &line))
+	{
+		buffer_free(vec);
+		return (FALSE);
+	}
+	*buffer = (char **)vec->buffer;
+	free(vec);
+	return (TRUE);
 }
 
-BOOL	set_textures(t_scene *self, t_vector *buffer)
+BOOL	scene_set_textures(t_scene *self, char **buffer)
 {
+	size_t	i;
+
+	i = 0;
 	if (!self->is_valid)
 		return (FALSE);
-	for (size_t i = 0; i < buffer->length; i++)
-		printf("%s", ((char **)buffer->buffer)[i]);
+	while (buffer[i])
+	{
+		buffer[i][ft_strlen(buffer[i]) - 1] = '\0';
+		printf("%s\n", buffer[i++]);
+	}
 	return (TRUE);
 }
 
 int	scene_create(t_scene *self, char *file)
 {
 	int			fd;
-	t_vector	*buffer;
+	char		**buffer;
 
 	*self = (t_scene){.is_valid = TRUE};
 	if (validate_name(file))
@@ -79,12 +84,10 @@ int	scene_create(t_scene *self, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	buffer = scene_read(fd);
-	if (!buffer)
-		self->is_valid = FALSE;
-	printf("%s\nbuffer len: %zu\n", self->is_valid ? "Read file succesfully" : "Error while reading file", buffer->length);
+	self->is_valid = scene_read(fd, &buffer);
+	printf("%s\n", self->is_valid ? "Read file succesfully" : "Error while reading file");
 	close(fd);
-	self->is_valid = set_textures(self, buffer);
+	self->is_valid = scene_set_textures(self, buffer);
 	return (-1);
 	// self->is_valid = get_elements(self, fd);
 	// self->is_valid = map_create(&self->map, fd, self);
