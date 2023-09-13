@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/17 00:19:11 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:23:13 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ BOOL	texture_options_validate(t_texture_options *self)
 	{
 		self->is_valid = TRUE;
 		return (TRUE);
-	}	
+	}
 	else
 	{
 		self->is_valid = FALSE;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/01 13:57:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/13 23:24:20 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	if (mlx_image_to_window(
-		state.mlx,
-		state.view.frame.img,
-		0, 0)
+			state.mlx,
+			state.view.frame.img,
+			0, 0)
 		== -1)
 	{
 		state_destroy(&state);
