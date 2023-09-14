@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 19:00:11 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/31 19:24:47 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:33:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ float	ray_perpendicular_wall_distance(t_ray *self)
 	if (self->side == SIDE_EAST || self->side == SIDE_WEST)
 		return (self->side_dist.x - self->delta_dist.x);
 	else
-		return (self->side_dist.y - self->delta_dist.y);	
+		return (self->side_dist.y - self->delta_dist.y);
 }

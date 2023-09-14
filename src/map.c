@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 12:24:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 15:32:27 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,16 @@ static size_t	map_find_first_line(char **buffer)
 	return (0);
 }
 
-static BOOL	validate_symbols(t_map *self, t_player *player)
+static BOOL	is_valid_map_char(char c)
+{
+	if (c == ' ')
+		return (TRUE);
+	if (ft_strchr(MAP_CHARS, c))
+		return (TRUE);
+	return (FALSE);
+}
+
+static BOOL	map_validate_symbols(t_map *self, t_player *player)
 {
 	int	x;
 	int	y;
@@ -47,15 +56,15 @@ static BOOL	validate_symbols(t_map *self, t_player *player)
 		x = 0;
 		while (self->map[y][x])
 		{
-			if (!ft_strchr(" 01NSWE", self->map[y][x]))
-				return (FALSE);
-			if (ft_strchr("NSWE", self->map[y][x]))
+			if (ft_strchr(PLAYER_CHARS, self->map[y][x]))
 			{
 				if (player->is_valid)
 					return (FALSE);
 				player_init(player, self->map[y][x], y, x);
 				self->map[y][x] = '0';
 			}
+			else if (!is_valid_map_char(self->map[y][x]))
+				return (FALSE);
 			x++;
 		}
 		y++;
@@ -75,12 +84,7 @@ BOOL	map_create(t_map *self, t_scene *scene, char **buffer)
 	if (!first_map_line)
 		self->is_valid = FALSE;
 	self->is_valid = map_read(self, &buffer[first_map_line]);
-	for (size_t i = 0; i < self->height; i++)
-	{
-		printf("%s\n", self->map[i]);
-	}
-	return (-1);
-	self->is_valid = validate_symbols(self, &scene->player);
+	self->is_valid = map_validate_symbols(self, &scene->player);
 	self->is_valid = map_validate_walls(self);
 	self->is_valid = map_validate_islands(self, &scene->player);
 	return (self->is_valid);

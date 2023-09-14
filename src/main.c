@@ -6,13 +6,12 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/01 13:51:05 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 15:32:03 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include <stdlib.h>
-#include <stdio.h>
 #include "scene.h"
 #include "state.h"
 #include "hook.h"
@@ -38,9 +37,9 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	if (mlx_image_to_window(
-		state.mlx,
-		state.view.frame.img,
-		0, 0)
+			state.mlx,
+			state.view.frame.img,
+			0, 0)
 		== -1)
 	{
 		state_destroy(&state);

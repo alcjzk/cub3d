@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_textured.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/30 09:08:26 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:31:27 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	line_textured_init(
 		self->end = WINDOW_HEIGHT - 1;
 	self->texture_x = texture_x(self->texture, ray, player);
 	self->texture_step = 1.0 * (float)self->texture->height / (float)height;
-	self->texture_y = (self->start - WINDOW_HEIGHT / 2 + height / 2) *
-						self->texture_step;
+	self->texture_y = (self->start - WINDOW_HEIGHT / 2 + height / 2)
+		* self->texture_step;
 }
 
 void	line_textured_draw(t_line_textured *self, t_view *view, int x)
@@ -56,12 +56,12 @@ void	line_textured_draw(t_line_textured *self, t_view *view, int x)
 	screen_y = self->start;
 	while (screen_y <= self->end)
 	{
-		if (self->texture_y >= (float)self->texture->height)	
+		if (self->texture_y >= (float)self->texture->height)
 			self->texture_y = (float)self->texture->height - 1;
 		color = texture_pixel(
-					self->texture,
-					self->texture_x,
-					(int)self->texture_y);
+				self->texture,
+				self->texture_x,
+				(int)self->texture_y);
 		image_put_pixel(&view->frame, x, screen_y, color);
 		self->texture_y += self->texture_step;
 		screen_y++;

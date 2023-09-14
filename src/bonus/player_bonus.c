@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:42:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/12 05:46:22 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:41:19 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	player_update_yaw(t_player *self, t_state *state)
 	if (self->yaw < -M_PI)
 		self->yaw += M_PI * 2;
 	else if (self->yaw > M_PI)
-			self->yaw -= M_PI * 2;
+		self->yaw -= M_PI * 2;
 }
 
 void	player_update(t_player *self, t_state *state)

@@ -1,78 +1,79 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_color.c                                        :+:      :+:    :+:   */
+/*   scene_set_colors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 20:12:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 14:40:49 by emajuri          ###   ########.fr       */
+/*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
+/*   Updated: 2023/09/14 12:57:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "libft.h"
 
-int	numlen(char *line)
+static int	numlen(char *line)
 {
 	int	i;
 
 	i = 0;
-	while (ft_isdigit(line[i]) && i < 10)
+	while (ft_isdigit(line[i]) && i < 5)
 		i++;
 	return (i);
 }
 
-int	convert_nums(char *line, t_color *color)
+static BOOL	convert_nums(char *line, t_color *color)
 {
 	int		i;
 
 	i = 0;
 	if (numlen(&line[i]) > 3)
-		return (-1);
+		return (FALSE);
 	color->channels.r = ft_atoi(&line[i]);
 	i += numlen(&line[i]);
 	if (line[i] != ',')
-		return (-1);
+		return (FALSE);
 	i++;
 	if (numlen(&line[i]) > 3)
-		return (-1);
+		return (FALSE);
 	color->channels.g = ft_atoi(&line[i]);
 	i += numlen(&line[i]);
 	if (line[i] != ',')
-		return (-1);
+		return (FALSE);
 	i++;
 	if (numlen(&line[i]) > 3)
-		return (-1);
+		return (FALSE);
 	color->channels.b = ft_atoi(&line[i]);
 	i += numlen(&line[i]);
-	if (line[i] != '\n')
-		return (-1);
+	if (line[i] != '\0')
+		return (FALSE);
 	color->channels.a = 255;
-	return (0);
+	return (TRUE);
 }
 
-int	get_color(t_scene *scene, char *line)
+BOOL	scene_set_floor_color(t_scene *self, char *line)
 {
-	int		i;
-	t_color	color;
+	if (self->is_floor_color_set)
+		return (FALSE);
+	line++;
+	while (ft_isspace(*(line)))
+		line++;
+	if (!convert_nums(line, &self->floor_color))
+		return (FALSE);
+	self->is_floor_color_set = TRUE;
+	return (TRUE);
+}
 
-	i = 1;
-	if (!line[1])
-		return (-1);
-	while (ft_isspace(line[i]))
-		i++;
-	if (convert_nums(&line[i], &color))
-		return (-1);
-	if (line[0] == 'F')
-	{
-		scene->floor_color = color;
-		scene->is_floor_color_set = TRUE;
-	}
-	else
-	{
-		scene->ceiling_color = color;
-		scene->is_ceiling_color_set = TRUE;
-	}
-	return (0);
+BOOL	scene_set_ceiling_color(t_scene *self, char *line)
+{
+	if (self->is_ceiling_color_set)
+		return (FALSE);
+	line++;
+	while (ft_isspace(*(line)))
+		line++;
+	if (!convert_nums(line, &self->ceiling_color))
+		return (FALSE);
+	self->is_ceiling_color_set = TRUE;
+	return (TRUE);
 }

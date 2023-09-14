@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 18:50:26 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:45:11 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	state_update(t_state *self)
 		{
 			mouse_release(self->mlx);
 			self->is_mouse_captured = FALSE;
-		}	
+		}
 	}
 	player_update(&self->scene->player, self);
 	view_draw(&self->view, self->scene);

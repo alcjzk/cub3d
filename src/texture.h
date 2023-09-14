@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:42 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/13 17:54:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 15:39:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #  include "texture_bonus.h"
 # else
 
-# include "MLX42.h"
-# include "bool.h"
+#  include "MLX42.h"
+#  include "bool.h"
 
 typedef struct s_texture_pack
 {

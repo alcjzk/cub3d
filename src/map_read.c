@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 12:25:09 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 15:33:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	map_copy(t_map *self, char **map)
 {
 	size_t	row;
 	size_t	col;
-	
+
 	if (!self->is_valid)
 		return ;
 	row = 0;

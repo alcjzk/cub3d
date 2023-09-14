@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   scene_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 15:37:03 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 15:42:28 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#ifndef SCENE_BONUS_H
+# define SCENE_BONUS_H
 
-# ifdef BONUS_FEATURES
-#  include "scene_bonus.h"
-# else
-
-#  include "bool.h"
-#  include "color.h"
-#  include "texture.h"
-#  include "map.h"
+# include "bool.h"
+# include "color.h"
+# include "texture.h"
+# include "map.h"
 
 typedef struct s_player	t_player;
 typedef BOOL			(*t_config_func)(t_scene *, char *);
@@ -47,9 +43,9 @@ BOOL	scene_set_north(t_scene *self, char *line);
 BOOL	scene_set_south(t_scene *self, char *line);
 BOOL	scene_set_east(t_scene *self, char *line);
 BOOL	scene_set_west(t_scene *self, char *line);
+BOOL	scene_set_door(t_scene *self, char *line);
 BOOL	scene_set_floor_color(t_scene *self, char *line);
 BOOL	scene_set_ceiling_color(t_scene *self, char *line);
 BOOL	scene_set_options(t_scene *self, char **buffer);
 
-# endif
 #endif

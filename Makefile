@@ -24,41 +24,42 @@ override CFLAGS 	+= $(EXTRA) $(OPT:%=-O%) $(INC_DIR:%=-I%) $(WARN:%=-W%)
 override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) $(FWK:%=-framework %)
 
 # Sources
-SRCS_MANDATORY =	\
-state.c				\
-hook.c				\
-image.c				\
-view.c				\
-view_draw.c			\
-vec2f.c				\
-vec2f_ops.c			\
-vector.c			\
-vector_extend.c		\
-vector_position.c	\
-vector_remove.c		\
-vector_reserve.c	\
-scene.c				\
-get_color.c			\
-get_elements.c		\
-map.c				\
-map_read.c			\
-map_validate.c		\
-line.c				\
-line_textured.c		\
-ray.c				\
-ray_util.c			\
-player.c			\
-texture.c			\
-scene_print_error.c	\
-util.c				\
+SRCS_MANDATORY =			\
+state.c						\
+hook.c						\
+image.c						\
+view.c						\
+view_draw.c					\
+vec2f.c						\
+vec2f_ops.c					\
+vector.c					\
+vector_extend.c				\
+vector_position.c			\
+vector_remove.c				\
+vector_reserve.c			\
+scene.c						\
+scene_set_textures.c		\
+scene_set_colors.c			\
+scene_set_options.c			\
+map.c						\
+map_read.c					\
+map_validate.c				\
+line.c						\
+line_textured.c				\
+ray.c						\
+ray_util.c					\
+player.c					\
+texture.c					\
+scene_print_error.c			\
+util.c						\
 main.c
 
-SRCS_BONUS =		\
-scene_bonus.c		\
+SRCS_BONUS =				\
+scene_set_options_bonus.c	\
 scene_set_textures_bonus.c	\
-scene_set_colors_bonus.c	\
-mouse_bonus.c		\
-player_bonus.c		\
+mouse_bonus.c				\
+texture_bonus.c					\
+player_bonus.c				\
 state_bonus.c
 
 ifeq ($(BONUS_FEATURES), 1)
