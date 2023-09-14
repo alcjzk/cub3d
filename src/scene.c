@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 16:05:54 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 16:17:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ int	validate_name(char *file)
 	while (file[i])
 		i++;
 	i -= 4;
-	if (i < 0)
+	if (i < 0 || ft_strncmp(&file[i], ".cub", 4))
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Incorrect map name\n", 2);
 		return (-1);
-	if (ft_strncmp(&file[i], ".cub", 4))
-		return (-1);
+	}
 	return (0);
 }
 

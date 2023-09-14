@@ -6,13 +6,32 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/14 15:45:11 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 16:19:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
 #include "mouse_bonus.h" 
 #include "state_bonus.h"
+
+BOOL	state_create(t_state *self, t_scene *scene)
+{
+	*self = (t_state){0};
+	self->mlx = mlx_init(
+			WINDOW_WIDTH,
+			WINDOW_HEIGHT,
+			WINDOW_TITLE,
+			FALSE);
+	if (!self->mlx)
+		return (FALSE);
+	if (!view_create(&self->view, self->mlx))
+		return (FALSE);
+	if (!minimap_create(&self->minimap, scene, self->mlx))
+		return (FALSE);
+	self->scene = scene;
+	self->is_valid = TRUE;
+	return (TRUE);
+}
 
 void	state_update(t_state *self)
 {
@@ -33,4 +52,5 @@ void	state_update(t_state *self)
 	}
 	player_update(&self->scene->player, self);
 	view_draw(&self->view, self->scene);
+	minimap_update(&self->minimap, self->scene);
 }
