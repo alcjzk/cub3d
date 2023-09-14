@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:02:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 18:34:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 11:40:28 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ BOOL	scene_set_north(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
-	printf("setting north\n");
-	printf("%s\n", line);
+
 	if (self->texture_options.north)
 		return (FALSE);
 	i = 2;
@@ -35,8 +34,7 @@ BOOL	scene_set_south(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
-	printf("setting south\n");
-	printf("%s\n", line);
+
 	if (self->texture_options.south)
 		return (FALSE);
 	i = 2;
@@ -54,8 +52,7 @@ BOOL	scene_set_west(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
-	printf("setting west\n");
-	printf("%s\n", line);
+
 	if (self->texture_options.west)
 		return (FALSE);
 	i = 2;
@@ -73,8 +70,7 @@ BOOL	scene_set_east(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
-	printf("setting east\n");
-	printf("%s\n", line);
+
 	if (self->texture_options.east)
 		return (FALSE);
 	i = 2;
@@ -92,8 +88,6 @@ BOOL	scene_set_door(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
-	printf("setting door\n");
-	printf("%s\n", line);
 	if (self->texture_options.door)
 		return (FALSE);
 	i = 2;

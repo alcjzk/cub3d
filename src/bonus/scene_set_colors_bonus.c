@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 18:48:12 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 11:39:01 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static BOOL	convert_nums(char *line, t_color *color)
 
 BOOL	scene_set_floor_color(t_scene *self, char *line)
 {
-	printf("setting floor\n");
-	printf("%s\n", line);
 	if (self->is_floor_color_set)
 		return (FALSE);
 	line++;
@@ -69,8 +67,6 @@ BOOL	scene_set_floor_color(t_scene *self, char *line)
 
 BOOL	scene_set_ceiling_color(t_scene *self, char *line)
 {
-	printf("setting ceiling\n");
-	printf("%s\n", line);
 	if (self->is_ceiling_color_set)
 		return (FALSE);
 	line++;

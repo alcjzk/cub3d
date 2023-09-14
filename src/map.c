@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 15:09:43 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 12:24:23 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,22 @@
 #include "libft.h"
 #include "scene.h"
 
-static char	*skip_empty_lines(int fd)
+static size_t	map_find_first_line(char **buffer)
 {
-	char	*line;
-	int		i;
+	size_t	row;
+	size_t	col;
 
-	line = get_next_line(fd);
-	while (line)
+	row = 0;
+	while (buffer[row])
 	{
-		i = 0;
-		while (ft_isspace(line[i]))
-			i++;
-		if (line[i])
-			break ;
-		free(line);
-		line = get_next_line(fd);
+		col = 0;
+		while (ft_isspace(buffer[row][col]))
+			col++;
+		if (buffer[row][col] && ft_strchr(MAP_CHARS, buffer[row][col]))
+			return (row);
+		row++;
 	}
-	return (line);
+	return (0);
 }
 
 static BOOL	validate_symbols(t_map *self, t_player *player)
@@ -64,16 +63,23 @@ static BOOL	validate_symbols(t_map *self, t_player *player)
 	return (player->is_valid);
 }
 
-BOOL	map_create(t_map *self, int fd, t_scene *scene)
+BOOL	map_create(t_map *self, t_scene *scene, char **buffer)
 {
-	char	*line;
+	size_t	first_map_line;
 
 	if (!scene->is_valid)
 		return (FALSE);
 	*self = (t_map){0};
 	self->is_valid = TRUE;
-	line = skip_empty_lines(fd);
-	self->is_valid = map_read(self, fd, line);
+	first_map_line = map_find_first_line(buffer);
+	if (!first_map_line)
+		self->is_valid = FALSE;
+	self->is_valid = map_read(self, &buffer[first_map_line]);
+	for (size_t i = 0; i < self->height; i++)
+	{
+		printf("%s\n", self->map[i]);
+	}
+	return (-1);
 	self->is_valid = validate_symbols(self, &scene->player);
 	self->is_valid = map_validate_walls(self);
 	self->is_valid = map_validate_islands(self, &scene->player);

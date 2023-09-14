@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:34:10 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 18:33:15 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 11:43:15 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,10 @@ int	scene_create(t_scene *self, char *file)
 	if (fd < 0)
 		return (-1);
 	self->is_valid = scene_read(fd, &buffer);
-	printf("%s\n", self->is_valid ? "Read file succesfully" : "Error while reading file");
 	close(fd);
 	self->is_valid = scene_set_textures(self, buffer);
+	self->is_valid = map_create(&self->map, self, buffer);
 	return (-1);
-	// self->is_valid = get_elements(self, fd);
 	// self->is_valid = map_create(&self->map, fd, self);
 	// if (self->is_valid)
 	// 	texture_options_validate(&self->texture_options);

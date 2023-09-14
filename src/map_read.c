@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/25 15:16:24 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 12:25:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,94 +15,73 @@
 #include "get_next_line.h"
 #include "libft.h"
 
-static void	tmpmap_free(t_vector *tmpmap)
+void	map_get_max_size(t_map *self, char **map)
 {
-	size_t	i;
+	size_t	col;
+	size_t	row;
 
-	i = 0;
-	while (i < tmpmap->length)
-		free(((char **)tmpmap->buffer)[i++]);
-	vector_free(tmpmap);
+	row = 0;
+	while (map[row])
+	{
+		col = 0;
+		while (map[row][col])
+			col++;
+		if (col > self->width)
+			self->width = col;
+		row++;
+	}
+	self->height = row;
 }
 
-static char	map_from_vec(t_map *self, t_vector *tmpmap)
+BOOL	map_allocate(t_map *self)
 {
-	size_t	height_max;
-	size_t	width_max;
-	void	*nullptr;
+	size_t	row;
 
-	nullptr = NULL;
-	if (!vector_push(tmpmap, &nullptr))
-	{
-		tmpmap_free(tmpmap);
+	self->map = ft_calloc(self->height + 1, sizeof(char *));
+	if (!self->map)
 		return (FALSE);
-	}
-	self->map = (char **)tmpmap->buffer;
-	height_max = 0;
-	while (self->map[height_max])
+	row = 0;
+	while (row < self->height)
 	{
-		width_max = 0;
-		while (self->map[height_max][width_max])
-			width_max++;
-		if (width_max > self->width)
-			self->width = width_max;
-		height_max++;
+		self->map[row] = ft_calloc(self->width + 1, sizeof(char));
+		if (!self->map[row])
+		{
+			while (row--)
+				free(self->map[row]);
+			free(self->map);
+			return (FALSE);
+		}
+		row++;
 	}
-	self->height = height_max;
-	free(tmpmap);
 	return (TRUE);
 }
 
-BOOL	add_padding(t_map *self)
+void	map_copy(t_map *self, char **map)
 {
-	int		i;
-	char	*tmp;
+	size_t	row;
+	size_t	col;
+	
+	if (!self->is_valid)
+		return ;
+	row = 0;
+	while (map[row])
+	{
+		col = 0;
+		while (map[row][col])
+		{
+			self->map[row][col] = map[row][col];
+			col++;
+		}
+		row++;
+	}
+}
 
+BOOL	map_read(t_map *self, char **map)
+{
 	if (!self->is_valid)
 		return (FALSE);
-	i = 0;
-	while (self->map[i])
-	{
-		tmp = ft_calloc(self->width + 1, sizeof(char));
-		if (!tmp)
-			return (FALSE);
-		if (ft_strlcpy(tmp, self->map[i], self->width + 1) >= self->width + 1)
-		{
-			free(tmp);
-			return (FALSE);
-		}
-		free(self->map[i]);
-		self->map[i] = tmp;
-		i++;
-	}
+	map_get_max_size(self, map);
+	self->is_valid = map_allocate(self);
+	map_copy(self, map);
 	return (TRUE);
-}
-
-BOOL	map_read(t_map *self, int fd, char *line)
-{
-	t_vector	*tmpmap;
-	size_t		i;
-
-	tmpmap = vector_with_capacity(1, sizeof(char *));
-	if (!tmpmap)
-		return (FALSE);
-	while (line)
-	{
-		i = 0;
-		while (ft_isspace(line[i]))
-			i++;
-		if (!line[i])
-			self->is_valid = FALSE;
-		line[ft_strlen(line) - 1] = '\0';
-		if (!self->is_valid || !vector_push(tmpmap, &line))
-		{
-			tmpmap_free(tmpmap);
-			free(line);
-			return (FALSE);
-		}
-		line = get_next_line(fd);
-	}
-	self->is_valid = map_from_vec(self, tmpmap);
-	self->is_valid = add_padding(self);
-	return (self->is_valid);
 }
