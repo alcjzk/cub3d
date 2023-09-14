@@ -38,6 +38,7 @@ vector_position.c			\
 vector_remove.c				\
 vector_reserve.c			\
 scene.c						\
+scene_read.c				\
 scene_set_textures.c		\
 scene_set_colors.c			\
 scene_set_options.c			\

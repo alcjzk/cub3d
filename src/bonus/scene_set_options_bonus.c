@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 15:43:09 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/14 16:03:37 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	init_option_functions(t_config_func *option_functions)
 	option_functions[6] = &scene_set_ceiling_color;
 }
 
-//TODO error handling for option functions
 BOOL	scene_set_options(t_scene *self, char **buffer)
 {
 	size_t			i;
@@ -57,7 +56,7 @@ BOOL	scene_set_options(t_scene *self, char **buffer)
 		if (function_index != -1)
 		{
 			if (!option_functions[function_index](self, buffer[i]))
-				i += 0; //error
+				return (FALSE);
 		}
 		i++;
 	}
