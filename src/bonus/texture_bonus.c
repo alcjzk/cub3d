@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/14 15:43:51 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/17 14:34:51 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "texture.h"
+#ifdef BONUS_FEATURES
+
+# include <stdlib.h>
+# include "texture.h"
 
 BOOL	texture_pack_load(
 	t_texture_pack *self,
@@ -75,3 +77,5 @@ void	texture_options_free(t_texture_options *self)
 	free(self->door);
 	*self = (t_texture_options){0};
 }
+
+#endif

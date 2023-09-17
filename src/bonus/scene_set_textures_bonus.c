@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_textures_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:02:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 15:45:01 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/17 14:29:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "libft.h"
+#ifdef BONUS_FEATURES
+
+# include "scene.h"
+# include "libft.h"
 
 BOOL	scene_set_door(t_scene *self, char *line)
 {
@@ -29,3 +31,5 @@ BOOL	scene_set_door(t_scene *self, char *line)
 	self->texture_options.door = dup;
 	return (TRUE);
 }
+
+#endif
