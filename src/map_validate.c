@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 16:06:49 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:14:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,15 @@
 #include "player.h"
 #include "map.h"
 
-static BOOL	check_wall_is_zero(int y, int x, char **map)
+static BOOL	check_max_values(int y, int x, char **map)
 {
-	if (map[y][x] == '0')
+	if (!map[y + 1] || y == 0 || x == 0)
 	{
-		if (!map[y + 1])
+		if (map[y][x] == '1' || map[y][x] == ' ')
 			return (TRUE);
-		else if (y == 0)
-			return (TRUE);
-		else if (x == 0)
-			return (TRUE);
-		else if (ft_strlen(map[y + 1]) < (size_t)x + 1)
-			return (TRUE);
-		else if (ft_strlen(map[y - 1]) < (size_t)x + 1)
-			return (TRUE);
+		return (FALSE);
 	}
-	return (FALSE);
+	return (TRUE);
 }
 
 BOOL	map_validate_walls(t_map *self)
@@ -45,13 +38,13 @@ BOOL	map_validate_walls(t_map *self)
 		x = 0;
 		while (self->map[y][x])
 		{
-			if (check_wall_is_zero(y, x, self->map))
+			if (!check_max_values(y, x, self->map))
 				return (FALSE);
-			if (self->map[y][x] == '0' &&
-				(!ft_strchr("01", self->map[y - 1][x]) ||
-				!ft_strchr("01", self->map[y + 1][x]) ||
-				!ft_strchr("01", self->map[y][x - 1]) ||
-				!ft_strchr("01", self->map[y][x + 1])))
+			if (ft_strchr(INSIDE_CHARS, self->map[y][x]) &&
+				(ft_strchr(" ", self->map[y - 1][x]) ||
+				ft_strchr(" ", self->map[y + 1][x]) ||
+				ft_strchr(" ", self->map[y][x - 1]) ||
+				ft_strchr(" ", self->map[y][x + 1])))
 				return (FALSE);
 			x++;
 		}
@@ -60,7 +53,7 @@ BOOL	map_validate_walls(t_map *self)
 	return (TRUE);
 }
 
-static void	change_chars(char **map)
+static void	revert_flood_fill(char **map, int map_char_len)
 {
 	int	x;
 	int	y;
@@ -71,52 +64,52 @@ static void	change_chars(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '2')
-				map[y][x] = '0';
-			else if (map[y][x] == '3')
-				map[y][x] = '1';
+			if (map[y][x] != ' ')
+				map[y][x] -= map_char_len;
 			x++;
 		}
 		y++;
 	}
 }
 
-void	flood_fill(char **map, int y, int x)
+static void	flood_fill(char **map, int y, int x, int map_char_len)
 {
-	if (map[y][x] == '1' || map[y][x] == '0')
-		map[y][x] += 2;
+	if (map[y][x] && ft_strchr(MAP_CHARS, map[y][x]))
+		map[y][x] += map_char_len;
 	else
 		return ;
 	if (y != 0 && ft_strlen(map[y - 1]) >= (size_t)x)
-		flood_fill(map, y - 1, x);
+		flood_fill(map, y - 1, x, map_char_len);
 	if (map[y + 1] && ft_strlen(map[y + 1]) >= (size_t)x)
-		flood_fill(map, y + 1, x);
+		flood_fill(map, y + 1, x, map_char_len);
 	if (x != 0)
-		flood_fill(map, y, x - 1);
+		flood_fill(map, y, x - 1, map_char_len);
 	if (map[y][x + 1])
-		flood_fill(map, y, x + 1);
+		flood_fill(map, y, x + 1, map_char_len);
 }
 
 BOOL	map_validate_islands(t_map *self, t_player *player)
 {
 	int	x;
 	int	y;
+	int	map_char_len;
 
 	if (!self->is_valid)
 		return (FALSE);
-	flood_fill(self->map, player->position.y, player->position.x);
+	map_char_len = ft_strlen(MAP_CHARS);
+	flood_fill(self->map, player->position.y, player->position.x, map_char_len);
 	y = 0;
 	while (self->map[y])
 	{
 		x = 0;
 		while (self->map[y][x])
 		{
-			if (self->map[y][x] == '0' || self->map[y][x] == '1')
+			if (ft_strchr(MAP_CHARS, self->map[y][x]))
 				return (FALSE);
 			x++;
 		}
 		y++;
 	}
-	change_chars(self->map);
+	revert_flood_fill(self->map, map_char_len);
 	return (TRUE);
 }

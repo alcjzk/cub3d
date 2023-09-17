@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_wall_draw_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:59:42 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/12 13:02:37 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/17 14:39:24 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap_bonus.h"
+#ifdef BONUS_FEATURES
+
+# include "minimap_bonus.h"
 
 static float	get_x(size_t minimap_width, t_player *player)
 {
@@ -62,3 +64,5 @@ void	minimap_wall_draw(t_minimap *self, t_scene *scene)
 		map_y += 1.0f / BLOCK_SIZE;
 	}
 }
+
+#endif

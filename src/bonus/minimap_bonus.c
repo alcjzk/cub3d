@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/12 13:00:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/17 14:38:47 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "minimap_bonus.h"
-#include "state.h"
+#ifdef BONUS_FEATURES
+
+# include "scene.h"
+# include "minimap_bonus.h"
+# include "state.h"
 
 void	minimap_background_draw(t_minimap *self)
 {
@@ -93,3 +95,5 @@ void	minimap_update(t_minimap *self, t_scene *scene)
 	minimap_wall_draw(self, scene);
 	minimap_player_draw(self, scene);
 }
+
+#endif

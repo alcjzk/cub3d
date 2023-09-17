@@ -6,11 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:32:56 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 17:37:20 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:39:49 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mouse_bonus.h"
+#ifdef BONUS_FEATURES
+
+# include "mouse_bonus.h"
 
 void	mouse_align_center(mlx_t *mlx)
 {
@@ -45,3 +47,5 @@ void	mouse_release(mlx_t *mlx)
 {
 	mlx_set_cursor_mode(mlx, MLX_MOUSE_NORMAL);
 }
+
+#endif

@@ -6,13 +6,15 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/13 23:27:12 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:34:11 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hook.h"
-#include "mouse_bonus.h" 
-#include "state_bonus.h"
+#ifdef BONUS_FEATURES
+
+# include "hook.h"
+# include "mouse_bonus.h" 
+# include "state_bonus.h"
 
 BOOL	state_create(t_state *self, t_scene *scene)
 {
@@ -54,3 +56,5 @@ void	state_update(t_state *self)
 	view_draw(&self->view, self->scene);
 	minimap_update(&self->minimap, self->scene);
 }
+
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 23:24:51 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:16:42 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,34 @@
 #include "libft.h"
 #include "scene.h"
 
-static char	*skip_empty_lines(int fd)
+static size_t	map_find_first_line(char **buffer)
 {
-	char	*line;
-	int		i;
+	size_t	row;
+	size_t	col;
 
-	line = get_next_line(fd);
-	while (line)
+	row = 0;
+	while (buffer[row])
 	{
-		i = 0;
-		while (ft_isspace(line[i]))
-			i++;
-		if (line[i])
-			break ;
-		free(line);
-		line = get_next_line(fd);
+		col = 0;
+		while (ft_isspace(buffer[row][col]))
+			col++;
+		if (buffer[row][col] && ft_strchr(MAP_CHARS, buffer[row][col]))
+			return (row);
+		row++;
 	}
-	return (line);
+	return (0);
 }
 
-static BOOL	validate_symbols(t_map *self, t_player *player)
+static BOOL	is_valid_map_char(char c)
+{
+	if (c == ' ')
+		return (TRUE);
+	if (ft_strchr(MAP_CHARS, c))
+		return (TRUE);
+	return (FALSE);
+}
+
+static BOOL	map_validate_symbols(t_map *self, t_player *player)
 {
 	int	x;
 	int	y;
@@ -48,15 +56,15 @@ static BOOL	validate_symbols(t_map *self, t_player *player)
 		x = 0;
 		while (self->map[y][x])
 		{
-			if (!ft_strchr(" 01NSWE", self->map[y][x]))
-				return (FALSE);
-			if (ft_strchr("NSWE", self->map[y][x]))
+			if (ft_strchr(PLAYER_CHARS, self->map[y][x]))
 			{
 				if (player->is_valid)
 					return (FALSE);
 				player_init(player, self->map[y][x], y, x);
 				self->map[y][x] = '0';
 			}
+			else if (!is_valid_map_char(self->map[y][x]))
+				return (FALSE);
 			x++;
 		}
 		y++;
@@ -64,17 +72,19 @@ static BOOL	validate_symbols(t_map *self, t_player *player)
 	return (player->is_valid);
 }
 
-BOOL	map_create(t_map *self, int fd, t_scene *scene)
+BOOL	map_create(t_map *self, t_scene *scene, char **buffer)
 {
-	char	*line;
+	size_t	first_map_line;
 
 	if (!scene->is_valid)
 		return (FALSE);
 	*self = (t_map){0};
 	self->is_valid = TRUE;
-	line = skip_empty_lines(fd);
-	self->is_valid = map_read(self, fd, line);
-	self->is_valid = validate_symbols(self, &scene->player);
+	first_map_line = map_find_first_line(buffer);
+	if (!first_map_line)
+		self->is_valid = FALSE;
+	self->is_valid = map_read(self, &buffer[first_map_line]);
+	self->is_valid = map_validate_symbols(self, &scene->player);
 	self->is_valid = map_validate_walls(self);
 	self->is_valid = map_validate_islands(self, &scene->player);
 	return (self->is_valid);
