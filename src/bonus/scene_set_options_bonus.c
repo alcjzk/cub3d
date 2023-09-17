@@ -6,16 +6,15 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 15:56:35 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:02:39 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
 # include "scene.h"
-# define CONFIG_FUNC_COUNT 7
 
-static t_scene_config_map_item	*scene_config_map(void)
+t_scene_config_map_item	*scene_config_map(void)
 {
 	static t_scene_config_map_item	map[CONFIG_FUNC_COUNT] = {
 	{"NO", &scene_set_north},

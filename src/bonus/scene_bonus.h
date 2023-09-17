@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 15:56:26 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:04:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "color.h"
 # include "texture.h"
 # include "map.h"
+
+# define CONFIG_FUNC_COUNT 7
 
 typedef struct s_player	t_player;
 typedef BOOL			(*t_scene_config_func)(t_scene *, char *);
@@ -40,19 +42,20 @@ typedef struct s_scene_config_map_item
 	t_scene_config_func	func;
 }	t_scene_config_map_item;
 
-int		scene_create(t_scene *self, char *file);
-void	scene_destroy(t_scene *self);
-void	scene_print_error(t_scene *self);
-BOOL	scene_read(int fd, char ***buffer);
+int						scene_create(t_scene *self, char *file);
+void					scene_destroy(t_scene *self);
+void					scene_print_error(t_scene *self);
+BOOL					scene_read(int fd, char ***buffer);
 
 //options
-BOOL	scene_set_north(t_scene *self, char *line);
-BOOL	scene_set_south(t_scene *self, char *line);
-BOOL	scene_set_east(t_scene *self, char *line);
-BOOL	scene_set_west(t_scene *self, char *line);
-BOOL	scene_set_door(t_scene *self, char *line);
-BOOL	scene_set_floor_color(t_scene *self, char *line);
-BOOL	scene_set_ceiling_color(t_scene *self, char *line);
-BOOL	scene_set_options(t_scene *self, char **buffer);
+BOOL					scene_set_north(t_scene *self, char *line);
+BOOL					scene_set_south(t_scene *self, char *line);
+BOOL					scene_set_east(t_scene *self, char *line);
+BOOL					scene_set_west(t_scene *self, char *line);
+BOOL					scene_set_door(t_scene *self, char *line);
+BOOL					scene_set_floor_color(t_scene *self, char *line);
+BOOL					scene_set_ceiling_color(t_scene *self, char *line);
+BOOL					scene_set_options(t_scene *self, char **buffer);
+t_scene_config_map_item	*scene_config_map(void);
 
 #endif
