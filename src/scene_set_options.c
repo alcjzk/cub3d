@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 14:06:38 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:55:47 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 static t_scene_config_map_item	*scene_config_map(void)
 {
 	static t_scene_config_map_item	map[CONFIG_FUNC_COUNT] = {
-		{"NO", &scene_set_north},
-		{"SO", &scene_set_south},
-		{"WE", &scene_set_west},
-		{"EA", &scene_set_east},
-		{"F", &scene_set_floor_color},
-		{"C", &scene_set_ceiling_color}
+	{"NO", &scene_set_north},
+	{"SO", &scene_set_south},
+	{"WE", &scene_set_west},
+	{"EA", &scene_set_east},
+	{"F", &scene_set_floor_color},
+	{"C", &scene_set_ceiling_color}
 	};
 
 	return (map);
@@ -52,7 +52,7 @@ static t_scene_config_func	scene_config_func(const char *identifier)
 
 BOOL	scene_set_options(t_scene *self, char **buffer)
 {
-	size_t			i;
+	size_t				i;
 	t_scene_config_func	config_func;
 
 	i = 0;

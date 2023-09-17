@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 14:08:14 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:56:11 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_scene
 
 typedef struct s_scene_config_map_item
 {
-	const char		*identifier;
+	const char			*identifier;
 	t_scene_config_func	func;
 }	t_scene_config_map_item;
 
