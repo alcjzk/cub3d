@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:59:42 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 15:56:00 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:12:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static float	get_y(size_t minimap_height, t_player *player)
 		/ 2);
 }
 
-static _Bool	minimap_wall_validate(t_scene *scene, float map_x, float map_y)
+static BOOL	minimap_wall_validate(t_scene *scene, float map_x, float map_y)
 {
 	if (map_y >= 0 && map_x >= 0)
 		if ((size_t)map_y < scene->map.height
@@ -40,13 +40,17 @@ static _Bool	minimap_wall_validate(t_scene *scene, float map_x, float map_y)
 	return (FALSE);
 }
 
-static _Bool	minimap_door_validate(t_scene *scene, float map_x, float map_y)
+static BOOL	minimap_door_validate(t_scene *scene, float map_x, float map_y)
 {
 	if (map_y >= 0 && map_x >= 0)
+	{
 		if ((size_t)map_y < scene->map.height
 			&& (size_t)map_x < scene->map.width)
-			if (scene->map.map[(size_t)map_y][(size_t)map_x] == '2')
+		{
+			if (scene->map.door_map[(size_t)map_y][(size_t)map_x] == '2')
 				return (TRUE);
+		}
+	}
 	return (FALSE);
 }
 

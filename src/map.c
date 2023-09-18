@@ -6,17 +6,17 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 16:41:40 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:13:05 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BONUS_FEATURES
 
-#include "map.h"
-#include "get_next_line.h"
-#include <stdlib.h>
-#include "libft.h"
-#include "scene.h"
+# include "map.h"
+# include "get_next_line.h"
+# include <stdlib.h>
+# include "libft.h"
+# include "scene.h"
 
 size_t	map_find_first_line(char **buffer)
 {

@@ -6,17 +6,17 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 16:59:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:12:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-#include "map.h"
-#include "get_next_line.h"
-#include <stdlib.h>
-#include "libft.h"
-#include "scene.h"
+# include "map.h"
+# include "get_next_line.h"
+# include <stdlib.h>
+# include "libft.h"
+# include "scene.h"
 
 size_t	map_find_first_line(char **buffer)
 {
@@ -102,7 +102,11 @@ void	map_destroy(t_map *self)
 		while (self->map[i])
 			free(self->map[i++]);
 	free(self->map);
-	free(self->doors);
+	i = 0;
+	if (self->door_map)
+		while (self->door_map[i])
+			free(self->door_map[i++]);
+	free(self->door_map);
 }
 
 #endif

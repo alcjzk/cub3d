@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:49:30 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 17:41:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:09:33 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 #include "libft.h"
 #include "scene_bonus.h"
 
-static void	map_door_count(t_map *self)
+static BOOL	map_has_door(t_map *self)
 {
 	size_t	row;
 	size_t	col;
 
-	self->door_count = 0;
 	row = 0;
 	while (self->map[row])
 	{
@@ -27,79 +26,65 @@ static void	map_door_count(t_map *self)
 		while (self->map[row][col])
 		{
 			if (self->map[row][col] == '2')
-				self->door_count++;
+				return (TRUE);
 			col++;
 		}
 		row++;
 	}
-}
-
-static void	map_door_save_coords(t_map *self)
-{
-	size_t	row;
-	size_t	col;
-	size_t	door_i;
-
-	row = 0;
-	door_i = 0;
-	while (self->map[row])
-	{
-		col = 0;
-		while (self->map[row][col])
-		{
-			if (self->map[row][col] == '2')
-			{
-				self->doors[door_i].y = row;
-				self->doors[door_i].x = col;
-				door_i++;
-			}
-			col++;
-		}
-		row++;
-	}
-
+	return (FALSE);
 }
 
 BOOL	map_door_save(t_map *self)
 {
+	size_t	i;
+
 	if (!self->is_valid)
 		return (FALSE);
-	map_door_count(self);
-	if (self->door_count == 0)
+	if (!map_has_door(self))
 		return (TRUE);
-	self->doors = ft_calloc(self->door_count, sizeof(t_door));
-	if (!self->doors)
+	self->door_map = ft_calloc(self->height + 1, sizeof(char *));
+	if (!self->door_map)
 		return (FALSE);
-	map_door_save_coords(self);
+	i = 0;
+	while (i < self->height)
+	{
+		self->door_map[i] = ft_strdup(self->map[i]);
+		if (!self->door_map[i])
+		{
+			while (i--)
+				free(self->door_map[i]);
+			free(self->door_map);
+			return (FALSE);
+		}
+		i++;
+	}
 	return (TRUE);
+}
+
+static void	toggle_door(t_map *self, size_t y, size_t x)
+{
+	if (self->map[y][x] == '2')
+		self->map[y][x] = '0';
+	else
+		self->map[y][x] = '2';
 }
 
 void	map_door_toggle(t_map *self, t_player *player)
 {
 	size_t	player_x;
 	size_t	player_y;
-	size_t	i;
 
-	if (self->doors)
+	if (self->door_map)
 	{
 		player_x = (size_t)player->position.x;
 		player_y = (size_t)player->position.y;
-		i = 0;
-		while (i < self->door_count)
-		{
-			if ((self->doors[i].y == player_y
-				&& (self->doors[i].x == player_x + 1
-				|| self->doors[i].x == player_x - 1))
-				||	(self->doors[i].x == player_x
-				&& (self->doors[i].y == player_y + 1
-				|| self->doors[i].y == player_y - 1)))
-			{
-				if (self->map[self->doors[i].y][self->doors[i].x] == '0')
-					self->map[self->doors[i].y][self->doors[i].x] = '2';
-				else
-					self->map[self->doors[i].y][self->doors[i].x] = '0';
-			}
-			i++;
-		}
+		if (self->door_map[player_y][player_x + 1] == '2')
+			toggle_door(self, player_y, player_x + 1);
+		if (self->door_map[player_y][player_x - 1] == '2')
+			toggle_door(self, player_y, player_x - 1);
+		if (self->door_map[player_y + 1][player_x] == '2')
+			toggle_door(self, player_y + 1, player_x);
+		if (self->door_map[player_y - 1][player_x] == '2')
+			toggle_door(self, player_y - 1, player_x);
 	}
 }

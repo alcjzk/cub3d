@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 17:32:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:10:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,12 @@
 
 typedef struct s_scene	t_scene;
 
-typedef struct s_door
-{
-	size_t	x;
-	size_t	y;
-}	t_door;
-
 typedef struct s_map
 {
 	char	**map;
 	size_t	width;
 	size_t	height;
-	t_door	*doors;
-	size_t	door_count;
+	char	**door_map;
 	BOOL	is_valid;
 }	t_map;
 

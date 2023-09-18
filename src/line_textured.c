@@ -6,16 +6,16 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/18 16:25:41 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:13:21 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BONUS_FEATURES
 
-#include <math.h>
-#include "line_textured.h"
-#include "libft.h"
-#include "state.h"
+# include <math.h>
+# include "line_textured.h"
+# include "libft.h"
+# include "state.h"
 
 static t_color			texture_pixel(mlx_texture_t *texture, int x, int y);
 static mlx_texture_t	*texture_from_side(
