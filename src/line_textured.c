@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/14 16:16:12 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 16:20:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ static float			texture_x(
 
 void	line_textured_init(
 	t_line_textured *self,
-	t_texture_pack *textures,
-	t_player *player,
+	t_scene *scene,
 	t_ray *ray)
 {
 	int	height;
 
-	self->texture = texture_from_side(ray->side, textures);
+	self->texture = texture_from_side(ray->side, &scene->textures);
 	if (ray->perp_wall_dist == 0.0f)
 		ray->perp_wall_dist = 0.1f;
 	height = WINDOW_HEIGHT / ray->perp_wall_dist;
@@ -42,7 +41,7 @@ void	line_textured_init(
 	self->end = height / 2 + WINDOW_HEIGHT / 2;
 	if (self->end >= WINDOW_HEIGHT)
 		self->end = WINDOW_HEIGHT - 1;
-	self->texture_x = texture_x(self->texture, ray, player);
+	self->texture_x = texture_x(self->texture, ray, &scene->player);
 	self->texture_step = 1.0 * (float)self->texture->height / (float)height;
 	self->texture_y = (self->start - WINDOW_HEIGHT / 2 + height / 2)
 		* self->texture_step;
@@ -74,8 +73,8 @@ static t_color	texture_pixel(mlx_texture_t *texture, int x, int y)
 }
 
 static mlx_texture_t	*texture_from_side(
-	t_side side,
-	t_texture_pack *textures)
+		t_side side,
+		t_texture_pack *textures)
 {
 	if (side == SIDE_NORTH)
 		return (textures->north);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_draw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/30 09:09:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:09:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,18 @@ static void	draw_background(t_image *image, t_scene *scene)
 static void	draw_frame(t_view *self, t_scene *scene)
 {
 	int					x;
-	t_player			*player;
 	t_ray				ray;
 	t_line_textured		line;
 
 	x = 0;
-	player = &scene->player;
 	while (x < WINDOW_WIDTH)
 	{
-		player_raydir_calc(player, x);
+		player_raydir_calc(&scene->player, x);
 		ray = (t_ray){};
 		ray_init(&ray, scene);
 		ray_cast(&ray, scene);
 		line = (t_line_textured){};
-		line_textured_init(&line, &scene->textures, &scene->player, &ray);
+		line_textured_init(&line, scene, &ray);
 		line_textured_draw(&line, self, x);
 		x++;
 	}
