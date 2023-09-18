@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_options.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 16:01:57 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:44:49 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,37 @@ static t_scene_config_func	scene_config_func(const char *identifier)
 	return (NULL);
 }
 
-BOOL	scene_set_options(t_scene *self, char **buffer)
+static BOOL	scene_is_empty_line(char *line)
 {
-	size_t				i;
-	t_scene_config_func	config_func;
+	size_t	i;
 
 	i = 0;
+	while (ft_isspace(line[i]))
+		i++;
+	if (line[i])
+		return (FALSE);
+	return (TRUE);
+}
+
+BOOL	scene_set_options(t_scene *self, char **buffer)
+{
+	t_scene_config_func	config_func;
+	size_t				i;
+	size_t				first_map_line;
+
+	i = 0;
+	first_map_line = map_find_first_line(buffer);
 	if (!self->is_valid)
 		return (FALSE);
 	while (buffer[i])
 	{
-		buffer[i][ft_strlen(buffer[i]) - 1] = '\0';
 		config_func = scene_config_func(buffer[i]);
-		if (config_func && !config_func(self, buffer[i]))
+		if (!config_func)
+		{
+			if (i < first_map_line && !scene_is_empty_line(buffer[i]))
+				return (FALSE);
+		}
+		else if (!config_func(self, buffer[i]))
 			return (FALSE);
 		i++;
 	}

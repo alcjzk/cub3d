@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 16:16:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:14:18 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "scene.h"
 
-static size_t	map_find_first_line(char **buffer)
+size_t	map_find_first_line(char **buffer)
 {
 	size_t	row;
 	size_t	col;
