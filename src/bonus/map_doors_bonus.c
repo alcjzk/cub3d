@@ -6,12 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:49:30 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 17:00:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 17:41:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map_bonus.h"
 #include "libft.h"
+#include "scene_bonus.h"
 
 static void	map_door_count(t_map *self)
 {
@@ -71,4 +72,34 @@ BOOL	map_door_save(t_map *self)
 		return (FALSE);
 	map_door_save_coords(self);
 	return (TRUE);
+}
+
+void	map_door_toggle(t_map *self, t_player *player)
+{
+	size_t	player_x;
+	size_t	player_y;
+	size_t	i;
+
+	if (self->doors)
+	{
+		player_x = (size_t)player->position.x;
+		player_y = (size_t)player->position.y;
+		i = 0;
+		while (i < self->door_count)
+		{
+			if ((self->doors[i].y == player_y
+				&& (self->doors[i].x == player_x + 1
+				|| self->doors[i].x == player_x - 1))
+				||	(self->doors[i].x == player_x
+				&& (self->doors[i].y == player_y + 1
+				|| self->doors[i].y == player_y - 1)))
+			{
+				if (self->map[self->doors[i].y][self->doors[i].x] == '0')
+					self->map[self->doors[i].y][self->doors[i].x] = '2';
+				else
+					self->map[self->doors[i].y][self->doors[i].x] = '0';
+			}
+			i++;
+		}
+	}
 }

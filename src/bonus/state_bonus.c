@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/17 14:34:11 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:36:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "hook.h"
 # include "mouse_bonus.h" 
 # include "state_bonus.h"
+# include "map_bonus.h"
 
 BOOL	state_create(t_state *self, t_scene *scene)
 {
@@ -39,6 +40,8 @@ void	state_update(t_state *self)
 {
 	if (mlx_is_key_down(self->mlx, MLX_KEY_ESCAPE))
 		return (on_close(self->mlx));
+	if (mlx_is_key_down(self->mlx, MLX_KEY_E))
+		map_door_toggle(&self->scene->map, &self->scene->player);
 	if (mlx_is_mouse_down(self->mlx, MLX_MOUSE_BUTTON_LEFT))
 	{
 		if (!self->is_mouse_captured)
