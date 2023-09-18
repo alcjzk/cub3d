@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_wall_draw_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:59:42 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 14:39:24 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:56:00 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ static _Bool	minimap_wall_validate(t_scene *scene, float map_x, float map_y)
 	return (FALSE);
 }
 
+static _Bool	minimap_door_validate(t_scene *scene, float map_x, float map_y)
+{
+	if (map_y >= 0 && map_x >= 0)
+		if ((size_t)map_y < scene->map.height
+			&& (size_t)map_x < scene->map.width)
+			if (scene->map.map[(size_t)map_y][(size_t)map_x] == '2')
+				return (TRUE);
+	return (FALSE);
+}
+
 void	minimap_wall_draw(t_minimap *self, t_scene *scene)
 {
 	size_t	img_y;
@@ -57,6 +67,8 @@ void	minimap_wall_draw(t_minimap *self, t_scene *scene)
 		{
 			if (minimap_wall_validate(scene, map_x, map_y))
 				image_put_pixel(&self->img, img_x, img_y, (t_color)WALL);
+			else if (minimap_door_validate(scene, map_x, map_y))
+				image_put_pixel(&self->img, img_x, img_y, (t_color)DOOR);
 			img_x++;
 			map_x += 1.0f / BLOCK_SIZE;
 		}
