@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 16:17:40 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:44:01 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,21 @@ static void	free_buffer(char **buffer)
 	free(buffer);
 }
 
+static void	buffer_remove_newlines(char **buffer)
+{
+	size_t	line_len;
+	size_t	i;
+
+	i = 0;
+	while (buffer[i])
+	{
+		line_len = ft_strlen(buffer[i]);
+		if (buffer[i][line_len - 1] == '\n')
+			buffer[i][line_len - 1] = '\0';
+		i++;
+	}
+}
+
 int	scene_create(t_scene *self, char *file)
 {
 	int		fd;
@@ -63,6 +78,7 @@ int	scene_create(t_scene *self, char *file)
 		return (-1);
 	self->is_valid = scene_read(fd, &buffer);
 	close(fd);
+	buffer_remove_newlines(buffer);
 	self->is_valid = scene_set_options(self, buffer);
 	self->is_valid = map_create(&self->map, self, buffer);
 	free_buffer(buffer);
