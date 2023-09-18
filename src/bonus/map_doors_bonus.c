@@ -6,13 +6,15 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:49:30 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 18:09:33 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:52:33 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_bonus.h"
-#include "libft.h"
-#include "scene_bonus.h"
+#ifdef BONUS_FEATURES
+
+# include "map_bonus.h"
+# include "libft.h"
+# include "scene_bonus.h"
 
 static BOOL	map_has_door(t_map *self)
 {
@@ -69,22 +71,29 @@ static void	toggle_door(t_map *self, size_t y, size_t x)
 		self->map[y][x] = '2';
 }
 
-void	map_door_toggle(t_map *self, t_player *player)
+void	map_door_toggle(mlx_key_data_t keydata, t_scene *scene)
 {
-	size_t	player_x;
-	size_t	player_y;
+	size_t		player_x;
+	size_t		player_y;
+	t_map		*self;
 
-	if (self->door_map)
+	if (keydata.key == MLX_KEY_E && keydata.action == MLX_RELEASE)
 	{
-		player_x = (size_t)player->position.x;
-		player_y = (size_t)player->position.y;
-		if (self->door_map[player_y][player_x + 1] == '2')
-			toggle_door(self, player_y, player_x + 1);
-		if (self->door_map[player_y][player_x - 1] == '2')
-			toggle_door(self, player_y, player_x - 1);
-		if (self->door_map[player_y + 1][player_x] == '2')
-			toggle_door(self, player_y + 1, player_x);
-		if (self->door_map[player_y - 1][player_x] == '2')
-			toggle_door(self, player_y - 1, player_x);
+		self = &scene->map;
+		if (self->door_map)
+		{
+			player_x = (size_t)scene->player.position.x;
+			player_y = (size_t)scene->player.position.y;
+			if (self->door_map[player_y][player_x + 1] == '2')
+				toggle_door(self, player_y, player_x + 1);
+			if (self->door_map[player_y][player_x - 1] == '2')
+				toggle_door(self, player_y, player_x - 1);
+			if (self->door_map[player_y + 1][player_x] == '2')
+				toggle_door(self, player_y + 1, player_x);
+			if (self->door_map[player_y - 1][player_x] == '2')
+				toggle_door(self, player_y - 1, player_x);
+		}
 	}
 }
+
+#endif

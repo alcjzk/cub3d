@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 18:41:54 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 18:49:33 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BONUS_FEATURES
+#ifdef BONUS_FEATURES
 
 # include "MLX42.h"
 # include <stdlib.h>
@@ -20,6 +20,7 @@
 # include "texture.h"
 # include "main.h"
 # include "libft.h"
+# include "map.h"
 
 int	main(int argc, char **argv)
 {
@@ -48,6 +49,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	mlx_close_hook(state.mlx, (mlx_closefunc)on_close, state.mlx);
+	mlx_key_hook(state.mlx, (mlx_keyfunc)map_door_toggle, state.scene);
 	if (!mlx_loop_hook(state.mlx, (void (*)(void *))state_update, &state))
 	{
 		state_destroy(&state);
