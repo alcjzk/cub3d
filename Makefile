@@ -57,12 +57,13 @@ main.c
 
 SRCS_BONUS =				\
 minimap_bonus.c				\
-minimap_wall_draw_bonus.c			\
+minimap_wall_draw_bonus.c	\
 scene_set_options_bonus.c	\
 scene_set_textures_bonus.c	\
-mouse_bonus.c						\
-texture_bonus.c					\
-player_bonus.c						\
+mouse_bonus.c				\
+texture_bonus.c				\
+line_textured_bonus.c		\
+player_bonus.c				\
 state_bonus.c
 
 ifeq ($(BONUS_FEATURES), 1)

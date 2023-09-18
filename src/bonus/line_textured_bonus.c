@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_textured.c                                    :+:      :+:    :+:   */
+/*   line_textured_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/18 16:25:41 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 16:30:04 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BONUS_FEATURES
+#ifdef BONUS_FEATURES
 
 #include <math.h>
 #include "line_textured.h"
@@ -34,6 +34,8 @@ void	line_textured_init(
 	int	height;
 
 	self->texture = texture_from_side(ray->side, &scene->textures);
+	if (scene->map.map[(int)ray->map_pos.y][(int)ray->map_pos.x] == '2')
+		self->texture = scene->textures.door;
 	if (ray->perp_wall_dist == 0.0f)
 		ray->perp_wall_dist = 0.1f;
 	height = WINDOW_HEIGHT / ray->perp_wall_dist;
