@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 14:33:52 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/18 16:52:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,19 @@
 
 typedef struct s_scene	t_scene;
 
+typedef struct s_door
+{
+	size_t	x;
+	size_t	y;
+}	t_door;
+
 typedef struct s_map
 {
 	char	**map;
 	size_t	width;
 	size_t	height;
+	t_door	*doors;
+	size_t	door_count;
 	BOOL	is_valid;
 }	t_map;
 
@@ -36,6 +44,7 @@ BOOL	map_create(t_map *self, t_scene *scene, char **buffer);
 BOOL	map_read(t_map *self, char **map);
 BOOL	map_validate_islands(t_map *self, t_player *player);
 BOOL	map_validate_walls(t_map *self);
+BOOL	map_door_save(t_map *self);
 size_t	map_find_first_line(char **buffer);
 
 #endif

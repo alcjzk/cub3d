@@ -60,6 +60,8 @@ minimap_bonus.c				\
 minimap_wall_draw_bonus.c	\
 scene_set_options_bonus.c	\
 scene_set_textures_bonus.c	\
+map_bonus.c					\
+map_doors_bonus.c			\
 mouse_bonus.c				\
 texture_bonus.c				\
 line_textured_bonus.c		\
