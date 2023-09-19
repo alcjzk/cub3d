@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/18 18:12:49 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 13:47:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,28 @@
 # include "libft.h"
 # include "state.h"
 
-static t_color			texture_pixel(mlx_texture_t *texture, int x, int y);
-static mlx_texture_t	*texture_from_side(
-							t_side side,
-							t_texture_pack *textures);
-static float			texture_x(
+float					texture_x(
 							mlx_texture_t *self,
 							t_ray *ray,
 							t_player *player);
+
+static mlx_texture_t	*texture_select(
+		t_texture_pack *textures,
+		t_scene *scene,
+		t_side side,
+		t_ray *ray)
+{
+	if (scene->map.map[(int)ray->map_pos.y][(int)ray->map_pos.x] == '2')
+		return (scene->textures.door);
+	else if (side == SIDE_NORTH)
+		return (textures->north);
+	else if (side == SIDE_EAST)
+		return (textures->east);
+	else if (side == SIDE_WEST)
+		return (textures->west);
+	else
+		return (textures->south);
+}
 
 void	line_textured_init(
 	t_line_textured *self,
@@ -33,9 +47,7 @@ void	line_textured_init(
 {
 	int	height;
 
-	self->texture = texture_from_side(ray->side, &scene->textures);
-	if (scene->map.map[(int)ray->map_pos.y][(int)ray->map_pos.x] == '2')
-		self->texture = scene->textures.door;
+	self->texture = texture_select(&scene->textures, scene, ray->side, ray);
 	if (ray->perp_wall_dist == 0.0f)
 		ray->perp_wall_dist = 0.1f;
 	height = WINDOW_HEIGHT / ray->perp_wall_dist;
@@ -49,60 +61,6 @@ void	line_textured_init(
 	self->texture_step = 1.0 * (float)self->texture->height / (float)height;
 	self->texture_y = (self->start - WINDOW_HEIGHT / 2 + height / 2)
 		* self->texture_step;
-}
-
-void	line_textured_draw(t_line_textured *self, t_view *view, int x)
-{
-	int		screen_y;
-	t_color	color;
-
-	screen_y = self->start;
-	while (screen_y <= self->end)
-	{
-		if (self->texture_y >= (float)self->texture->height)
-			self->texture_y = (float)self->texture->height - 1;
-		color = texture_pixel(
-				self->texture,
-				self->texture_x,
-				(int)self->texture_y);
-		image_put_pixel(&view->frame, x, screen_y, color);
-		self->texture_y += self->texture_step;
-		screen_y++;
-	}
-}
-
-static t_color	texture_pixel(mlx_texture_t *texture, int x, int y)
-{
-	return (((t_color *)texture->pixels)[y * texture->width + x]);
-}
-
-static mlx_texture_t	*texture_from_side(
-		t_side side,
-		t_texture_pack *textures)
-{
-	if (side == SIDE_NORTH)
-		return (textures->north);
-	else if (side == SIDE_EAST)
-		return (textures->east);
-	else if (side == SIDE_WEST)
-		return (textures->west);
-	else
-		return (textures->south);
-}
-
-static float	texture_x(mlx_texture_t *self, t_ray *ray, t_player *player)
-{
-	float	texture_x;
-
-	if (ray->side == SIDE_EAST || ray->side == SIDE_WEST)
-		texture_x = player->position.y + ray->perp_wall_dist * player->raydir.y;
-	else
-		texture_x = player->position.x + ray->perp_wall_dist * player->raydir.x;
-	texture_x -= floor(texture_x);
-	texture_x *= (float)self->width;
-	if ((ray->side == SIDE_EAST) || (ray->side == SIDE_NORTH))
-		texture_x = (float)self->width - texture_x - 1;
-	return (texture_x);
 }
 
 #endif

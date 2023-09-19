@@ -6,11 +6,9 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/18 18:13:21 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 13:50:10 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef BONUS_FEATURES
 
 # include <math.h>
 # include "line_textured.h"
@@ -18,13 +16,26 @@
 # include "state.h"
 
 static t_color			texture_pixel(mlx_texture_t *texture, int x, int y);
-static mlx_texture_t	*texture_from_side(
-							t_side side,
-							t_texture_pack *textures);
-static float			texture_x(
+float					texture_x(
 							mlx_texture_t *self,
 							t_ray *ray,
 							t_player *player);
+
+#ifndef BONUS_FEATURES
+
+static mlx_texture_t	*texture_select(
+		t_side side,
+		t_texture_pack *textures)
+{
+	if (side == SIDE_NORTH)
+		return (textures->north);
+	else if (side == SIDE_EAST)
+		return (textures->east);
+	else if (side == SIDE_WEST)
+		return (textures->west);
+	else
+		return (textures->south);
+}
 
 void	line_textured_init(
 	t_line_textured *self,
@@ -33,7 +44,7 @@ void	line_textured_init(
 {
 	int	height;
 
-	self->texture = texture_from_side(ray->side, &scene->textures);
+	self->texture = texture_select(ray->side, &scene->textures);
 	if (ray->perp_wall_dist == 0.0f)
 		ray->perp_wall_dist = 0.1f;
 	height = WINDOW_HEIGHT / ray->perp_wall_dist;
@@ -48,6 +59,8 @@ void	line_textured_init(
 	self->texture_y = (self->start - WINDOW_HEIGHT / 2 + height / 2)
 		* self->texture_step;
 }
+
+#endif
 
 void	line_textured_draw(t_line_textured *self, t_view *view, int x)
 {
@@ -74,21 +87,7 @@ static t_color	texture_pixel(mlx_texture_t *texture, int x, int y)
 	return (((t_color *)texture->pixels)[y * texture->width + x]);
 }
 
-static mlx_texture_t	*texture_from_side(
-		t_side side,
-		t_texture_pack *textures)
-{
-	if (side == SIDE_NORTH)
-		return (textures->north);
-	else if (side == SIDE_EAST)
-		return (textures->east);
-	else if (side == SIDE_WEST)
-		return (textures->west);
-	else
-		return (textures->south);
-}
-
-static float	texture_x(mlx_texture_t *self, t_ray *ray, t_player *player)
+float	texture_x(mlx_texture_t *self, t_ray *ray, t_player *player)
 {
 	float	texture_x;
 
@@ -102,5 +101,3 @@ static float	texture_x(mlx_texture_t *self, t_ray *ray, t_player *player)
 		texture_x = (float)self->width - texture_x - 1;
 	return (texture_x);
 }
-
-#endif
