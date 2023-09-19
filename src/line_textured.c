@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_textured.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 15:31:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 16:41:34 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,35 @@
 #include "libft.h"
 #include "state.h"
 
-static t_color			texture_pixel(mlx_texture_t *texture, int x, int y);
-float					texture_x(
-							mlx_texture_t *self,
-							t_ray *ray,
-							t_player *player);
+static t_color	texture_pixel(mlx_texture_t *texture, int x, int y);
+float			texture_x(
+					mlx_texture_t *self,
+					t_ray *ray,
+					t_player *player);
+mlx_texture_t	*texture_select(
+					t_texture_pack *textures,
+					t_scene *scene,
+					t_ray *ray);
 
 #ifndef BONUS_FEATURES
 
-static mlx_texture_t	*texture_select(
-		t_side side,
-		t_texture_pack *textures)
+mlx_texture_t	*texture_select(
+		t_texture_pack *textures,
+		t_scene *scene,
+		t_ray *ray)
 {
-	if (side == SIDE_NORTH)
+	(void)scene;
+	if (ray->side == SIDE_NORTH)
 		return (textures->north);
-	else if (side == SIDE_EAST)
+	else if (ray->side == SIDE_EAST)
 		return (textures->east);
-	else if (side == SIDE_WEST)
+	else if (ray->side == SIDE_WEST)
 		return (textures->west);
 	else
 		return (textures->south);
 }
+
+#endif
 
 void	line_textured_init(
 	t_line_textured *self,
@@ -44,7 +52,7 @@ void	line_textured_init(
 {
 	int	height;
 
-	self->texture = texture_select(ray->side, &scene->textures);
+	self->texture = texture_select(&scene->textures, scene, ray);
 	if (ray->perp_wall_dist == 0.0f)
 		ray->perp_wall_dist = 0.1f;
 	height = WINDOW_HEIGHT / ray->perp_wall_dist;
@@ -59,8 +67,6 @@ void	line_textured_init(
 	self->texture_y = (self->start - WINDOW_HEIGHT / 2 + height / 2)
 		* self->texture_step;
 }
-
-#endif
 
 void	line_textured_draw(t_line_textured *self, t_view *view, int x)
 {
