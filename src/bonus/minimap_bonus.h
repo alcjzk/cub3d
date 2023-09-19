@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:24:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/13 05:16:47 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:54:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define BACKGROUND		0xFF6A564C
 # define WALL			0xFF40342E
 # define PLAYER			0xFF8CBEA3
+# define DOOR			0xFF7087D0
 
 typedef struct s_minimap
 {

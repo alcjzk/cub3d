@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 14:33:52 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 13:55:03 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ BOOL	map_read(t_map *self, char **map);
 BOOL	map_validate_islands(t_map *self, t_player *player);
 BOOL	map_validate_walls(t_map *self);
 size_t	map_find_first_line(char **buffer);
+void	map_door_toggle(mlx_key_data_t keydata, t_scene *scene);
 
 #endif

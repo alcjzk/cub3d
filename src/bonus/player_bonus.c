@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:42:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/14 16:18:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 14:15:34 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "state.h"
 # include "mouse_bonus.h"
 # include "player.h"
+# include "ray.h"
 
 void	player_update_yaw(t_player *self, t_state *state)
 {
@@ -51,9 +52,9 @@ void	player_update(t_player *self, t_state *state)
 	self->plane = vec2f_rotate((t_vec2f){0.66, 0.0}, self->yaw);
 	velocity = player_velocity(self, state->mlx);
 	position_new = vec2f_add(self->position, velocity);
-	if (map->map[(int)self->position.y][(int)position_new.x] == '0')
+	if (!is_wall(map->map[(int)self->position.y][(int)position_new.x]))
 		self->position.x = position_new.x;
-	if (map->map[(int)position_new.y][(int)self->position.x] == '0')
+	if (!is_wall(map->map[(int)position_new.y][(int)self->position.x]))
 		self->position.y = position_new.y;
 }
 
