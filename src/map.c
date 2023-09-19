@@ -6,11 +6,9 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 14:52:09 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 16:31:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef BONUS_FEATURES
 
 # include "map.h"
 # include "get_next_line.h"
@@ -103,5 +101,3 @@ void	map_destroy(t_map *self)
 	free(self->map);
 	*self = (t_map){0};
 }
-
-#endif
