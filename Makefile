@@ -45,7 +45,6 @@ scene_set_options.c			\
 map.c						\
 map_read.c					\
 map_validate.c				\
-line.c						\
 line_textured.c				\
 ray.c						\
 ray_util.c					\
