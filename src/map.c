@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 16:31:45 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 16:43:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "map.h"
-# include "get_next_line.h"
-# include <stdlib.h>
-# include "libft.h"
-# include "scene.h"
+#include "map.h"
+#include "get_next_line.h"
+#include <stdlib.h>
+#include "libft.h"
+#include "scene.h"
 
 size_t	map_find_first_line(char **buffer)
 {
