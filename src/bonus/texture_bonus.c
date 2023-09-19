@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/17 14:34:51 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include "texture.h"
 
-BOOL	texture_pack_load(
+_Bool	texture_pack_load(
 	t_texture_pack *self,
 	const t_texture_options *options)
 {
@@ -54,7 +54,7 @@ void	texture_pack_unload(t_texture_pack *self)
 	*self = (t_texture_pack){0};
 }
 
-BOOL	texture_options_validate(t_texture_options *self)
+_Bool	texture_options_validate(t_texture_options *self)
 {
 	if (self->north && self->west && self->south && self->east && self->door)
 	{

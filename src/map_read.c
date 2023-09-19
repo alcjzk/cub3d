@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 14:51:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	map_get_max_size(t_map *self, char **map)
 	self->height = row;
 }
 
-BOOL	map_allocate(t_map *self)
+_Bool	map_allocate(t_map *self)
 {
 	size_t	row;
 
@@ -77,7 +77,7 @@ void	map_copy(t_map *self, char **map)
 	}
 }
 
-BOOL	map_read(t_map *self, char **map)
+_Bool	map_read(t_map *self, char **map)
 {
 	if (!self->is_valid)
 		return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:32:18 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 17:53:34 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "bool.h"
 
 void	mouse_align_center(mlx_t *mlx);
-BOOL	mouse_is_inside_window(mlx_t *mlx);
-BOOL	mouse_try_capture(mlx_t *mlx);
+_Bool	mouse_is_inside_window(mlx_t *mlx);
+_Bool	mouse_try_capture(mlx_t *mlx);
 void	mouse_release(mlx_t *mlx);
 
 #endif

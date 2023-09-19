@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 14:14:05 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_ray
 void	ray_init(t_ray *self, t_scene *scene);
 void	ray_cast(t_ray *self, t_scene *scene);
 float	ray_perpendicular_wall_distance(t_ray *self);
-BOOL	ray_at_end(t_ray *self, t_map *map);
-BOOL	is_wall(char c);
+_Bool	ray_at_end(t_ray *self, t_map *map);
+_Bool	is_wall(char c);
 
 #endif

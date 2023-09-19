@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:49:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/04 15:53:45 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_vector	*vector_grow(t_vector *self)
 	return (self);
 }
 
-BOOL	vector_push(t_vector *self, void *elem_ptr)
+_Bool	vector_push(t_vector *self, void *elem_ptr)
 {
 	char	*data;
 

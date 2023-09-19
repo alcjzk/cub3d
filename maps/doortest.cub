@@ -3,7 +3,7 @@ SO ./textures/StoneWall_NORMAL.png
 WE ./textures/StoneWall000.png
 EA ./textures/StoneWall001.png
 
-DR ./textures/AABBCC.png
+DR ./textures/proto/door.png
 
 F 150,150,150
 C 0,0,255

@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 04:15:35 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/03/19 04:50:57 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ssize_t	vector_position(
 	t_vector *self,
-	BOOL (*cmp)(void *, void *),
+	_Bool (*cmp)(void *, void *),
 	void *param)
 {
 	size_t	idx;

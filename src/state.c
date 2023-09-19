@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/12 15:41:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	state_destroy(t_state *self)
 #ifndef BONUS_FEATURES
 
 // TODO: Proper use of .is_valid
-BOOL	state_create(t_state *self, t_scene *scene)
+_Bool	state_create(t_state *self, t_scene *scene)
 {
 	*self = (t_state){0};
 	self->mlx = mlx_init(

@@ -53,6 +53,7 @@ player.c					\
 texture.c					\
 scene_print_error.c			\
 util.c						\
+sprite_bonus.c				\
 main.c
 
 SRCS_BONUS =				\
@@ -97,6 +98,11 @@ init:
 $(NAME): $(OBJS) | $(LIBFT)
 	@echo ""
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+ifeq ($(BONUS_FEATURES), 1)
+		touch obj/.bonus
+else
+		touch obj/.mandatory
+endif
 
 $(OBJ_DIR)%.o: %.c | obj_dir $(MLX42)
 	$(CC) $(CFLAGS) -c -o $@ $<

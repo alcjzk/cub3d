@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ray_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 19:00:11 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 14:14:14 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-BOOL	is_wall(char c)
+_Bool	is_wall(char c)
 {
 	if (c == '1' || c == '2')
 		return (TRUE);
 	return (FALSE);
 }
 
-BOOL	ray_at_end(t_ray *self, t_map *map)
+_Bool	ray_at_end(t_ray *self, t_map *map)
 {
 	if (self->map_pos.x < 0.0f || self->map_pos.y < 0.0f)
 		return (TRUE);

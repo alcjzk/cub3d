@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/12 15:37:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_state
 	mlx_t		*mlx;
 	t_view		view;
 	t_scene		*scene;
-	BOOL		is_valid;
+	_Bool		is_valid;
 }	t_state;
 
-BOOL	state_create(t_state *self, t_scene *scene);
+_Bool	state_create(t_state *self, t_scene *scene);
 void	state_destroy(t_state *self);
 void	state_update(t_state *self);
 

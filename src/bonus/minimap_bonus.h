@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:24:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 15:54:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_minimap
 	t_image	img;
 }	t_minimap;
 
-BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx);
+_Bool	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx);
 void	minimap_update(t_minimap *self, t_scene *scene);
 void	minimap_wall_draw(t_minimap *self, t_scene *scene);
 

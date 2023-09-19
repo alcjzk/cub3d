@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:49:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/07/04 15:52:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_vector
 t_vector	*vector_with_capacity(size_t capacity, size_t elem_size);
 t_vector	*vector_grow(t_vector *self);
 void		vector_free(t_vector *self);
-BOOL		vector_push(t_vector *self, void *elem_ptr);
+_Bool		vector_push(t_vector *self, void *elem_ptr);
 void		*vector_get(const t_vector *self, size_t index);
 
 ///			Searches for an element in the vector, returning its index.
@@ -42,7 +42,7 @@ void		*vector_get(const t_vector *self, size_t index);
 ///			Index of the first matching element if found or INVALID_INDEX.
 ssize_t		vector_position(
 				t_vector *self,
-				BOOL (*cmp)(void *, void *),
+				_Bool (*cmp)(void *, void *),
 				void *param);
 
 ///			Removes an element from the vector, swapping it with the last
@@ -63,7 +63,7 @@ void		vector_swap_remove(t_vector *self, size_t index);
 ///
 ///			@warning This function is unsafe when used with unreasonably large
 ///			vectors.
-BOOL		vector_reserve(t_vector *self, size_t additional_capacity);
+_Bool		vector_reserve(t_vector *self, size_t additional_capacity);
 
 ///			Extends the vector `self` by concatenating it with `other`.
 ///	
@@ -71,6 +71,6 @@ BOOL		vector_reserve(t_vector *self, size_t additional_capacity);
 ///			@param other Non-null pointer to a vector compatible with self.
 ///	
 ///			@return TRUE on success FALSE on failure.
-BOOL		vector_extend(t_vector *self, const t_vector *other);
+_Bool		vector_extend(t_vector *self, const t_vector *other);
 
 #endif

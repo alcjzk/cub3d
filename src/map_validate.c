@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 15:14:40 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "player.h"
 #include "map.h"
 
-static BOOL	check_max_values(int y, int x, char **map)
+static _Bool	check_max_values(int y, int x, char **map)
 {
 	if (!map[y + 1] || y == 0 || x == 0)
 	{
@@ -25,7 +25,7 @@ static BOOL	check_max_values(int y, int x, char **map)
 	return (TRUE);
 }
 
-BOOL	map_validate_walls(t_map *self)
+_Bool	map_validate_walls(t_map *self)
 {
 	int	x;
 	int	y;
@@ -88,7 +88,7 @@ static void	flood_fill(char **map, int y, int x, int map_char_len)
 		flood_fill(map, y, x + 1, map_char_len);
 }
 
-BOOL	map_validate_islands(t_map *self, t_player *player)
+_Bool	map_validate_islands(t_map *self, t_player *player)
 {
 	int	x;
 	int	y;

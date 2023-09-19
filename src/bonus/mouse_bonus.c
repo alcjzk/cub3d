@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:32:56 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/17 14:39:49 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	mouse_align_center(mlx_t *mlx)
 	mlx_set_mouse_pos(mlx, (mlx->width - 1) / 2, (mlx->height - 1) / 2);
 }
 
-BOOL	mouse_is_inside_window(mlx_t *mlx)
+_Bool	mouse_is_inside_window(mlx_t *mlx)
 {
 	int	mouse_dx;
 	int	mouse_dy;
@@ -32,7 +32,7 @@ BOOL	mouse_is_inside_window(mlx_t *mlx)
 	return (TRUE);
 }
 
-BOOL	mouse_try_capture(mlx_t *mlx)
+_Bool	mouse_try_capture(mlx_t *mlx)
 {
 	if (mouse_is_inside_window(mlx))
 	{
