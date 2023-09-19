@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 18:13:05 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 14:52:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	map_destroy(t_map *self)
 		while (self->map[i])
 			free(self->map[i++]);
 	free(self->map);
+	*self = (t_map){0};
 }
 
 #endif
