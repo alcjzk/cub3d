@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 15:33:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 14:51:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ BOOL	map_allocate(t_map *self)
 			while (row--)
 				free(self->map[row]);
 			free(self->map);
+			self->map = NULL;
 			return (FALSE);
 		}
 		row++;

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 19:36:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 20:05:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	scene_destroy(t_scene *self)
 	texture_options_free(&self->texture_options);
 	texture_pack_unload(&self->textures);
 	map_destroy(&self->map);
+	*self = (t_scene){};
 }
 
 static void	free_buffer(char **buffer)
