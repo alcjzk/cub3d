@@ -51,7 +51,6 @@ ray.c						\
 ray_util.c					\
 player.c					\
 texture.c					\
-scene_print_error.c			\
 util.c						\
 color.c						\
 main.c

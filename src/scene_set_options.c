@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 14:44:49 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 18:50:47 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ BOOL	scene_set_options(t_scene *self, char **buffer)
 		if (!config_func)
 		{
 			if (i < first_map_line && !scene_is_empty_line(buffer[i]))
+			{
+				ft_putstr_fd("Error\n", 2);
+				ft_putstr_fd("Found invalid identifier in the file\n", 2);
 				return (FALSE);
+			}
 		}
 		else if (!config_func(self, buffer[i]))
 			return (FALSE);

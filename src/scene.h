@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 16:04:38 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:30:52 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_scene_config_map_item
 	t_scene_config_func	func;
 }	t_scene_config_map_item;
 
-int						scene_create(t_scene *self, char *file);
+_Bool					scene_create(t_scene *self, char *file);
 void					scene_destroy(t_scene *self);
 void					scene_print_error(t_scene *self);
 BOOL					scene_read(int fd, char ***buffer);

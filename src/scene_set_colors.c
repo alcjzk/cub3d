@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 12:57:09 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 19:54:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,20 @@ static BOOL	convert_nums(char *line, t_color *color)
 BOOL	scene_set_floor_color(t_scene *self, char *line)
 {
 	if (self->is_floor_color_set)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate floor identifier\n", 2);
 		return (FALSE);
+	}
 	line++;
 	while (ft_isspace(*(line)))
 		line++;
 	if (!convert_nums(line, &self->floor_color))
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Incorrect color format\n", 2);
 		return (FALSE);
+	}
 	self->is_floor_color_set = TRUE;
 	return (TRUE);
 }
@@ -68,12 +76,20 @@ BOOL	scene_set_floor_color(t_scene *self, char *line)
 BOOL	scene_set_ceiling_color(t_scene *self, char *line)
 {
 	if (self->is_ceiling_color_set)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate ceiling identifier\n", 2);
 		return (FALSE);
+	}
 	line++;
 	while (ft_isspace(*(line)))
 		line++;
 	if (!convert_nums(line, &self->ceiling_color))
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Incorrect color format\n", 2);
 		return (FALSE);
+	}
 	self->is_ceiling_color_set = TRUE;
 	return (TRUE);
 }

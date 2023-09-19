@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 18:43:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 19:56:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	line_textured_draw(t_line_textured *self, t_view *view, int x)
 				self->texture,
 				self->texture_x,
 				(int)self->texture_y);
-		color = color_add_shadow(color, (float)(self->end - self->start) / (float)view->frame.height);
+		color = color_add_shadow(
+				color,
+				(float)(self->end - self->start) / (float)view->frame.height);
 		image_put_pixel(&view->frame, x, screen_y, color);
 		self->texture_y += self->texture_step;
 		screen_y++;

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 14:44:01 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 19:36:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "texture.h"
 
-int	validate_name(char *file)
+static _Bool	is_valid_name(char *file)
 {
 	int	i;
 
@@ -28,9 +28,9 @@ int	validate_name(char *file)
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("Incorrect map name\n", 2);
-		return (-1);
+		return (FALSE);
 	}
-	return (0);
+	return (TRUE);
 }
 
 void	scene_destroy(t_scene *self)
@@ -65,17 +65,17 @@ static void	buffer_remove_newlines(char **buffer)
 	}
 }
 
-int	scene_create(t_scene *self, char *file)
+_Bool	scene_create(t_scene *self, char *file)
 {
 	int		fd;
 	char	**buffer;
 
 	*self = (t_scene){.is_valid = TRUE};
-	if (validate_name(file))
-		return (-1);
+	if (!is_valid_name(file))
+		return (FALSE);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		return (FALSE);
 	self->is_valid = scene_read(fd, &buffer);
 	close(fd);
 	buffer_remove_newlines(buffer);
@@ -87,9 +87,8 @@ int	scene_create(t_scene *self, char *file)
 	self->is_valid = texture_pack_load(&self->textures, &self->texture_options);
 	if (!self->is_valid)
 	{
-		scene_print_error(self);
 		scene_destroy(self);
-		return (-1);
+		return (FALSE);
 	}
-	return (0);
+	return (TRUE);
 }

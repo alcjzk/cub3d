@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 16:16:24 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 19:31:29 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Incorrect amount of arguments\n", 2);
 		return (EXIT_FAILURE);
 	}
-	if (scene_create(&scene, argv[1]))
+	if (!scene_create(&scene, argv[1]))
 		return (EXIT_FAILURE);
 	if (!state_create(&state, &scene))
 	{
