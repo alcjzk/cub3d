@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_draw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/30 09:09:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:43:20 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	draw_background(t_image *image, t_scene *scene)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			image_put_pixel(image, x, y, scene->ceiling_color);
+			image_put_pixel(image, x, WINDOW_HEIGHT / 2 - y - 1, color_add_shadow(scene->ceiling_color, (float)y / WINDOW_HEIGHT));
 			image_put_pixel(
 				image,
 				x,
 				y + WINDOW_HEIGHT / 2,
-				scene->floor_color);
+				color_add_shadow(scene->floor_color, (float)y / WINDOW_HEIGHT));
 			x++;
 		}
 		y++;

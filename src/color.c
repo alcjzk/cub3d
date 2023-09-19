@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 13:53:37 by emajuri           #+#    #+#             */
+/*   Created: 2023/09/19 15:46:07 by emajuri           #+#    #+#             */
 /*   Updated: 2023/09/19 18:43:20 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <math.h>
+#include "color.h"
 
-# include <stdint.h>
-
-typedef struct s_color_rgba
+t_color	color_add_shadow(t_color color, float amount)
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	a;
-}	t_color_rgba;
+	float	color_scale;
 
-typedef union u_color
-{
-	t_color_rgba	channels;
-	int32_t			i32;
-	uint32_t		u32;
-}	t_color;
-
-t_color	color_add_shadow(t_color color, float amount);
-
-#endif
+	color_scale = fminf(amount + 0.1, 1);
+	color.channels.r = (float)color.channels.r * color_scale;
+	color.channels.g = (float)color.channels.g * color_scale;
+	color.channels.b = (float)color.channels.b * color_scale;
+	return (color);
+}
