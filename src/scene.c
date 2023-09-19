@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 20:26:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 20:34:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,6 @@ _Bool	scene_create(t_scene *self, char *file)
 		texture_options_validate(&self->texture_options);
 	self->is_valid = texture_pack_load(&self->textures, &self->texture_options);
 	if (!self->is_valid)
-	{
 		scene_destroy(self);
-		return (FALSE);
-	}
-	return (TRUE);
+	return (self->is_valid);
 }
