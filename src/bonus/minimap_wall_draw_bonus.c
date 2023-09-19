@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:59:42 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 14:59:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 15:30:03 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static t_color	minimap_color_decide(t_scene *scene, float map_x, float map_y)
 	if (scene->map.map[(size_t)map_y][(size_t)map_x] == '1')
 		return ((t_color)WALL);
 	return ((t_color)DOOR);
-
 }
 
 void	minimap_wall_draw(t_minimap *self, t_scene *scene)
