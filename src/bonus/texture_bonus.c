@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/17 14:34:51 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 20:24:03 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # include <stdlib.h>
 # include "texture.h"
+# include "libft.h"
 
 BOOL	texture_pack_load(
 	t_texture_pack *self,
@@ -63,6 +64,8 @@ BOOL	texture_options_validate(t_texture_options *self)
 	}
 	else
 	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Missing texture identifier\n", 2);
 		self->is_valid = FALSE;
 		return (FALSE);
 	}

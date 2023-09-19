@@ -6,12 +6,23 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 19:54:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 20:19:59 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "libft.h"
+
+_Bool	scene_is_colors_set(t_scene *self)
+{
+	if (!self->is_ceiling_color_set || !self->is_floor_color_set)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Missing color\n", 2);
+		return (FALSE);
+	}
+	return (TRUE);
+}
 
 static int	numlen(char *line)
 {

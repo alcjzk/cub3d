@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 20:05:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 20:26:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ _Bool	scene_create(t_scene *self, char *file)
 	buffer_remove_newlines(buffer);
 	self->is_valid = scene_set_options(self, buffer);
 	self->is_valid = map_create(&self->map, self, buffer);
+	self->is_valid = scene_is_colors_set(self);
 	free_buffer(buffer);
 	if (self->is_valid)
 		texture_options_validate(&self->texture_options);

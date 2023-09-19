@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 19:30:52 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/19 20:18:51 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ BOOL					scene_set_west(t_scene *self, char *line);
 BOOL					scene_set_floor_color(t_scene *self, char *line);
 BOOL					scene_set_ceiling_color(t_scene *self, char *line);
 BOOL					scene_set_options(t_scene *self, char **buffer);
+_Bool					scene_is_colors_set(t_scene *self);
 t_scene_config_map_item	*scene_config_map(void);
 
 # endif
