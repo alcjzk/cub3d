@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 17:33:25 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:12:32 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,42 @@ _Bool	map_validate_symbols(
 			t_player *player,
 			t_scene *scene);
 
-size_t	map_find_first_line(char **buffer)
-{
-	size_t	row;
-	size_t	col;
-
-	row = 0;
-	while (buffer[row])
-	{
-		col = 0;
-		while (ft_isspace(buffer[row][col]))
-			col++;
-		if (buffer[row][col] && ft_strchr(MAP_CHARS, buffer[row][col]))
-			return (row);
-		row++;
-	}
-	return (0);
-}
-
 _Bool	is_valid_map_char(char c)
 {
 	if (c == ' ')
 		return (TRUE);
 	if (ft_strchr(MAP_CHARS, c))
 		return (TRUE);
+	if (ft_strchr(PLAYER_CHARS, c))
+		return (TRUE);
 	return (FALSE);
 }
+
+size_t	map_find_first_line(char **buffer)
+{
+	size_t	row;
+	size_t	col;
+
+	row = 0;
+	while(buffer[row])
+		row++;
+	row--;
+	while (row >= 0)
+	{
+		col = 0;
+		while (ft_isspace(buffer[row][col]))
+			col++;
+		if (!buffer[row][col])
+			return (row + 1);
+		while (buffer[row][col] && is_valid_map_char(buffer[row][col]))
+			col++;
+		if (buffer[row][col] && !is_valid_map_char(buffer[row][col]))
+			return (row + 1);
+		row--;
+	}
+	return (0);
+}
+
 
 #ifndef BONUS_FEATURES
 
