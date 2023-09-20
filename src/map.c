@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 18:12:32 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:08:50 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	map_find_first_line(char **buffer)
 	size_t	col;
 
 	row = 0;
-	while(buffer[row])
+	while (buffer[row])
 		row++;
 	row--;
 	while (row >= 0)
@@ -57,7 +57,6 @@ size_t	map_find_first_line(char **buffer)
 	}
 	return (0);
 }
-
 
 #ifndef BONUS_FEATURES
 

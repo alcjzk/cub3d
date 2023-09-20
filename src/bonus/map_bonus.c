@@ -6,16 +6,16 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:58:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 17:29:15 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:09:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-#include "libft.h"
-#include "vec2i.h"
-#include "scene.h"
-#include "map.h"
+# include "libft.h"
+# include "vec2i.h"
+# include "scene.h"
+# include "map.h"
 
 _Bool	is_valid_map_char(char c);
 

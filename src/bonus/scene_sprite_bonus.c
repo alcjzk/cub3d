@@ -6,17 +6,17 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:37:16 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 18:12:38 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:11:37 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-#include <stdlib.h>
-#include "sprite_bonus.h"
-#include "scene.h"
+# include <stdlib.h>
+# include "sprite_bonus.h"
+# include "scene.h"
 
-typedef int (*t_cmp_func)(const void *, const void *);
+typedef int	(*t_cmp_func)(const void *, const void *);
 
 int	sprite_cmp(const t_sprite **a, const t_sprite **b)
 {
@@ -48,15 +48,16 @@ void	scene_sort_sprites(t_scene *self)
 	i = 0;
 	while (i < self->sprites->length)
 	{
-		sprite_update_distance_to_player(self->sprites_sorted[i], &self->player);
+		sprite_update_distance_to_player(
+			self->sprites_sorted[i],
+			&self->player);
 		i++;
 	}
 	qsort(
 		self->sprites_sorted,
 		self->sprites->length,
 		sizeof(t_sprite *),
-		(t_cmp_func)sprite_cmp
-	);
+		(t_cmp_func)sprite_cmp);
 }
 
 _Bool	scene_init_sprites(t_scene *self)

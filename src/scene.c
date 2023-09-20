@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 17:32:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:09:04 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ _Bool	scene_is_valid_name(char *file)
 	}
 	return (TRUE);
 }
-
 
 void	scene_free_buffer(char **buffer)
 {

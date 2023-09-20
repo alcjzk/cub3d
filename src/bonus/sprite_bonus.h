@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:52:44 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 17:50:20 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:18:31 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_sprite_draw
 	t_sprite	*sprite;
 }	t_sprite_draw;
 
-void	sprite_create_test(t_sprite *self);
 void	sprite_destroy(t_sprite *self);
 t_vec2f	sprite_transform(t_sprite *self, t_player *player);
 void	sprite_draw_init(
@@ -51,5 +50,9 @@ void	sprite_draw_init(
 			t_player *player);
 void	sprite_draw_draw(t_sprite_draw *self, float *z_buffer, t_image *image);
 void	sprite_update_distance_to_player(t_sprite *self, t_player *player);
+void	sprite_draw_line(
+			t_sprite_draw *self,
+			t_image *image,
+			int x);
 
 #endif

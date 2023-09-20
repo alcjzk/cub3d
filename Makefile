@@ -68,6 +68,7 @@ player_bonus.c				\
 state_bonus.c				\
 view_bonus.c				\
 scene_sprite_bonus.c		\
+sprite_draw_bonus.c			\
 sprite_bonus.c				\
 scene_bonus.c				\
 map_bonus.c					\

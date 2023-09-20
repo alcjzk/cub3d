@@ -6,15 +6,15 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:49:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 16:13:40 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:10:02 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-#include <fcntl.h>
-#include <unistd.h>
-#include "scene.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include "scene.h"
 
 void	scene_buffer_remove_newlines(char **buffer);
 void	scene_free_buffer(char **buffer);
