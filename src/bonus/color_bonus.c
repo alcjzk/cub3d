@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.h                                             :+:      :+:    :+:   */
+/*   color_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 14:00:52 by emajuri           #+#    #+#             */
-/*   Updated: 2023/07/21 15:00:12 by emajuri          ###   ########.fr       */
+/*   Created: 2023/09/19 15:46:07 by emajuri           #+#    #+#             */
+/*   Updated: 2023/09/20 14:05:57 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINE_H
-# define LINE_H
+#ifdef BONUS_FEATURES
 
+# include <math.h>
 # include "color.h"
-# include "view.h"
-# include "ray.h"
 
-typedef struct s_line
+t_color	color_add_shadow(t_color color, float amount)
 {
-	int		height;
-	int		start;
-	int		end;
-	t_color	color;
-}	t_line;
+	float	color_scale;
 
-void	line_init(t_line *self, t_ray *ray);
-void	line_draw_color(t_line *self, t_view *view, int x, t_ray *ray);
+	color_scale = fminf(amount + 0.1, 1);
+	color.channels.r = (float)color.channels.r * color_scale;
+	color.channels.g = (float)color.channels.g * color_scale;
+	color.channels.b = (float)color.channels.b * color_scale;
+	return (color);
+}
 
 #endif

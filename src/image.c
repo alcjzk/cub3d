@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 07:15:30 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/08/30 08:35:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	image_put_pixel(t_image *self, int x, int y, t_color color)
 	((t_color *)self->img->pixels)[self->img->width * y + x] = color;
 }
 
-BOOL	image_create(t_image *self, mlx_t *mlx, int width, int height)
+_Bool	image_create(t_image *self, mlx_t *mlx, int width, int height)
 {
 	*self = (t_image){0};
 	self->mlx = mlx;

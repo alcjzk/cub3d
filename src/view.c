@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   view.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:16:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/14 16:18:18 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "view.h"
 #include "state.h"
 
-BOOL	view_create(t_view *self, mlx_t *mlx)
+_Bool	view_create(t_view *self, mlx_t *mlx)
 {
 	*self = (t_view){};
 	self->mlx = mlx;

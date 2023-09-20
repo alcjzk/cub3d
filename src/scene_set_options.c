@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_options.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/18 14:44:49 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_scene_config_func	scene_config_func(const char *identifier)
 	return (NULL);
 }
 
-static BOOL	scene_is_empty_line(char *line)
+static _Bool	scene_is_empty_line(char *line)
 {
 	size_t	i;
 
@@ -62,7 +62,7 @@ static BOOL	scene_is_empty_line(char *line)
 	return (TRUE);
 }
 
-BOOL	scene_set_options(t_scene *self, char **buffer)
+_Bool	scene_set_options(t_scene *self, char **buffer)
 {
 	t_scene_config_func	config_func;
 	size_t				i;
@@ -78,7 +78,11 @@ BOOL	scene_set_options(t_scene *self, char **buffer)
 		if (!config_func)
 		{
 			if (i < first_map_line && !scene_is_empty_line(buffer[i]))
+			{
+				ft_putstr_fd("Error\n", 2);
+				ft_putstr_fd("Found invalid identifier in the file\n", 2);
 				return (FALSE);
+			}
 		}
 		else if (!config_func(self, buffer[i]))
 			return (FALSE);

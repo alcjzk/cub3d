@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:41:09 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/10 22:58:23 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "vector.h"
 
-BOOL	vector_reserve(t_vector *self, size_t additional_capacity)
+_Bool	vector_reserve(t_vector *self, size_t additional_capacity)
 {
 	size_t	target_capacity;
 	size_t	new_capacity;

@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/07 18:49:31 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_player
 	t_vec2f	raydir;
 	t_vec2f	plane;
 	double	yaw;
-	BOOL	is_valid;
+	_Bool	is_valid;
 }	t_player;
 
 void	player_init(t_player *self, char dir, int y, int x);

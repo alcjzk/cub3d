@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 16:43:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	map_find_first_line(char **buffer)
 	return (0);
 }
 
-static BOOL	is_valid_map_char(char c)
+static _Bool	is_valid_map_char(char c)
 {
 	if (c == ' ')
 		return (TRUE);
@@ -43,7 +43,7 @@ static BOOL	is_valid_map_char(char c)
 	return (FALSE);
 }
 
-static BOOL	map_validate_symbols(t_map *self, t_player *player)
+static _Bool	map_validate_symbols(t_map *self, t_player *player)
 {
 	int	x;
 	int	y;
@@ -72,7 +72,7 @@ static BOOL	map_validate_symbols(t_map *self, t_player *player)
 	return (player->is_valid);
 }
 
-BOOL	map_create(t_map *self, t_scene *scene, char **buffer)
+_Bool	map_create(t_map *self, t_scene *scene, char **buffer)
 {
 	size_t	first_map_line;
 

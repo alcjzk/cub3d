@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_read.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:49:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/14 16:07:49 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	vec_free(t_vector *buffer)
 	vector_free(buffer);
 }
 
-BOOL	scene_read(int fd, char ***buffer)
+_Bool	scene_read(int fd, char ***buffer)
 {
 	t_vector	*vec;
 	char		*line;

@@ -45,13 +45,11 @@ scene_set_options.c			\
 map.c						\
 map_read.c					\
 map_validate.c				\
-line.c						\
 line_textured.c				\
 ray.c						\
 ray_util.c					\
 player.c					\
 texture.c					\
-scene_print_error.c			\
 util.c						\
 main.c
 
@@ -64,6 +62,8 @@ map_doors_bonus.c			\
 mouse_bonus.c				\
 texture_bonus.c				\
 line_textured_bonus.c		\
+color_bonus.c				\
+view_draw_bonus.c			\
 player_bonus.c				\
 state_bonus.c				\
 main_bonus.c

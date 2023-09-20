@@ -6,14 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 22:05:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/05/10 22:34:31 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "vector.h"
 
-BOOL	vector_extend(t_vector *self, const t_vector *other)
+_Bool	vector_extend(t_vector *self, const t_vector *other)
 {
 	size_t	bytes_count;
 	size_t	offset;
