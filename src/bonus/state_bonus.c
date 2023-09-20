@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:02:08 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:02:04 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # include "hook.h"
 # include "mouse_bonus.h" 
 # include "state_bonus.h"
+
+void	state_destroy(t_state *self)
+{
+	view_destroy(&self->view);
+	scene_destroy(self->scene);
+	mlx_terminate(self->mlx);
+}
 
 _Bool	state_create(t_state *self, t_scene *scene)
 {

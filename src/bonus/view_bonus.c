@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 19:44:05 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 18:13:16 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:02:36 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	view_destroy(t_view *self)
 		return ;
 	if (self->z_buffer)
 		free(self->z_buffer);
-	image_destroy(&self->frame);
 	*self = (t_view){};
 }
 

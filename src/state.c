@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:06:57 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:01:38 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "hook.h"
 #include "state.h"
 
+#ifndef BONUS_FEATURES
+
 void	state_destroy(t_state *self)
 {
 	scene_destroy(self->scene);
 	mlx_terminate(self->mlx);
 }
-
-#ifndef BONUS_FEATURES
 
 // TODO: Proper use of .is_valid
 _Bool	state_create(t_state *self, t_scene *scene)
