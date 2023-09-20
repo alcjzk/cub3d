@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:58:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:09:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:00:44 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ _Bool	map_validate_symbols(
 		return (FALSE);
 	while (self->map[++(pos.y)])
 	{
-		pos.x = 0;
-		while (self->map[pos.y][pos.x])
+		pos.x = -1;
+		while (self->map[pos.y][++(pos.x)])
 		{
 			if (ft_strchr(PLAYER_CHARS, self->map[pos.y][pos.x]))
 			{
@@ -41,11 +41,11 @@ _Bool	map_validate_symbols(
 				player_init(player, self->map[pos.y][pos.x], pos.y, pos.x);
 				self->map[pos.y][pos.x] = '0';
 			}
-			else if (self->map[pos.y][pos.x] == '4')
-				scene_add_sprite(scene, pos);
+			else if (self->map[pos.y][pos.x] == '4'
+					&& !scene_add_sprite(scene, pos))
+				return (FALSE);
 			else if (!is_valid_map_char(self->map[pos.y][pos.x]))
 				return (FALSE);
-			pos.x++;
 		}
 	}
 	return (player->is_valid);
