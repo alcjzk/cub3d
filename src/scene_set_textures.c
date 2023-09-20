@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:02:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 18:52:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "libft.h"
 
-BOOL	scene_set_north(t_scene *self, char *line)
+_Bool	scene_set_north(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
@@ -34,7 +34,7 @@ BOOL	scene_set_north(t_scene *self, char *line)
 	return (TRUE);
 }
 
-BOOL	scene_set_south(t_scene *self, char *line)
+_Bool	scene_set_south(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
@@ -55,7 +55,7 @@ BOOL	scene_set_south(t_scene *self, char *line)
 	return (TRUE);
 }
 
-BOOL	scene_set_west(t_scene *self, char *line)
+_Bool	scene_set_west(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;
@@ -76,7 +76,7 @@ BOOL	scene_set_west(t_scene *self, char *line)
 	return (TRUE);
 }
 
-BOOL	scene_set_east(t_scene *self, char *line)
+_Bool	scene_set_east(t_scene *self, char *line)
 {
 	char	*dup;
 	size_t	i;

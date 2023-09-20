@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:19:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/17 14:38:47 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	minimap_player_draw(t_minimap *self, t_scene *scene)
 		image_put_pixel(&self->img, middle_x, middle_y + i, (t_color)PLAYER);
 }
 
-BOOL	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
+_Bool	minimap_create(t_minimap *self, t_scene *scene, mlx_t *mlx)
 {
 	self->width = WINDOW_WIDTH / 4 + BORDER_OFFSET * 2;
 	self->height = WINDOW_HEIGHT / 4 + BORDER_OFFSET * 2;

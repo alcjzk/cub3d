@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 13:59:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_view
 	t_image	frame;
 }	t_view;
 
-BOOL	view_create(t_view *self, mlx_t *mlx);
+_Bool	view_create(t_view *self, mlx_t *mlx);
 void	view_destroy(t_view *self);
 void	view_draw(t_view *self, t_scene *scene);
 void	view_draw_background(t_image *image, t_scene *scene);

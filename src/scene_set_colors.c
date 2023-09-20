@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_colors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 20:19:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	numlen(char *line)
 	return (i);
 }
 
-static BOOL	convert_nums(char *line, t_color *color)
+static _Bool	convert_nums(char *line, t_color *color)
 {
 	int		i;
 
@@ -63,7 +63,7 @@ static BOOL	convert_nums(char *line, t_color *color)
 	return (TRUE);
 }
 
-BOOL	scene_set_floor_color(t_scene *self, char *line)
+_Bool	scene_set_floor_color(t_scene *self, char *line)
 {
 	if (self->is_floor_color_set)
 	{
@@ -84,7 +84,7 @@ BOOL	scene_set_floor_color(t_scene *self, char *line)
 	return (TRUE);
 }
 
-BOOL	scene_set_ceiling_color(t_scene *self, char *line)
+_Bool	scene_set_ceiling_color(t_scene *self, char *line)
 {
 	if (self->is_ceiling_color_set)
 	{

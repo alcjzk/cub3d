@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_wall_draw_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:59:42 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 15:30:03 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static float	get_y(size_t minimap_height, t_player *player)
 		/ 2);
 }
 
-static BOOL	minimap_wall_validate(t_scene *scene, float map_x, float map_y)
+static _Bool	minimap_wall_validate(t_scene *scene, float map_x, float map_y)
 {
 	if (map_y >= 0 && map_x >= 0)
 		if ((size_t)map_y < scene->map.height

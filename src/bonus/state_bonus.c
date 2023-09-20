@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/18 18:50:41 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mouse_bonus.h" 
 # include "state_bonus.h"
 
-BOOL	state_create(t_state *self, t_scene *scene)
+_Bool	state_create(t_state *self, t_scene *scene)
 {
 	*self = (t_state){0};
 	self->mlx = mlx_init(
