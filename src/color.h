@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:53:37 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 18:43:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 13:52:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ typedef union u_color
 	int32_t			i32;
 	uint32_t		u32;
 }	t_color;
-
-t_color	color_add_shadow(t_color color, float amount);
 
 #endif

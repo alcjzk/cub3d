@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   color_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:46:07 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 18:43:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:05:57 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "color.h"
+#ifdef BONUS_FEATURES
+
+# include <math.h>
+# include "color.h"
 
 t_color	color_add_shadow(t_color color, float amount)
 {
@@ -23,3 +25,5 @@ t_color	color_add_shadow(t_color color, float amount)
 	color.channels.b = (float)color.channels.b * color_scale;
 	return (color);
 }
+
+#endif

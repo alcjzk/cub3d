@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/14 16:18:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 13:59:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ typedef struct s_view
 BOOL	view_create(t_view *self, mlx_t *mlx);
 void	view_destroy(t_view *self);
 void	view_draw(t_view *self, t_scene *scene);
+void	view_draw_background(t_image *image, t_scene *scene);
 
 #endif

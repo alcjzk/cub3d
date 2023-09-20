@@ -51,7 +51,6 @@ ray_util.c					\
 player.c					\
 texture.c					\
 util.c						\
-color.c						\
 main.c
 
 SRCS_BONUS =				\
@@ -63,6 +62,8 @@ map_doors_bonus.c			\
 mouse_bonus.c				\
 texture_bonus.c				\
 line_textured_bonus.c		\
+color_bonus.c				\
+view_draw_bonus.c			\
 player_bonus.c				\
 state_bonus.c				\
 main_bonus.c
