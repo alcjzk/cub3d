@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 16:05:55 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:32:46 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ _Bool	scene_create(t_scene *self, char *file)
 		return (FALSE);
 	self->is_valid = scene_read(fd, &buffer);
 	close(fd);
-	buffer_remove_newlines(buffer);
+	scene_buffer_remove_newlines(buffer);
 	self->is_valid = scene_set_options(self, buffer);
 	self->is_valid = map_create(&self->map, self, buffer);
 	self->is_valid = scene_is_colors_set(self);

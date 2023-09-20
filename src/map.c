@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 16:06:30 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:33:25 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ _Bool	map_validate_symbols(
 				player_init(player, self->map[pos.y][pos.x], pos.y, pos.x);
 				self->map[pos.y][pos.x] = '0';
 			}
-			else if (!scene_is_valid_map_char(self->map[pos.y][pos.x]))
+			else if (!is_valid_map_char(self->map[pos.y][pos.x]))
 				return (FALSE);
 			pos.x++;
 		}
