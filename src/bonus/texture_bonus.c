@@ -6,13 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 16:06:50 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:34:01 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
 # include <stdlib.h>
+# include <unistd.h>
 # include "texture.h"
 # include "libft.h"
 
@@ -35,6 +36,8 @@ _Bool	texture_pack_load(
 		|| !self->door
 		|| !self->sprite)
 	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("Some textures failed to load\n", STDERR_FILENO);
 		texture_pack_unload(self);
 		return (FALSE);
 	}
