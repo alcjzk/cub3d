@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:01:38 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:22:28 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include "bool.h"
 # include "color.h"
 # include "texture.h"
+# include "vector.h"
+# include "sprite_bonus.h"
 # include "map.h"
 
-# define CONFIG_FUNC_COUNT 7
+# define CONFIG_FUNC_COUNT 8
 
 typedef struct s_player	t_player;
 typedef _Bool			(*t_scene_config_func)(t_scene *, char *);
@@ -33,6 +35,8 @@ typedef struct s_scene
 	t_player			player;
 	_Bool				is_floor_color_set;
 	_Bool				is_ceiling_color_set;
+	t_vector			*sprites;
+	t_sprite			*sprites_sorted;
 	_Bool				is_valid;
 }	t_scene;
 
@@ -52,11 +56,17 @@ _Bool					scene_set_north(t_scene *self, char *line);
 _Bool					scene_set_south(t_scene *self, char *line);
 _Bool					scene_set_east(t_scene *self, char *line);
 _Bool					scene_set_west(t_scene *self, char *line);
+_Bool					scene_set_sprite(t_scene *self, char *line);
 _Bool					scene_set_door(t_scene *self, char *line);
 _Bool					scene_set_floor_color(t_scene *self, char *line);
 _Bool					scene_set_ceiling_color(t_scene *self, char *line);
 _Bool					scene_set_options(t_scene *self, char **buffer);
+
 _Bool					scene_is_colors_set(t_scene *self);
 t_scene_config_map_item	*scene_config_map(void);
+
+_Bool					scene_add_sprite(t_scene *self, t_vec2i position);
+_Bool					scene_init_sprites(t_scene *self);
+void					scene_free_sprites(t_scene *self);
 
 #endif

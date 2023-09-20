@@ -51,7 +51,6 @@ ray_util.c					\
 player.c					\
 texture.c					\
 util.c						\
-sprite_bonus.c				\
 main.c
 
 SRCS_BONUS =				\
@@ -67,6 +66,11 @@ color_bonus.c				\
 view_draw_bonus.c			\
 player_bonus.c				\
 state_bonus.c				\
+view_bonus.c				\
+scene_sprite_bonus.c		\
+sprite_bonus.c				\
+scene_bonus.c				\
+map_bonus.c					\
 main_bonus.c
 
 ifeq ($(BONUS_FEATURES), 1)

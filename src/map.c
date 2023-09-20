@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:05:17 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:06:30 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 #include "get_next_line.h"
 #include <stdlib.h>
 #include "libft.h"
+#include "vec2i.h"
 #include "scene.h"
+
+_Bool	map_validate_symbols(
+			t_map *self,
+			t_player *player,
+			t_scene *scene);
 
 size_t	map_find_first_line(char **buffer)
 {
@@ -34,7 +40,7 @@ size_t	map_find_first_line(char **buffer)
 	return (0);
 }
 
-static _Bool	is_valid_map_char(char c)
+_Bool	is_valid_map_char(char c)
 {
 	if (c == ' ')
 		return (TRUE);
@@ -43,34 +49,40 @@ static _Bool	is_valid_map_char(char c)
 	return (FALSE);
 }
 
-static _Bool	map_validate_symbols(t_map *self, t_player *player)
-{
-	int	x;
-	int	y;
+#ifndef BONUS_FEATURES
 
-	y = 0;
+_Bool	map_validate_symbols(
+	t_map *self,
+	t_player *player,
+	t_scene *scene)
+{
+	t_vec2i	pos;
+
+	(void)scene;
+	pos.y = -1;
 	if (!self->is_valid)
 		return (FALSE);
-	while (self->map[y])
+	while (self->map[++(pos.y)])
 	{
-		x = 0;
-		while (self->map[y][x])
+		pos.x = 0;
+		while (self->map[pos.y][pos.x])
 		{
-			if (ft_strchr(PLAYER_CHARS, self->map[y][x]))
+			if (ft_strchr(PLAYER_CHARS, self->map[pos.y][pos.x]))
 			{
 				if (player->is_valid)
 					return (FALSE);
-				player_init(player, self->map[y][x], y, x);
-				self->map[y][x] = '0';
+				player_init(player, self->map[pos.y][pos.x], pos.y, pos.x);
+				self->map[pos.y][pos.x] = '0';
 			}
-			else if (!is_valid_map_char(self->map[y][x]))
+			else if (!scene_is_valid_map_char(self->map[pos.y][pos.x]))
 				return (FALSE);
-			x++;
+			pos.x++;
 		}
-		y++;
 	}
 	return (player->is_valid);
 }
+
+#endif
 
 _Bool	map_create(t_map *self, t_scene *scene, char **buffer)
 {
@@ -84,7 +96,7 @@ _Bool	map_create(t_map *self, t_scene *scene, char **buffer)
 	if (!first_map_line)
 		self->is_valid = FALSE;
 	self->is_valid = map_read(self, &buffer[first_map_line]);
-	self->is_valid = map_validate_symbols(self, &scene->player);
+	self->is_valid = map_validate_symbols(self, &scene->player, scene);
 	self->is_valid = map_validate_walls(self);
 	self->is_valid = map_validate_islands(self, &scene->player);
 	return (self->is_valid);

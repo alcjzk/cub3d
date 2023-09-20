@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:49:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:03:05 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:34:04 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_texture_pack
 	mlx_texture_t	*south;
 	mlx_texture_t	*east;
 	mlx_texture_t	*door;
+	mlx_texture_t	*sprite;
 	_Bool			is_valid;
 }	t_texture_pack;
 
@@ -33,6 +34,7 @@ typedef struct s_texture_options
 	char	*south;
 	char	*east;
 	char	*door;
+	char	*sprite;
 	_Bool	is_valid;
 }	t_texture_options;
 

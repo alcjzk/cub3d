@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:06:47 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:12:56 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # else
 
 #  include "bool.h"
+#  include "vector.h"
 #  include "color.h"
 #  include "texture.h"
 #  include "map.h"

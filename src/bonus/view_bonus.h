@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view.c                                             :+:      :+:    :+:   */
+/*   view_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 14:16:34 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:20:45 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/09/19 20:34:45 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "view.h"
-#include "state.h"
+#ifndef VIEW_BONUS_H
+# define VIEW_BONUS_H
 
-#ifndef BONUS_FEATURES
+# include "bool.h"
+# include "image.h"
+# include "scene.h"
+# include "sprite_bonus.h"
 
-_Bool	view_create(t_view *self, mlx_t *mlx)
+typedef struct s_view
 {
-	*self = (t_view){};
-	self->mlx = mlx;
-	if (!image_create(&self->frame, self->mlx, WINDOW_WIDTH, WINDOW_HEIGHT))
-		return (FALSE);
-	return (TRUE);
-}
+	mlx_t		*mlx;
+	t_image		frame;
+	float		*z_buffer;
+}	t_view;
 
-void	view_destroy(t_view *self)
-{
-	if (!self)
-		return ;
-	image_destroy(&self->frame);
-}
+_Bool	view_create(t_view *self, mlx_t *mlx);
+void	view_destroy(t_view *self);
+void	view_draw(t_view *self, t_scene *scene);
+void	view_draw_background(t_image *image, t_scene *scene);
 
 #endif

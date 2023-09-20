@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:52:44 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 15:13:59 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:54:29 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,7 @@
 # include "vec2f.h"
 # include "player.h"
 # include "image.h"
-
-typedef struct s_vec2i
-{
-	int	x;
-	int	y;
-}	t_vec2i;
+# include "vec2i.h"
 
 typedef struct s_sprite
 {

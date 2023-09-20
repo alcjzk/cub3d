@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view_draw.c                                        :+:      :+:    :+:   */
+/*   view_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:22:08 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/09/19 19:44:05 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/09/19 20:28:43 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdio.h>
-#include "state.h"
-#include "view.h"
-#include "ray.h"
-#include "line_textured.h"
+#ifdef BONUS_FEATURES
 
-#ifndef BONUS_FEATURES
+# include "state.h"
+# include "sprite_bonus.h"
+# include "vector.h"
+# include "line_textured.h"
+# include "view.h"
 
-void	view_draw_background(t_image *image, t_scene *scene)
+_Bool	view_create(t_view *self, mlx_t *mlx)
 {
-	int	y;
-	int	x;
+	*self = (t_view){};
+	self->mlx = mlx;
+	self->z_buffer = malloc(WINDOW_WIDTH * sizeof(float));
+	if (!self->z_buffer)
+		return (FALSE);
+	if (!image_create(&self->frame, self->mlx, WINDOW_WIDTH, WINDOW_HEIGHT))
+		return (FALSE);
+	return (TRUE);
+}
 
-	y = 0;
-	while (y < WINDOW_HEIGHT / 2)
-	{
-		x = 0;
-		while (x < WINDOW_WIDTH)
-		{
-			image_put_pixel(
-				image,
-				x,
-				WINDOW_HEIGHT / 2 - y - 1,
-				scene->ceiling_color);
-			image_put_pixel(
-				image,
-				x,
-				y + WINDOW_HEIGHT / 2,
-				scene->floor_color);
-			x++;
-		}
-		y++;
-	}
+void	view_destroy(t_view *self)
+{
+	if (!self)
+		return ;
+	if (self->z_buffer)
+		free(self->z_buffer);
+	image_destroy(&self->frame);
+	*self = (t_view){};
 }
 
 static void	draw_frame(t_view *self, t_scene *scene)
@@ -59,6 +53,7 @@ static void	draw_frame(t_view *self, t_scene *scene)
 		ray = (t_ray){};
 		ray_init(&ray, scene);
 		ray_cast(&ray, scene);
+		self->z_buffer[x] = ray.perp_wall_dist;
 		line = (t_line_textured){};
 		line_textured_init(&line, scene, &ray);
 		line_textured_draw(&line, self, x);
@@ -68,8 +63,21 @@ static void	draw_frame(t_view *self, t_scene *scene)
 
 void	view_draw(t_view *self, t_scene *scene)
 {
+	t_sprite_draw	sprite_draw;
+	size_t			i;
+
 	view_draw_background(&self->frame, scene);
 	draw_frame(self, scene);
+	i = 0;
+	while (i < scene->sprites->length)
+	{
+		sprite_draw_init(
+			&sprite_draw,
+			(t_sprite *)vector_get(scene->sprites, i),
+			&scene->player);
+		sprite_draw_draw(&sprite_draw, self->z_buffer, &self->frame);
+		i++;
+	}
 }
 
 #endif

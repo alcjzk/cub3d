@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 15:06:47 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:21:52 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_scene_config_map_item	*scene_config_map(void)
 	{"EA", &scene_set_east},
 	{"F", &scene_set_floor_color},
 	{"C", &scene_set_ceiling_color},
-	{"DR", &scene_set_door}
+	{"DR", &scene_set_door},
+	{"AS", &scene_set_sprite}
 	};
 
 	return (map);

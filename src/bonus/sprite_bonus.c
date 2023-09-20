@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:56:58 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 16:22:17 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/19 20:28:46 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "state.h"
+#include "map.h"
 #include "sprite_bonus.h"
+#include <math.h>
 
 void	sprite_create_test(t_sprite *self)
 {
