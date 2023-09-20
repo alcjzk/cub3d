@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 17:11:04 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:04:20 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "state.h"
 
-static t_color	texture_pixel(mlx_texture_t *texture, int x, int y);
+t_color			texture_pixel(mlx_texture_t *texture, int x, int y);
 float			texture_x(
 					mlx_texture_t *self,
 					t_ray *ray,
@@ -43,6 +43,26 @@ mlx_texture_t	*texture_select(
 		return (textures->south);
 }
 
+void	line_textured_draw(t_line_textured *self, t_view *view, int x)
+{
+	int		screen_y;
+	t_color	color;
+
+	screen_y = self->start;
+	while (screen_y <= self->end)
+	{
+		if (self->texture_y >= (float)self->texture->height)
+			self->texture_y = (float)self->texture->height - 1;
+		color = texture_pixel(
+				self->texture,
+				self->texture_x,
+				(int)self->texture_y);
+		image_put_pixel(&view->frame, x, screen_y, color);
+		self->texture_y += self->texture_step;
+		screen_y++;
+	}
+}
+
 #endif
 
 void	line_textured_init(
@@ -68,27 +88,7 @@ void	line_textured_init(
 		* self->texture_step;
 }
 
-void	line_textured_draw(t_line_textured *self, t_view *view, int x)
-{
-	int		screen_y;
-	t_color	color;
-
-	screen_y = self->start;
-	while (screen_y <= self->end)
-	{
-		if (self->texture_y >= (float)self->texture->height)
-			self->texture_y = (float)self->texture->height - 1;
-		color = texture_pixel(
-				self->texture,
-				self->texture_x,
-				(int)self->texture_y);
-		image_put_pixel(&view->frame, x, screen_y, color);
-		self->texture_y += self->texture_step;
-		screen_y++;
-	}
-}
-
-static t_color	texture_pixel(mlx_texture_t *texture, int x, int y)
+t_color	texture_pixel(mlx_texture_t *texture, int x, int y)
 {
 	return (((t_color *)texture->pixels)[y * texture->width + x]);
 }

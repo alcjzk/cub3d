@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:02:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:06:11 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ _Bool	scene_set_north(t_scene *self, char *line)
 	size_t	i;
 
 	if (self->texture_options.north)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate north identifier\n", 2);
 		return (FALSE);
+	}
 	i = 2;
 	while (ft_isspace(line[i]))
 		i++;
@@ -36,7 +40,11 @@ _Bool	scene_set_south(t_scene *self, char *line)
 	size_t	i;
 
 	if (self->texture_options.south)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate south identifier\n", 2);
 		return (FALSE);
+	}
 	i = 2;
 	while (ft_isspace(line[i]))
 		i++;
@@ -53,7 +61,11 @@ _Bool	scene_set_west(t_scene *self, char *line)
 	size_t	i;
 
 	if (self->texture_options.west)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate west identifier\n", 2);
 		return (FALSE);
+	}
 	i = 2;
 	while (ft_isspace(line[i]))
 		i++;
@@ -70,7 +82,11 @@ _Bool	scene_set_east(t_scene *self, char *line)
 	size_t	i;
 
 	if (self->texture_options.east)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate east identifier\n", 2);
 		return (FALSE);
+	}
 	i = 2;
 	while (ft_isspace(line[i]))
 		i++;

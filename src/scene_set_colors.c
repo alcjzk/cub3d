@@ -6,12 +6,23 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:05:57 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "libft.h"
+
+_Bool	scene_is_colors_set(t_scene *self)
+{
+	if (!self->is_ceiling_color_set || !self->is_floor_color_set)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Missing color\n", 2);
+		return (FALSE);
+	}
+	return (TRUE);
+}
 
 static int	numlen(char *line)
 {
@@ -55,12 +66,20 @@ static _Bool	convert_nums(char *line, t_color *color)
 _Bool	scene_set_floor_color(t_scene *self, char *line)
 {
 	if (self->is_floor_color_set)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate floor identifier\n", 2);
 		return (FALSE);
+	}
 	line++;
 	while (ft_isspace(*(line)))
 		line++;
 	if (!convert_nums(line, &self->floor_color))
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Incorrect color format\n", 2);
 		return (FALSE);
+	}
 	self->is_floor_color_set = TRUE;
 	return (TRUE);
 }
@@ -68,12 +87,20 @@ _Bool	scene_set_floor_color(t_scene *self, char *line)
 _Bool	scene_set_ceiling_color(t_scene *self, char *line)
 {
 	if (self->is_ceiling_color_set)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Found duplicate ceiling identifier\n", 2);
 		return (FALSE);
+	}
 	line++;
 	while (ft_isspace(*(line)))
 		line++;
 	if (!convert_nums(line, &self->ceiling_color))
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Incorrect color format\n", 2);
 		return (FALSE);
+	}
 	self->is_ceiling_color_set = TRUE;
 	return (TRUE);
 }

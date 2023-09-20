@@ -6,12 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:07:11 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "texture.h"
+#include "libft.h"
 
 #ifndef BONUS_FEATURES
 
@@ -56,6 +57,8 @@ _Bool	texture_options_validate(t_texture_options *self)
 	}
 	else
 	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Missing texture identifier\n", 2);
 		self->is_valid = FALSE;
 		return (FALSE);
 	}

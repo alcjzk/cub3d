@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 17:17:58 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:06:03 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ _Bool	scene_set_options(t_scene *self, char **buffer)
 		if (!config_func)
 		{
 			if (i < first_map_line && !scene_is_empty_line(buffer[i]))
+			{
+				ft_putstr_fd("Error\n", 2);
+				ft_putstr_fd("Found invalid identifier in the file\n", 2);
 				return (FALSE);
+			}
 		}
 		else if (!config_func(self, buffer[i]))
 			return (FALSE);
