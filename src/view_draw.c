@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 13:59:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:14:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #ifndef BONUS_FEATURES
 
-static void	view_draw_background(t_image *image, t_scene *scene)
+void	view_draw_background(t_image *image, t_scene *scene)
 {
 	int	y;
 	int	x;
