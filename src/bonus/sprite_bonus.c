@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:56:58 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 20:28:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:03:57 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 #include "sprite_bonus.h"
 #include <math.h>
 
+// TODO: Feature flag
+
 void	sprite_create_test(t_sprite *self)
 {
-	*self = (t_sprite){{0}, 0};
+	*self = (t_sprite){};
 	self->position = (t_vec2f){2.0f, 2.0f};
 	self->texture = mlx_load_png("./textures/sprite.png");
 }
@@ -28,7 +30,7 @@ void	sprite_create_test(t_sprite *self)
 void	sprite_destroy(t_sprite *self)
 {
 	mlx_delete_texture(self->texture);
-	*self = (t_sprite){{0}, 0};
+	*self = (t_sprite){};
 }
 
 t_vec2f	sprite_transform(t_sprite *self, t_player *player)
@@ -133,4 +135,13 @@ void	sprite_draw_draw(t_sprite_draw *self, float *z_buffer, t_image *image)
 			sprite_draw_line(self, image, x);
 		x++;
 	}
+}
+
+void	sprite_update_distance_to_player(t_sprite *self, t_player *player)
+{
+	self->distance_to_player
+		= (player->position.x - self->position.x)
+		* (player->position.x - self->position.x)
+		+ (player->position.y - self->position.y)
+		* (player->position.y - self->position.y);
 }

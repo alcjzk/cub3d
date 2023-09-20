@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 19:44:05 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 20:28:43 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:13:16 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,12 @@ void	view_draw(t_view *self, t_scene *scene)
 	view_draw_background(&self->frame, scene);
 	draw_frame(self, scene);
 	i = 0;
+	scene_sort_sprites(scene);
 	while (i < scene->sprites->length)
 	{
 		sprite_draw_init(
 			&sprite_draw,
-			(t_sprite *)vector_get(scene->sprites, i),
+			scene->sprites_sorted[i],
 			&scene->player);
 		sprite_draw_draw(&sprite_draw, self->z_buffer, &self->frame);
 		i++;

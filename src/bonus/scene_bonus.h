@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 16:22:28 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:08:00 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_scene
 	_Bool				is_floor_color_set;
 	_Bool				is_ceiling_color_set;
 	t_vector			*sprites;
-	t_sprite			*sprites_sorted;
+	t_sprite			**sprites_sorted;
 	_Bool				is_valid;
 }	t_scene;
 
@@ -68,5 +68,6 @@ t_scene_config_map_item	*scene_config_map(void);
 _Bool					scene_add_sprite(t_scene *self, t_vec2i position);
 _Bool					scene_init_sprites(t_scene *self);
 void					scene_free_sprites(t_scene *self);
+void					scene_sort_sprites(t_scene *self);
 
 #endif
