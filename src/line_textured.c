@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   line_textured.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 20:04:38 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/20 12:54:12 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <math.h>
 #include "line_textured.h"
