@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:56:58 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 18:03:57 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:48:03 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <math.h>
 
 // TODO: Feature flag
+
+t_color	color_add_shadow(t_color color, float amount);
 
 void	sprite_create_test(t_sprite *self)
 {
@@ -114,6 +116,9 @@ void	sprite_draw_line(
 			self->sprite->texture->width
 			* self->texpos.y + self->texpos.x
 		];
+		pixel = color_add_shadow(
+			pixel,
+			(float)(self->end.y - self->start.y) / WINDOW_HEIGHT);
 		if (pixel.channels.a > 0)
 			image_put_pixel(image, x, y, pixel);
 		y++;
