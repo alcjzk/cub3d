@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   scene_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:49:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:29:02 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:15:03 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
+# include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "libft.h"
 # include "scene.h"
 
 void	scene_buffer_remove_newlines(char **buffer);
@@ -30,7 +32,11 @@ _Bool	scene_create(t_scene *self, const char *config_path)
 		return (FALSE);
 	fd = open(config_path, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		perror(config_path);
 		return (FALSE);
+	}
 	self->is_valid = scene_read(fd, &buffer);
 	close(fd);
 	scene_buffer_remove_newlines(buffer);
@@ -42,8 +48,6 @@ _Bool	scene_create(t_scene *self, const char *config_path)
 	self->is_valid = map_create(&self->map, self, buffer);
 	self->is_valid = scene_init_sprites(self);
 	scene_free_buffer(buffer);
-	if (!self->is_valid)
-		scene_destroy(self);
 	return (self->is_valid);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 17:00:32 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:01:01 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ size_t	map_find_first_line(char **buffer)
 	row = 0;
 	while (buffer[row])
 		row++;
-	row--;
-	while (row >= 0)
+	while (row-- > 0)
 	{
 		col = 0;
 		while (ft_isspace(buffer[row][col]))
@@ -51,7 +50,6 @@ size_t	map_find_first_line(char **buffer)
 			col++;
 		if (buffer[row][col] && !is_valid_map_char(buffer[row][col]))
 			return (row + 1);
-		row--;
 	}
 	return (0);
 }
@@ -101,11 +99,21 @@ _Bool	map_create(t_map *self, t_scene *scene, char **buffer)
 	self->is_valid = TRUE;
 	first_map_line = map_find_first_line(buffer);
 	if (!first_map_line)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("No identifiers in the file\n", 2);
 		self->is_valid = FALSE;
+		return (FALSE);
+	}
 	self->is_valid = map_read(self, &buffer[first_map_line]);
 	self->is_valid = map_validate_symbols(self, &scene->player, scene);
 	self->is_valid = map_validate_walls(self);
 	self->is_valid = map_validate_islands(self, &scene->player);
+	if (!self->is_valid)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Invalid map\n", 2);
+	}
 	return (self->is_valid);
 }
 

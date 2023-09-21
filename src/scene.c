@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 17:06:08 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:14:10 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "libft.h"
@@ -69,7 +70,11 @@ _Bool	scene_create(t_scene *self, const char *config_path)
 		return (FALSE);
 	fd = open(config_path, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		perror(config_path);
 		return (FALSE);
+	}
 	self->is_valid = scene_read(fd, &buffer);
 	close(fd);
 	scene_buffer_remove_newlines(buffer);
@@ -80,8 +85,6 @@ _Bool	scene_create(t_scene *self, const char *config_path)
 	if (self->is_valid)
 		texture_options_validate(&self->texture_options);
 	self->is_valid = texture_pack_load(&self->textures, &self->texture_options);
-	if (!self->is_valid)
-		scene_destroy(self);
 	return (self->is_valid);
 }
 
