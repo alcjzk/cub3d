@@ -1,7 +1,7 @@
-NO ./textures/StoneWall_GRAYSCALE.png
-SO ./textures/StoneWall_NORMAL.png
-WE ./textures/StoneWall000.png
-EA ./textures/StoneWall001.png
+NO ./textures/proto/north.png
+SO ./textures/proto/south.png
+WE ./textures/proto/west.png
+EA ./textures/proto/east.png
 DR ./textures/proto/door.png
 AS ./textures/sprite.png
 
