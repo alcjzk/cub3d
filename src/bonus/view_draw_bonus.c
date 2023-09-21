@@ -6,16 +6,16 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 14:03:47 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 17:18:15 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
 # include "state.h"
-# include "view.h"
-# include "ray.h"
-# include "line_textured.h"
+# include "image.h"
+# include "scene.h"
+# include "color.h"
 
 t_color	color_add_shadow(t_color color, float amount);
 

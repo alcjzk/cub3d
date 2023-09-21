@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_textures_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:02:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:35:43 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:04:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # include "scene.h"
 # include "libft.h"
+# include "bool.h"
 
 _Bool	scene_set_door(t_scene *self, char *line)
 {
