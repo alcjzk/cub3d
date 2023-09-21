@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:35:03 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:36:27 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,27 @@ _Bool	texture_pack_load(
 	self->west = mlx_load_png(options->west);
 	self->south = mlx_load_png(options->south);
 	self->east = mlx_load_png(options->east);
-	if (!self->north || !self->west || !self->south || !self->east)
+	self->is_valid = texture_pack_is_valid(self);
+	if (!self->is_valid)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 		ft_putstr_fd("Some textures failed to load\n", STDERR_FILENO);
 		texture_pack_unload(self);
 		return (FALSE);
 	}
-	self->is_valid = TRUE;
+	return (TRUE);
+}
+
+_Bool	texture_pack_is_valid(t_texture_pack *self)
+{
+	if (!texture_is_valid(self->north))
+		return (FALSE);
+	if (!texture_is_valid(self->west))
+		return (FALSE);
+	if (!texture_is_valid(self->south))
+		return (FALSE);
+	if (!texture_is_valid(self->east))
+		return (FALSE);
 	return (TRUE);
 }
 

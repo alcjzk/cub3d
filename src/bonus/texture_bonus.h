@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:49:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:34:04 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:40:42 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ _Bool	texture_pack_load(
 			t_texture_pack *self,
 			const t_texture_options *options);
 void	texture_pack_unload(t_texture_pack *self);
-
 _Bool	texture_options_validate(t_texture_options *self);
 void	texture_options_free(t_texture_options *self);
+_Bool	texture_is_valid(mlx_texture_t *self);
+_Bool	texture_pack_is_valid(t_texture_pack *self);
 
 #endif

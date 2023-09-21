@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:56:58 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:18:48 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:43:10 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vec2f	sprite_transform(t_sprite *self, t_player *player)
 	sprite_position = vec2f_sub(self->position, player->position);
 	inverse_determinant = 1.0 / (player->plane.x
 			* player->direction.y
-			- player->direction.x 
+			- player->direction.x
 			* player->plane.y);
 	transform.x = inverse_determinant * (player->direction.y
 			* sprite_position.x

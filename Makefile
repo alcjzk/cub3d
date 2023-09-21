@@ -50,6 +50,7 @@ ray.c						\
 ray_util.c					\
 player.c					\
 texture.c					\
+texture_util.c				\
 util.c						\
 main.c
 
