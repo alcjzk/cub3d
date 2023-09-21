@@ -6,15 +6,19 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:43:46 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:47:55 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-# include "hook.h"
 # include "mouse_bonus.h" 
 # include "state_bonus.h"
+
+static void	on_close(mlx_t *mlx)
+{
+	mlx_close_window(mlx);
+}
 
 void	state_destroy(t_state *self)
 {

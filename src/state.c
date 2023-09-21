@@ -6,17 +6,21 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:42:06 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:47:28 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 #include "view.h"
-#include "hook.h"
 #include "scene.h"
 #include "state.h"
 
 #ifndef BONUS_FEATURES
+
+static void	on_close(mlx_t *mlx)
+{
+	mlx_close_window(mlx);
+}
 
 void	state_destroy(t_state *self)
 {

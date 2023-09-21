@@ -26,7 +26,6 @@ override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) $(FWK:%=-framework %)
 # Sources
 SRCS_MANDATORY =			\
 state.c						\
-hook.c						\
 image.c						\
 view.c						\
 view_draw.c					\
