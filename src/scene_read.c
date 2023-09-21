@@ -6,11 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:49:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:05:50 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:04:43 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 #include "vector.h"
 #include "get_next_line.h"
 

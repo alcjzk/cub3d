@@ -6,14 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 10:36:27 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:08:23 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include "texture.h"
 #include "libft.h"
+#include "texture.h"
 
 #ifndef BONUS_FEATURES
 

@@ -6,11 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:49:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/08/31 19:24:56 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:07:16 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include "bool.h"
 #include "ray.h"
 
 static void	calc_deltadistance(t_ray *self, t_player *player)

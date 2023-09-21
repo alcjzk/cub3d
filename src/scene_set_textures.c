@@ -6,12 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:02:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:06:11 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:05:06 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
 #include "libft.h"
+#include "scene.h"
 
 _Bool	scene_set_north(t_scene *self, char *line)
 {

@@ -6,16 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:58:02 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 19:08:50 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:00:32 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
-#include "get_next_line.h"
-#include <stdlib.h>
 #include "libft.h"
 #include "vec2i.h"
 #include "scene.h"
+#include "map.h"
 
 _Bool	map_validate_symbols(
 			t_map *self,

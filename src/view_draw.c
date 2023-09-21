@@ -6,16 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:51:03 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:22:08 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:10:01 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdio.h>
 #include "state.h"
-#include "view.h"
 #include "ray.h"
 #include "line_textured.h"
+#include "view.h"
 
 #ifndef BONUS_FEATURES
 

@@ -6,15 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 15:14:25 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:06:08 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "unistd.h"
-#include "fcntl.h"
+#include <unistd.h>
+#include <fcntl.h>
 #include "libft.h"
-#include "texture.h"
+#include "scene.h"
 
 _Bool	scene_is_valid_name(const char *config_path)
 {
