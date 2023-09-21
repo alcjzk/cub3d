@@ -128,7 +128,7 @@ run: all
 obj_dir:
 	@mkdir -p $(OBJ_DIR)
 
-re: fclean all
+re: fclean mandatory
 
 clean:
 	rm -rf $(OBJ_DIR)
