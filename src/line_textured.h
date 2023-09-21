@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   line_textured.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:19 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/18 16:09:46 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 16:51:02 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINE_TEXTURED_H
 # define LINE_TEXTURED_H
 
-# include "MLX42.h"
-# include "view.h"
-# include "ray.h"
-# include "texture.h"
+#include "ray.h"
+#include "scene.h"
 
 typedef struct s_line_textured
 {

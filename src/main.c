@@ -6,18 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 15:30:40 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:53:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include <stdlib.h>
-#include "scene.h"
-#include "state.h"
-#include "hook.h"
-#include "texture.h"
-#include "main.h"
 #include "libft.h"
+#include "state.h"
 
 int	main(int argc, char **argv)
 {

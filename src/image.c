@@ -6,11 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 07:15:30 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:03:50 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:49:24 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
+#include "bool.h"
 #include "image.h"
 
 void	image_put_pixel(t_image *self, int x, int y, t_color color)

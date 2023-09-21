@@ -6,14 +6,13 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:04:20 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:50:04 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "line_textured.h"
-#include "libft.h"
 #include "state.h"
+#include "line_textured.h"
 
 t_color			texture_pixel(mlx_texture_t *texture, int x, int y);
 float			texture_x(
