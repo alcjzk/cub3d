@@ -3,22 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 01:56:58 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 10:43:10 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:07:07 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "state.h"
-# include "map.h"
 # include "sprite_bonus.h"
-# include <math.h>
 
 void	sprite_destroy(t_sprite *self)
 {

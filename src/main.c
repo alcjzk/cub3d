@@ -6,49 +6,24 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:05:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 16:12:19 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:53:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BONUS_FEATURES
-
-# include "MLX42.h"
-# include <stdlib.h>
-# include "scene.h"
-# include "state.h"
-# include "hook.h"
-# include "texture.h"
-# include "main.h"
-# include "libft.h"
+#include <stdlib.h>
+#include "libft.h"
+#include "state.h"
 
 int	main(int argc, char **argv)
 {
 	t_state				state;
-	t_scene				scene;
 
 	if (argc != 2)
 	{
 		ft_putstr_fd("Incorrect amount of arguments\n", 2);
 		return (EXIT_FAILURE);
 	}
-	if (!scene_create(&scene, argv[1]))
-		return (EXIT_FAILURE);
-	if (!state_create(&state, &scene))
-	{
-		state_destroy(&state);
-		return (EXIT_FAILURE);
-	}
-	if (mlx_image_to_window(
-			state.mlx,
-			state.view.frame.img,
-			0, 0)
-		== -1)
-	{
-		state_destroy(&state);
-		return (EXIT_FAILURE);
-	}
-	mlx_close_hook(state.mlx, (mlx_closefunc)on_close, state.mlx);
-	if (!mlx_loop_hook(state.mlx, (void (*)(void *))state_update, &state))
+	if (!state_create(&state, argv[1]))
 	{
 		state_destroy(&state);
 		return (EXIT_FAILURE);
@@ -57,5 +32,3 @@ int	main(int argc, char **argv)
 	state_destroy(&state);
 	return (EXIT_SUCCESS);
 }
-
-#endif

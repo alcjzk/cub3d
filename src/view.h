@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:05:56 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:08:50 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #  include "view_bonus.h"
 # else
 
-#  include "bool.h"
 #  include "image.h"
 #  include "scene.h"
 

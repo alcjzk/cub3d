@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:42 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 10:35:19 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:07:02 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # else
 
 #  include "MLX42.h"
-#  include "bool.h"
 
 typedef struct s_texture_pack
 {

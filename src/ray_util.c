@@ -6,10 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 19:00:11 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:05:34 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:07:25 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "bool.h"
 #include "ray.h"
 
 _Bool	is_wall(char c)

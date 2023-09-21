@@ -6,15 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:10 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 14:04:43 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 16:55:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
-# include <math.h>
 # include "line_textured.h"
-# include "libft.h"
 # include "state.h"
 
 t_color	color_add_shadow(t_color color, float amount);

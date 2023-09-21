@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:58:38 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 20:00:44 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 16:58:47 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft.h"
 # include "vec2i.h"
 # include "scene.h"
+# include "player.h"
 # include "map.h"
 
 _Bool	is_valid_map_char(char c);

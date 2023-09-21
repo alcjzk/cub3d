@@ -6,12 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:49:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:06:03 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:04:58 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
 #include "libft.h"
+#include "scene.h"
 
 #ifndef BONUS_FEATURES
 # define CONFIG_FUNC_COUNT 6

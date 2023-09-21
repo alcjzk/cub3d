@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:32:56 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:00:48 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:05:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
 # include "mouse_bonus.h"
+# include "bool.h"
 
 void	mouse_align_center(mlx_t *mlx)
 {

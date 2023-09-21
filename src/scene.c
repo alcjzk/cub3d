@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 19:09:04 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:14:10 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "unistd.h"
-#include "fcntl.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "libft.h"
-#include "texture.h"
+#include "scene.h"
 
-_Bool	scene_is_valid_name(char *file)
+_Bool	scene_is_valid_name(const char *config_path)
 {
 	int	i;
 
 	i = 0;
-	while (file[i])
+	while (config_path[i])
 		i++;
 	i -= 4;
-	if (i < 0 || ft_strncmp(&file[i], ".cub", 4))
+	if (i < 0 || ft_strncmp(&config_path[i], ".cub", 4))
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("Incorrect map name\n", 2);
@@ -60,17 +60,21 @@ void	scene_buffer_remove_newlines(char **buffer)
 
 #ifndef BONUS_FEATURES
 
-_Bool	scene_create(t_scene *self, char *file)
+_Bool	scene_create(t_scene *self, const char *config_path)
 {
 	int		fd;
 	char	**buffer;
 
 	*self = (t_scene){.is_valid = TRUE};
-	if (!scene_is_valid_name(file))
+	if (!scene_is_valid_name(config_path))
 		return (FALSE);
-	fd = open(file, O_RDONLY);
+	fd = open(config_path, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		perror(config_path);
 		return (FALSE);
+	}
 	self->is_valid = scene_read(fd, &buffer);
 	close(fd);
 	scene_buffer_remove_newlines(buffer);
@@ -81,8 +85,6 @@ _Bool	scene_create(t_scene *self, char *file)
 	if (self->is_valid)
 		texture_options_validate(&self->texture_options);
 	self->is_valid = texture_pack_load(&self->textures, &self->texture_options);
-	if (!self->is_valid)
-		scene_destroy(self);
 	return (self->is_valid);
 }
 

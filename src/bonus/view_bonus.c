@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   view_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 19:44:05 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:02:36 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:14:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
 # include "state.h"
-# include "sprite_bonus.h"
-# include "vector.h"
 # include "line_textured.h"
-# include "view.h"
+# include <stdlib.h>
 
 _Bool	view_create(t_view *self, mlx_t *mlx)
 {

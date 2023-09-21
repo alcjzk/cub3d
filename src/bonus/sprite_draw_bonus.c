@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_draw_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:13:02 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:18:56 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:57:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # include "state.h"
 # include "sprite_bonus.h"
+# include <stdlib.h>
 
 static _Bool	is_visible(int x, float z, float *z_buffer);
 t_color			color_add_shadow(t_color color, float amount);

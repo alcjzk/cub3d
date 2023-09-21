@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 07:14:56 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:04:07 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:44:38 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define IMAGE_H
 
 # include "MLX42.h"
-# include "bool.h"
 # include "color.h"
 
 typedef struct s_image

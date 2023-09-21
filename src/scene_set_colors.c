@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_colors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 17:47:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 17:05:01 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
 #include "libft.h"
+#include "scene.h"
 
 _Bool	scene_is_colors_set(t_scene *self)
 {

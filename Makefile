@@ -12,10 +12,10 @@ LIB_DIR				= libft $(BREW_PATH)/opt/glfw/lib/ MLX42/build/
 
 # Flags setup
 CC		= cc
-OPT		= 0
+OPT		= fast
 LIB		= ft glfw mlx42
 WARN	= all extra error
-EXTRA	= -MP -MMD -g
+EXTRA	= -MP -MMD
 FWK		= OpenGL Cocoa IOKit
 
 # Compiler flags
@@ -26,7 +26,6 @@ override LDFLAGS	+= $(LIB_DIR:%=-L%) $(LIB:%=-l%) $(FWK:%=-framework %)
 # Sources
 SRCS_MANDATORY =			\
 state.c						\
-hook.c						\
 image.c						\
 view.c						\
 view_draw.c					\
@@ -72,8 +71,7 @@ scene_sprite_bonus.c		\
 sprite_draw_bonus.c			\
 sprite_bonus.c				\
 scene_bonus.c				\
-map_bonus.c					\
-main_bonus.c
+map_bonus.c
 
 ifeq ($(BONUS_FEATURES), 1)
 	SRCS = $(SRCS_MANDATORY) $(SRCS_BONUS)
@@ -130,7 +128,7 @@ run: all
 obj_dir:
 	@mkdir -p $(OBJ_DIR)
 
-re: fclean all
+re: fclean mandatory
 
 clean:
 	rm -rf $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 10:13:14 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:33:25 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 #  include "scene_bonus.h"
 # else
 
-#  include "bool.h"
-#  include "color.h"
 #  include "texture.h"
 #  include "map.h"
+#  include "color.h"
 
 #  define CONFIG_FUNC_COUNT 6
 
@@ -46,9 +45,8 @@ typedef struct s_scene_config_map_item
 	t_scene_config_func	func;
 }	t_scene_config_map_item;
 
-_Bool					scene_create(t_scene *self, char *file);
+_Bool					scene_create(t_scene *self, const char *file);
 void					scene_destroy(t_scene *self);
-void					scene_print_error(t_scene *self);
 _Bool					scene_read(int fd, char ***buffer);
 
 //options
