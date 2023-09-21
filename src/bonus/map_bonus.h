@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 17:28:22 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:57:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_BONUS_H
 # define MAP_BONUS_H
 
-# include <stdlib.h>
-# include "bool.h"
 # include "player.h"
 
 # define MAP_CHARS		"0124"

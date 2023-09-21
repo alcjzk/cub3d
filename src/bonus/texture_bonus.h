@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:49:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 10:40:42 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:10:19 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define TEXTURE_BONUS_H
 
 # include "MLX42.h"
-# include "bool.h"
 
 typedef struct s_texture_pack
 {

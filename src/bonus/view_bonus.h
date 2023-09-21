@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   view_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 20:34:45 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:15:06 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIEW_BONUS_H
 # define VIEW_BONUS_H
 
-# include "bool.h"
 # include "image.h"
 # include "scene.h"
-# include "sprite_bonus.h"
 
 typedef struct s_view
 {

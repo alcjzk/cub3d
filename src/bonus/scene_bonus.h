@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   scene_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 15:29:31 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:03:57 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_BONUS_H
 # define SCENE_BONUS_H
 
-# include "bool.h"
 # include "color.h"
 # include "texture.h"
 # include "vector.h"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   state_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:03:49 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:40:26 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:08:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 // Bonus
 # include "MLX42.h"
-# include "bool.h"
 # include "view.h"
 # include "scene.h"
 # include "minimap_bonus.h"

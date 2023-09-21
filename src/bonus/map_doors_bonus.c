@@ -6,14 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:49:30 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/19 14:20:57 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 16:59:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef BONUS_FEATURES
 
 # include "map_bonus.h"
-# include "libft.h"
 # include "scene_bonus.h"
 
 static void	door_toggle(t_map *self, size_t y, size_t x)
