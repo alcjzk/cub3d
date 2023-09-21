@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:49:21 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:10:02 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:29:02 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 
 void	scene_buffer_remove_newlines(char **buffer);
 void	scene_free_buffer(char **buffer);
-_Bool	scene_is_valid_name(char *file);
+_Bool	scene_is_valid_name(const char *config_path);
 
-_Bool	scene_create(t_scene *self, char *file)
+_Bool	scene_create(t_scene *self, const char *config_path)
 {
 	int		fd;
 	char	**buffer;
 
 	*self = (t_scene){.is_valid = TRUE};
-	if (!scene_is_valid_name(file))
+	if (!scene_is_valid_name(config_path))
 		return (FALSE);
-	fd = open(file, O_RDONLY);
+	fd = open(config_path, O_RDONLY);
 	if (fd < 0)
 		return (FALSE);
 	self->is_valid = scene_read(fd, &buffer);

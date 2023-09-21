@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:03:49 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:02:19 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:27:46 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ typedef struct s_state
 	mlx_t		*mlx;
 	t_view		view;
 	t_scene		*scene;
+	t_scene		scene_real;
 	_Bool		is_mouse_captured;
 	t_minimap	minimap;
 	_Bool		is_valid;
 }	t_state;
 
-_Bool	state_create(t_state *self, t_scene *scene);
+_Bool	state_create(t_state *self, const char *config_path);
 void	state_destroy(t_state *self);
 void	state_update(t_state *self);
 

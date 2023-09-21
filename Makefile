@@ -72,8 +72,7 @@ scene_sprite_bonus.c		\
 sprite_draw_bonus.c			\
 sprite_bonus.c				\
 scene_bonus.c				\
-map_bonus.c					\
-main_bonus.c
+map_bonus.c
 
 ifeq ($(BONUS_FEATURES), 1)
 	SRCS = $(SRCS_MANDATORY) $(SRCS_BONUS)

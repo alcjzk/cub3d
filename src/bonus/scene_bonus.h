@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 18:08:00 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:29:31 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_scene_config_map_item
 	t_scene_config_func	func;
 }	t_scene_config_map_item;
 
-_Bool					scene_create(t_scene *self, char *file);
+_Bool					scene_create(t_scene *self, const char *config_path);
 void					scene_destroy(t_scene *self);
 void					scene_print_error(t_scene *self);
 _Bool					scene_read(int fd, char ***buffer);

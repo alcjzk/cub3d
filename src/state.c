@@ -6,13 +6,14 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:01:38 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:25:52 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 #include "view.h"
 #include "hook.h"
+#include "scene.h"
 #include "state.h"
 
 #ifndef BONUS_FEATURES
@@ -20,13 +21,16 @@
 void	state_destroy(t_state *self)
 {
 	scene_destroy(self->scene);
-	mlx_terminate(self->mlx);
+	if (self->mlx)
+		mlx_terminate(self->mlx);
 }
 
-// TODO: Proper use of .is_valid
-_Bool	state_create(t_state *self, t_scene *scene)
+_Bool	state_create(t_state *self, const char *config_path)
 {
 	*self = (t_state){0};
+	self->scene = &self->scene_real;
+	if (!scene_create(&self->scene_real, config_path))
+		return (FALSE);
 	self->mlx = mlx_init(
 			WINDOW_WIDTH,
 			WINDOW_HEIGHT,
@@ -36,8 +40,11 @@ _Bool	state_create(t_state *self, t_scene *scene)
 		return (FALSE);
 	if (!view_create(&self->view, self->mlx))
 		return (FALSE);
-	self->scene = scene;
-	self->is_valid = TRUE;
+	if (mlx_image_to_window(self->mlx, self->view.frame.img, 0, 0) == -1)
+		return (FALSE);
+	mlx_close_hook(self->mlx, (mlx_closefunc)on_close, self->mlx);
+	if (!mlx_loop_hook(self->mlx, (void (*)(void *))state_update, self))
+		return (FALSE);
 	return (TRUE);
 }
 

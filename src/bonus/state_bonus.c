@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 19:02:04 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:26:30 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ void	state_destroy(t_state *self)
 	mlx_terminate(self->mlx);
 }
 
-_Bool	state_create(t_state *self, t_scene *scene)
+_Bool	state_create(t_state *self, const char *config_path)
 {
 	*self = (t_state){0};
+	self->scene = &self->scene_real;
+	if (!scene_create(&self->scene_real, config_path))
+		return (FALSE);
 	self->mlx = mlx_init(
 			WINDOW_WIDTH,
 			WINDOW_HEIGHT,
@@ -35,10 +38,14 @@ _Bool	state_create(t_state *self, t_scene *scene)
 		return (FALSE);
 	if (!view_create(&self->view, self->mlx))
 		return (FALSE);
-	if (!minimap_create(&self->minimap, scene, self->mlx))
+	if (!minimap_create(&self->minimap, self->scene, self->mlx))
 		return (FALSE);
-	self->scene = scene;
-	self->is_valid = TRUE;
+	if (mlx_image_to_window(self->mlx, self->view.frame.img, 0, 0) == -1)
+		return (FALSE);
+	mlx_close_hook(self->mlx, (mlx_closefunc)on_close, self->mlx);
+	mlx_key_hook(self->mlx, (mlx_keyfunc)map_door_toggle, self->scene);
+	if (!mlx_loop_hook(self->mlx, (void (*)(void *))state_update, self))
+		return (FALSE);
 	return (TRUE);
 }
 

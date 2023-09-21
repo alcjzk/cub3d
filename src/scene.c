@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:28 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 19:09:04 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:14:25 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 #include "libft.h"
 #include "texture.h"
 
-_Bool	scene_is_valid_name(char *file)
+_Bool	scene_is_valid_name(const char *config_path)
 {
 	int	i;
 
 	i = 0;
-	while (file[i])
+	while (config_path[i])
 		i++;
 	i -= 4;
-	if (i < 0 || ft_strncmp(&file[i], ".cub", 4))
+	if (i < 0 || ft_strncmp(&config_path[i], ".cub", 4))
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("Incorrect map name\n", 2);
@@ -60,15 +60,15 @@ void	scene_buffer_remove_newlines(char **buffer)
 
 #ifndef BONUS_FEATURES
 
-_Bool	scene_create(t_scene *self, char *file)
+_Bool	scene_create(t_scene *self, const char *config_path)
 {
 	int		fd;
 	char	**buffer;
 
 	*self = (t_scene){.is_valid = TRUE};
-	if (!scene_is_valid_name(file))
+	if (!scene_is_valid_name(config_path))
 		return (FALSE);
-	fd = open(file, O_RDONLY);
+	fd = open(config_path, O_RDONLY);
 	if (fd < 0)
 		return (FALSE);
 	self->is_valid = scene_read(fd, &buffer);
