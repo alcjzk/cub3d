@@ -83,21 +83,15 @@ endif
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 
-.PHONY: all clean fclean re obj_dir $(LIBFT) norm init bonus mandatory
+.PHONY: all clean fclean re obj_dir $(LIBFT) norm bonus mandatory
 
 all: mandatory
 
 $(MLX42):
-	@-test -f MLX42/README.md || make init
 	cd MLX42 && cmake -B build && cmake --build build -j4
 
 $(LIBFT):
-	@-test -f libft/README.md || make init
 	make -C libft OBJ_DIR="../obj/"
-
-init:
-	git submodule update --init
-	cd MLX42 && git checkout a2f6f23
 
 $(NAME): $(OBJS) | $(LIBFT)
 	@echo ""
@@ -140,10 +134,6 @@ fclean: clean
 
 norm:
 	norminette src | grep -v OK
-
-debug: fclean
-	make -C libft OBJ_DIR="../obj/" FLAGS="-g -fsanitize=address"
-	make $(NAME) CFLAGS="-g -fsanitize=address"
 
 vpath %.c $(SRC_DIR)
 -include $(DEPS)
