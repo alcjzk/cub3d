@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:28:22 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "bool.h"
 # include "player.h"
 
-# define MAP_CHARS		"012"
+# define MAP_CHARS		"0124"
 # define PLAYER_CHARS	"NSWE"
-# define INSIDE_CHARS	"02"
+# define INSIDE_CHARS	"024"
 
 typedef struct s_scene	t_scene;
 

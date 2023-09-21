@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_set_colors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:04:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:47:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 _Bool	scene_is_colors_set(t_scene *self)
 {
+	if (!self->is_valid)
+		return (FALSE);
 	if (!self->is_ceiling_color_set || !self->is_floor_color_set)
 	{
 		ft_putstr_fd("Error\n", 2);

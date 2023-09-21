@@ -6,11 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:36:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 14:50:23 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:35:03 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "texture.h"
 #include "libft.h"
 
@@ -28,6 +29,8 @@ _Bool	texture_pack_load(
 	self->east = mlx_load_png(options->east);
 	if (!self->north || !self->west || !self->south || !self->east)
 	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd("Some textures failed to load\n", STDERR_FILENO);
 		texture_pack_unload(self);
 		return (FALSE);
 	}

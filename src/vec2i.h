@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_position.c                                  :+:      :+:    :+:   */
+/*   vec2i.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 04:15:35 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:03:23 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/09/19 18:52:53 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/09/19 18:54:26 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#ifndef VEC2I_H
+# define VEC2I_H
 
-ssize_t	vector_position(
-	t_vector *self,
-	_Bool (*cmp)(void *, void *),
-	void *param)
+typedef struct s_vec2i
 {
-	size_t	idx;
-	void	*data;
+	int	x;
+	int	y;
+}	t_vec2i;
 
-	idx = 0;
-	while (idx < self->length)
-	{
-		data = &self->buffer[self->elem_size * idx];
-		if (cmp(data, param))
-			return ((ssize_t)idx);
-		idx++;
-	}
-	return (INVALID_INDEX);
-}
+#endif

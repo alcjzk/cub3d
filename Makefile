@@ -66,6 +66,12 @@ color_bonus.c				\
 view_draw_bonus.c			\
 player_bonus.c				\
 state_bonus.c				\
+view_bonus.c				\
+scene_sprite_bonus.c		\
+sprite_draw_bonus.c			\
+sprite_bonus.c				\
+scene_bonus.c				\
+map_bonus.c					\
 main_bonus.c
 
 ifeq ($(BONUS_FEATURES), 1)
@@ -78,9 +84,9 @@ endif
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(SRCS:%.c=$(OBJ_DIR)%.d)
 
-.PHONY: all clean fclean re obj_dir $(LIBFT) norm init bonus
+.PHONY: all clean fclean re obj_dir $(LIBFT) norm init bonus mandatory
 
-all: $(NAME)
+all: mandatory
 
 $(MLX42):
 	@-test -f MLX42/README.md || make init
@@ -102,7 +108,20 @@ $(OBJ_DIR)%.o: %.c | obj_dir $(MLX42)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 bonus:
-	make BONUS_FEATURES=1
+ifneq ("$(wildcard ./obj/.mandatory)","")
+	make fclean
+endif
+	mkdir -p ./obj
+	touch ./obj/.bonus
+	make $(NAME) BONUS_FEATURES=1
+
+mandatory:
+ifneq ("$(wildcard ./obj/.bonus)","")
+	make fclean
+endif
+	mkdir -p ./obj
+	touch ./obj/.mandatory
+	make $(NAME)
 
 run: all
 	./$(NAME)

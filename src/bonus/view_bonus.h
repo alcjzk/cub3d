@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state_bonus.h                                      :+:      :+:    :+:   */
+/*   view_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 17:03:49 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:02:19 by tjaasalo         ###   ########.fr       */
+/*   Created: 2023/07/05 14:13:55 by tjaasalo          #+#    #+#             */
+/*   Updated: 2023/09/19 20:34:45 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STATE_BONUS_H
-# define STATE_BONUS_H
+#ifndef VIEW_BONUS_H
+# define VIEW_BONUS_H
 
-// Bonus
-# include "MLX42.h"
 # include "bool.h"
-# include "view.h"
+# include "image.h"
 # include "scene.h"
-# include "minimap_bonus.h"
+# include "sprite_bonus.h"
 
-# define WINDOW_WIDTH	1600
-# define WINDOW_HEIGHT	1200
-# define WINDOW_TITLE	"Cub3D"
-
-typedef struct s_state
+typedef struct s_view
 {
 	mlx_t		*mlx;
-	t_view		view;
-	t_scene		*scene;
-	_Bool		is_mouse_captured;
-	t_minimap	minimap;
-	_Bool		is_valid;
-}	t_state;
+	t_image		frame;
+	float		*z_buffer;
+}	t_view;
 
-_Bool	state_create(t_state *self, t_scene *scene);
-void	state_destroy(t_state *self);
-void	state_update(t_state *self);
+_Bool	view_create(t_view *self, mlx_t *mlx);
+void	view_destroy(t_view *self);
+void	view_draw(t_view *self, t_scene *scene);
+void	view_draw_background(t_image *image, t_scene *scene);
 
 #endif
