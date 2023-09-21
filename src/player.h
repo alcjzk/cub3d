@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:33:32 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/20 15:05:28 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:01:07 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # include "MLX42.h"
 # include "vec2f.h"
-# include "bool.h"
 
 typedef struct s_state	t_state;
 

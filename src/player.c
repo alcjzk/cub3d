@@ -6,14 +6,15 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 15:42:53 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:01:48 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "player.h"
-#include "state.h"
 #include "util.h"
+#include "state.h"
+#include "bool.h"
+#include "player.h"
 
 void	player_init(t_player *self, char dir, int y, int x)
 {

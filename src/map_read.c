@@ -6,14 +6,12 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:34:04 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:04:28 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:57:48 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "vector.h"
-#include "get_next_line.h"
 #include "libft.h"
+#include "map.h"
 
 void	map_get_max_size(t_map *self, char **map)
 {

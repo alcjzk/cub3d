@@ -6,10 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 10:36:08 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 14:42:39 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:07:37 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "bool.h"
 #include "texture.h"
 
 _Bool	texture_is_valid(mlx_texture_t *self)

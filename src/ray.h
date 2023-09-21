@@ -6,15 +6,15 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:21:43 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:05:41 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:02:22 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 # define RAY_H
 
+# include "scene.h"
 # include "vec2f.h"
-# include "view.h"
 
 typedef enum e_side
 {

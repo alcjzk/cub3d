@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:40:17 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:06:43 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 
 // Mandatory
 #  include "MLX42.h"
-#  include "bool.h"
 #  include "view.h"
-#  include "scene.h"
 
 #  define WINDOW_WIDTH	1600
 #  define WINDOW_HEIGHT	1200

@@ -6,12 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:38:51 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/20 15:04:36 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:59:16 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "player.h"
 #include "map.h"
 
 static _Bool	check_max_values(int y, int x, char **map)

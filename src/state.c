@@ -6,13 +6,11 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 16:47:28 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:09:19 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
-#include "view.h"
-#include "scene.h"
+#include "bool.h"
 #include "state.h"
 
 #ifndef BONUS_FEATURES
