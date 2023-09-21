@@ -12,10 +12,10 @@ LIB_DIR				= libft $(BREW_PATH)/opt/glfw/lib/ MLX42/build/
 
 # Flags setup
 CC		= cc
-OPT		= 0
+OPT		= fast
 LIB		= ft glfw mlx42
 WARN	= all extra error
-EXTRA	= -MP -MMD -g
+EXTRA	= -MP -MMD
 FWK		= OpenGL Cocoa IOKit
 
 # Compiler flags
