@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:19:31 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 16:47:55 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:35:07 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	state_destroy(t_state *self)
 {
 	view_destroy(&self->view);
 	scene_destroy(&self->scene);
-	mlx_terminate(self->mlx);
+	if (self->mlx)
+		mlx_terminate(self->mlx);
 }
 
 _Bool	state_create(t_state *self, const char *config_path)
