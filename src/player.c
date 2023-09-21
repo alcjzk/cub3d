@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:07:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/12 05:46:02 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:42:53 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	player_update(t_player *self, t_state *state)
 	t_vec2f	velocity;
 	t_map	*map;
 
-	map = &state->scene->map;
+	map = &state->scene.map;
 	player_update_yaw(self, state);
 	velocity = player_velocity(self, state->mlx);
 	self->direction = vec2f_rotate((t_vec2f){0.0, -1.0}, self->yaw);

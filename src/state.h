@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:05:27 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:33:11 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:40:17 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ typedef struct s_state
 {
 	mlx_t		*mlx;
 	t_view		view;
-	t_scene		*scene;
-	t_scene		scene_real; // HACK
+	t_scene		scene;
 }	t_state;
 
 _Bool	state_create(t_state *self, const char *config_path);

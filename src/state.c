@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:34:14 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 15:25:52 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:42:06 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	state_destroy(t_state *self)
 {
-	scene_destroy(self->scene);
+	scene_destroy(&self->scene);
 	if (self->mlx)
 		mlx_terminate(self->mlx);
 }
@@ -28,8 +28,7 @@ void	state_destroy(t_state *self)
 _Bool	state_create(t_state *self, const char *config_path)
 {
 	*self = (t_state){0};
-	self->scene = &self->scene_real;
-	if (!scene_create(&self->scene_real, config_path))
+	if (!scene_create(&self->scene, config_path))
 		return (FALSE);
 	self->mlx = mlx_init(
 			WINDOW_WIDTH,
@@ -52,8 +51,8 @@ void	state_update(t_state *self)
 {
 	if (mlx_is_key_down(self->mlx, MLX_KEY_ESCAPE))
 		return (on_close(self->mlx));
-	player_update(&self->scene->player, self);
-	view_draw(&self->view, self->scene);
+	player_update(&self->scene.player, self);
+	view_draw(&self->view, &self->scene);
 }
 
 #endif

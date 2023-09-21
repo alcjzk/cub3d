@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:42:40 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/19 14:15:34 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/21 15:43:34 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	player_update(t_player *self, t_state *state)
 	t_map	*map;
 	t_vec2f	position_new;
 
-	map = &state->scene->map;
+	map = &state->scene.map;
 	player_update_yaw(self, state);
 	self->direction = vec2f_rotate((t_vec2f){0.0, -1.0}, self->yaw);
 	self->plane = vec2f_rotate((t_vec2f){0.66, 0.0}, self->yaw);
