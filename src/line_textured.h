@@ -6,16 +6,16 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:56:19 by tjaasalo          #+#    #+#             */
-/*   Updated: 2023/09/21 17:12:27 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:32:59 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINE_TEXTURED_H
 # define LINE_TEXTURED_H
 
-#include "ray.h"
-#include "view.h"
-#include "scene.h"
+# include "ray.h"
+# include "view.h"
+# include "scene.h"
 
 typedef struct s_line_textured
 {

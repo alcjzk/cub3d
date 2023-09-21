@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:16:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 17:28:32 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:33:25 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #  include "scene_bonus.h"
 # else
 
-# include "texture.h"
-# include "map.h"
-# include "color.h"
+#  include "texture.h"
+#  include "map.h"
+#  include "color.h"
 
 #  define CONFIG_FUNC_COUNT 6
 

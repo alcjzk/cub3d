@@ -6,7 +6,7 @@
 /*   By: tjaasalo <tjaasalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:48:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/09/21 16:56:18 by tjaasalo         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:33:10 by tjaasalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #  include "map_bonus.h"
 # else
 
-# include "player.h"
+#  include "player.h"
 
 #  define MAP_CHARS		"01"
 #  define PLAYER_CHARS	"NSWE"
