@@ -1,0 +1,18 @@
+NO ./textures/proto/north.png
+SO ./textures/proto/south.png
+WE ./textures/proto/west.png
+EA ./textures/proto/east.png
+DR ./textures/proto/door.png
+AS ./textures/sprite.png
+
+F 150,150,150
+C 50,50,255
+
+111111111111111
+100000010000001
+100000010000111
+10N000410001001
+100000020000001
+100100410000001
+100000010000001
+111111111111111
